@@ -6,6 +6,7 @@ import { ReactComponent as StakeIcon } from "../../assets/icons/stake.svg";
 import { ReactComponent as DashboardIcon } from "../../assets/icons/dashboard.svg";
 import { ReactComponent as Cre8rIcon } from "../../assets/icons/cre8r-nav-header.svg";
 import { ReactComponent as WrapIcon } from "../../assets/icons/wrap.svg";
+import { ReactComponent as BondIcon } from "../../assets/icons/bond.svg";
 import { ReactComponent as BridgeIcon } from "../../assets/icons/bridge.svg";
 import { ReactComponent as ArrowUpIcon } from "../../assets/icons/arrow-up.svg";
 import { Trans } from "@lingui/macro";
@@ -14,11 +15,14 @@ import { useAddress } from "src/hooks/web3Context";
 import { Paper, Link, Box, Typography, SvgIcon, Divider } from "@material-ui/core";
 import "./sidebar.scss";
 import { useSelector } from "react-redux";
+import { useBonds } from "src/hooks";
+import { Skeleton } from "@material-ui/lab";
 
 function NavContent() {
   const [isActive] = useState();
   const address = useAddress();
   const networkId = useSelector(state => state.network.networkId);
+  const { bonds } = useBonds(networkId);
 
   const checkPage = useCallback((_, location, page) => {
     const currentPath = location.pathname.replace("/", "");
@@ -50,7 +54,7 @@ function NavContent() {
 
           <div className="dapp-menu-links">
             <div className="dapp-nav" id="navbarNav">
-              {networkId === 1 || networkId === 4 ? (
+              {networkId === 250 || networkId === 4002 ? (
                 <>
                   <Link
                     component={NavLink}
@@ -98,6 +102,52 @@ function NavContent() {
                       {/* <SvgIcon component={WrapIcon} viewBox="21 -2 20 20" style={{ width: "80px" }} /> */}
                     </Box>
                   </Link>
+
+                  <Link
+                    component={NavLink}
+                    id="bond-nav"
+                    to="/bonds"
+                    isActive={(match, location) => {
+                      return checkPage(match, location, "bonds");
+                    }}
+                    className={`button-dapp-menu ${isActive ? "active" : ""}`}
+                  >
+                    <Typography variant="h6">
+                      <SvgIcon color="primary" component={BondIcon} />
+                      <Trans>Bond</Trans>
+                    </Typography>
+                  </Link>
+
+                  {bonds.filter(bond => bond.getBondability(networkId)).length > 0 && (
+                    <div className="dapp-menu-data discounts">
+                      <div className="bond-discounts">
+                        <Typography variant="body2">
+                          <Trans>Bond discounts</Trans>
+                        </Typography>
+                        {bonds.map((bond, i) => {
+                          if (bond.getBondability(networkId)) {
+                            return (
+                              <Link component={NavLink} to={`/bonds/${bond.name}`} key={i} className={"bond"}>
+                                {!bond.bondDiscount ? (
+                                  <Skeleton variant="text" width={"150px"} />
+                                ) : (
+                                  <Typography variant="body2">
+                                    {bond.displayName}
+
+                                    <span className="bond-pair-roi">
+                                      {!bond.isBondable[networkId]
+                                        ? "Sold Out"
+                                        : `${bond.bondDiscount && trim(bond.bondDiscount * 100, 2)}%`}
+                                    </span>
+                                  </Typography>
+                                )}
+                              </Link>
+                            );
+                          }
+                        })}
+                      </div>
+                    </div>
+                  )}
 
                   {/* <Link
                     href={"https://synapseprotocol.com/?inputCurrency=gOHM&outputCurrency=gOHM&outputChain=43114"}
@@ -216,9 +266,6 @@ function NavContent() {
                       <SvgIcon style={{ marginLeft: "5px" }} component={ArrowUpIcon} />
                     </Typography>
                   </Link>
-                  <Box className="menu-divider">
-                    <Divider />
-                  </Box>
                 </>
               )}
             </div>

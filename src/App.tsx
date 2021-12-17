@@ -274,7 +274,7 @@ function App() {
               <PoolTogether />
             </Route> */}
 
-            {/* <Route path="/bonds">
+            <Route path="/bonds">
               {(bonds as IAllBondData[]).map(bond => {
                 return (
                   <Route exact key={bond.name} path={`/bonds/${bond.name}`}>
@@ -283,7 +283,7 @@ function App() {
                 );
               })}
               <ChooseBond />
-            </Route> */}
+            </Route>
 
             <Route path="/network">
               <ChangeNetwork />

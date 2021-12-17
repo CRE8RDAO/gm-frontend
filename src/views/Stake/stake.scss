@@ -27,13 +27,13 @@
     width: 100%;
   }
 
-  .ohm-card .card-header {
+  .brick-card .card-header {
     position: relative;
   }
-  .ohm-card .header {
+  .brick-card .header {
     min-height: 3em;
   }
-  .ohm-card.secondary .card-header {
+  .brick-card.secondary .card-header {
     min-height: 33px !important;
     height: 20px;
   }
@@ -74,7 +74,8 @@
       position: absolute;
       left: 100px;
       top: -3px;
-      transition: left 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, top 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+      transition: left 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, top 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+        transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
       &.Mui-expanded {
         left: 104px;
         top: 1px;
@@ -88,7 +89,7 @@
   }
 }
 
-.migrate-sohm-button {
+.migrate-sbrick-button {
   position: absolute;
   right: 0px;
   top: 0px;
@@ -103,7 +104,7 @@
   }
 }
 
-.migrate-sohm-button.complete {
+.migrate-sbrick-button.complete {
   color: #35ee66 !important;
 }
 
@@ -141,7 +142,7 @@
   text-align: left;
 }
 
-.ohm-logo-tiny {
+.brick-logo-tiny {
   height: 14px;
   width: 14px;
   vertical-align: middle;
@@ -200,7 +201,7 @@
   }
 }
 
-.ohm-input {
+.brick-input {
   max-width: 542px;
   width: 100%;
   margin: 4px !important;
@@ -287,7 +288,7 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    .ohm-pairs p {
+    .brick-pairs p {
       margin-bottom: 0 !important;
     }
   }

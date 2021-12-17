@@ -26,9 +26,9 @@ function alreadyApprovedToken(token: string, stakeAllowance: BigNumber, unstakeA
   let applicableAllowance = bigZero;
 
   // determine which allowance to check
-  if (token === "ohm") {
+  if (token === "brick") {
     applicableAllowance = stakeAllowance;
-  } else if (token === "sohm") {
+  } else if (token === "sbrick") {
     applicableAllowance = unstakeAllowance;
   }
 
@@ -47,11 +47,19 @@ export const changeApproval = createAsyncThunk(
     }
 
     const signer = provider.getSigner();
-    const ohmContract = new ethers.Contract(addresses[networkID].OHM_ADDRESS as string, ierc20ABI, signer) as IERC20;
-    const sohmContract = new ethers.Contract(addresses[networkID].SOHM_ADDRESS as string, ierc20ABI, signer) as IERC20;
+    const brickContract = new ethers.Contract(
+      addresses[networkID].BRICK_ADDRESS as string,
+      ierc20ABI,
+      signer,
+    ) as IERC20;
+    const sbrickContract = new ethers.Contract(
+      addresses[networkID].SBRICK_ADDRESS as string,
+      ierc20ABI,
+      signer,
+    ) as IERC20;
     let approveTx;
-    let stakeAllowance = await ohmContract.allowance(address, addresses[networkID].STAKING_HELPER_ADDRESS);
-    let unstakeAllowance = await sohmContract.allowance(address, addresses[networkID].STAKING_ADDRESS);
+    let stakeAllowance = await brickContract.allowance(address, addresses[networkID].STAKING_HELPER_ADDRESS);
+    let unstakeAllowance = await sbrickContract.allowance(address, addresses[networkID].STAKING_ADDRESS);
 
     // return early if approval has already happened
     if (alreadyApprovedToken(token, stakeAllowance, unstakeAllowance)) {
@@ -59,29 +67,29 @@ export const changeApproval = createAsyncThunk(
       return dispatch(
         fetchAccountSuccess({
           staking: {
-            ohmStake: +stakeAllowance,
-            ohmUnstake: +unstakeAllowance,
+            brickStake: +stakeAllowance,
+            brickUnstake: +unstakeAllowance,
           },
         }),
       );
     }
 
     try {
-      if (token === "ohm") {
+      if (token === "brick") {
         // won't run if stakeAllowance > 0
-        approveTx = await ohmContract.approve(
+        approveTx = await brickContract.approve(
           addresses[networkID].STAKING_HELPER_ADDRESS,
           ethers.utils.parseUnits("1000000000", "gwei").toString(),
         );
-      } else if (token === "sohm") {
-        approveTx = await sohmContract.approve(
+      } else if (token === "sbrick") {
+        approveTx = await sbrickContract.approve(
           addresses[networkID].STAKING_ADDRESS,
           ethers.utils.parseUnits("1000000000", "gwei").toString(),
         );
       }
 
-      const text = "Approve " + (token === "ohm" ? "Staking" : "Unstaking");
-      const pendingTxnType = token === "ohm" ? "approve_staking" : "approve_unstaking";
+      const text = "Approve " + (token === "brick" ? "Staking" : "Unstaking");
+      const pendingTxnType = token === "brick" ? "approve_staking" : "approve_unstaking";
       if (approveTx) {
         dispatch(fetchPendingTxns({ txnHash: approveTx.hash, text, type: pendingTxnType }));
 
@@ -97,14 +105,14 @@ export const changeApproval = createAsyncThunk(
     }
 
     // go get fresh allowances
-    stakeAllowance = await ohmContract.allowance(address, addresses[networkID].STAKING_HELPER_ADDRESS);
-    unstakeAllowance = await sohmContract.allowance(address, addresses[networkID].STAKING_ADDRESS);
+    stakeAllowance = await brickContract.allowance(address, addresses[networkID].STAKING_HELPER_ADDRESS);
+    unstakeAllowance = await sbrickContract.allowance(address, addresses[networkID].STAKING_ADDRESS);
 
     return dispatch(
       fetchAccountSuccess({
         staking: {
-          ohmStake: +stakeAllowance,
-          ohmUnstake: +unstakeAllowance,
+          brickStake: +stakeAllowance,
+          brickUnstake: +unstakeAllowance,
         },
       }),
     );

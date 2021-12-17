@@ -150,7 +150,7 @@ function NavContent() {
                   )}
 
                   {/* <Link
-                    href={"https://synapseprotocol.com/?inputCurrency=gOHM&outputCurrency=gOHM&outputChain=43114"}
+                    href={"https://synapseprotocol.com/?inputCurrency=gBRICK&outputCurrency=gBRICK&outputChain=43114"}
                     target="_blank"
                   >
                     <Typography variant="h6">
@@ -256,8 +256,8 @@ function NavContent() {
                     </Box>
                   </Link>
 
-                  <Link
-                    href={"https://synapseprotocol.com/?inputCurrency=gOHM&outputCurrency=gOHM&outputChain=43114"}
+                  {/* <Link
+                    href={"https://synapseprotocol.com/?inputCurrency=gBRICK&outputCurrency=gBRICK&outputChain=43114"}
                     target="_blank"
                   >
                     <Typography variant="h6">
@@ -265,7 +265,7 @@ function NavContent() {
                       <Trans>Bridge</Trans>
                       <SvgIcon style={{ marginLeft: "5px" }} component={ArrowUpIcon} />
                     </Typography>
-                  </Link>
+                  </Link> */}
                 </>
               )}
             </div>

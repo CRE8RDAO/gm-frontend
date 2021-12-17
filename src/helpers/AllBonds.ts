@@ -2,25 +2,25 @@ import { StableBond, LPBond, NetworkID, CustomBond, BondType } from "src/lib/Bon
 import { addresses } from "src/constants";
 
 import { ReactComponent as DaiImg } from "src/assets/tokens/DAI.svg";
-import { ReactComponent as OhmDaiImg } from "src/assets/tokens/OHM-DAI.svg";
+import { ReactComponent as BrickDaiImg } from "src/assets/tokens/BRICK-DAI.svg";
 import { ReactComponent as FraxImg } from "src/assets/tokens/FRAX.svg";
-import { ReactComponent as OhmFraxImg } from "src/assets/tokens/OHM-FRAX.svg";
-import { ReactComponent as OhmLusdImg } from "src/assets/tokens/OHM-LUSD.svg";
-import { ReactComponent as OhmEthImg } from "src/assets/tokens/OHM-WETH.svg";
+import { ReactComponent as BrickFraxImg } from "src/assets/tokens/BRICK-FRAX.svg";
+import { ReactComponent as BrickLusdImg } from "src/assets/tokens/BRICK-LUSD.svg";
+import { ReactComponent as BrickEthImg } from "src/assets/tokens/BRICK-WETH.svg";
 import { ReactComponent as wETHImg } from "src/assets/tokens/wETH.svg";
 import { ReactComponent as LusdImg } from "src/assets/tokens/LUSD.svg";
 import { ReactComponent as CvxImg } from "src/assets/tokens/CVX.svg";
 
-import { abi as FraxOhmBondContract } from "src/abi/bonds/OhmFraxContract.json";
-import { abi as BondOhmDaiContract } from "src/abi/bonds/OhmDaiContract.json";
-import { abi as BondOhmLusdContract } from "src/abi/bonds/OhmLusdContract.json";
-import { abi as BondOhmEthContract } from "src/abi/bonds/OhmEthContract.json";
+import { abi as FraxBrickBondContract } from "src/abi/bonds/OhmFraxContract.json";
+import { abi as BondBrickDaiContract } from "src/abi/bonds/OhmDaiContract.json";
+import { abi as BondBrickLusdContract } from "src/abi/bonds/OhmLusdContract.json";
+import { abi as BondBrickEthContract } from "src/abi/bonds/OhmEthContract.json";
 
 import { abi as DaiBondContract } from "src/abi/bonds/DaiContract.json";
-import { abi as ReserveOhmLusdContract } from "src/abi/reserves/OhmLusd.json";
-import { abi as ReserveOhmDaiContract } from "src/abi/reserves/OhmDai.json";
-import { abi as ReserveOhmFraxContract } from "src/abi/reserves/OhmFrax.json";
-import { abi as ReserveOhmEthContract } from "src/abi/reserves/OhmEth.json";
+import { abi as ReserveBrickLusdContract } from "src/abi/reserves/OhmLusd.json";
+import { abi as ReserveBrickDaiContract } from "src/abi/reserves/OhmDai.json";
+import { abi as ReserveBrickFraxContract } from "src/abi/reserves/OhmFrax.json";
+import { abi as ReserveBrickEthContract } from "src/abi/reserves/OhmEth.json";
 
 import { abi as FraxBondContract } from "src/abi/bonds/FraxContract.json";
 import { abi as LusdBondContract } from "src/abi/bonds/LusdContract.json";
@@ -38,7 +38,7 @@ export const dai = new StableBond({
   name: "dai",
   displayName: "DAI",
   bondToken: "DAI",
-  payoutToken: "OHM",
+  payoutToken: "BRICK",
   bondIconSvg: DaiImg,
   bondContractABI: DaiBondContract,
   isBondable: {
@@ -73,7 +73,7 @@ export const frax = new StableBond({
   name: "frax",
   displayName: "FRAX",
   bondToken: "FRAX",
-  payoutToken: "OHM",
+  payoutToken: "BRICK",
   bondIconSvg: FraxImg,
   bondContractABI: FraxBondContract,
   isBondable: {
@@ -108,7 +108,7 @@ export const lusd = new StableBond({
   name: "lusd",
   displayName: "LUSD",
   bondToken: "LUSD",
-  payoutToken: "OHM",
+  payoutToken: "BRICK",
   bondIconSvg: LusdImg,
   bondContractABI: LusdBondContract,
   isBondable: {
@@ -145,7 +145,7 @@ export const eth = new CustomBond({
   lpUrl: "",
   bondType: BondType.StableAsset,
   bondToken: "wETH",
-  payoutToken: "OHM",
+  payoutToken: "BRICK",
   bondIconSvg: wETHImg,
   bondContractABI: EthBondContract,
   reserveContract: ierc20Abi, // The Standard ierc20Abi since they're normal tokens
@@ -192,7 +192,7 @@ export const cvx = new CustomBond({
   lpUrl: "",
   bondType: BondType.StableAsset,
   bondToken: "CVX",
-  payoutToken: "OHM",
+  payoutToken: "BRICK",
   bondIconSvg: CvxImg,
   bondContractABI: CvxBondContract,
   reserveContract: ierc20Abi, // The Standard ierc20Abi since they're normal tokens
@@ -239,7 +239,7 @@ export const cvx_expired = new CustomBond({
   lpUrl: "",
   bondType: BondType.StableAsset,
   bondToken: "CVX",
-  payoutToken: "OHM",
+  payoutToken: "BRICK",
   bondIconSvg: CvxImg,
   bondContractABI: CvxBondContract,
   reserveContract: ierc20Abi, // The Standard ierc20Abi since they're normal tokens
@@ -279,14 +279,14 @@ export const cvx_expired = new CustomBond({
   },
 });
 
-export const ohm_dai = new LPBond({
-  name: "ohm_dai_lp",
-  displayName: "OHM-DAI LP",
+export const brick_dai = new LPBond({
+  name: "brick_dai_lp",
+  displayName: "BRICK-DAI LP",
   bondToken: "DAI",
-  payoutToken: "OHM",
-  bondIconSvg: OhmDaiImg,
-  bondContractABI: BondOhmDaiContract,
-  reserveContract: ReserveOhmDaiContract,
+  payoutToken: "BRICK",
+  bondIconSvg: BrickDaiImg,
+  bondContractABI: BondBrickDaiContract,
+  reserveContract: ReserveBrickDaiContract,
   isBondable: {
     [NetworkID.Mainnet]: false,
     [NetworkID.Testnet]: true,
@@ -317,14 +317,14 @@ export const ohm_dai = new LPBond({
     "https://app.sushi.com/add/0x383518188c0c6d7730d91b2c03a03c837814a899/0x6b175474e89094c44da98b954eedeac495271d0f",
 });
 
-export const ohm_frax = new LPBond({
-  name: "ohm_frax_lp",
-  displayName: "OHM-FRAX LP",
+export const brick_frax = new LPBond({
+  name: "brick_frax_lp",
+  displayName: "BRICK-FRAX LP",
   bondToken: "FRAX",
-  payoutToken: "OHM",
-  bondIconSvg: OhmFraxImg,
-  bondContractABI: FraxOhmBondContract,
-  reserveContract: ReserveOhmFraxContract,
+  payoutToken: "BRICK",
+  bondIconSvg: BrickFraxImg,
+  bondContractABI: FraxBrickBondContract,
+  reserveContract: ReserveBrickFraxContract,
   isBondable: {
     [NetworkID.Mainnet]: true,
     [NetworkID.Testnet]: true,
@@ -355,14 +355,14 @@ export const ohm_frax = new LPBond({
     "https://app.uniswap.org/#/add/v2/0x853d955acef822db058eb8505911ed77f175b99e/0x383518188c0c6d7730d91b2c03a03c837814a899",
 });
 
-export const ohm_lusd = new LPBond({
-  name: "ohm_lusd_lp",
-  displayName: "OHM-LUSD LP",
+export const brick_lusd = new LPBond({
+  name: "brick_lusd_lp",
+  displayName: "BRICK-LUSD LP",
   bondToken: "LUSD",
-  payoutToken: "OHM",
-  bondIconSvg: OhmLusdImg,
-  bondContractABI: BondOhmLusdContract,
-  reserveContract: ReserveOhmLusdContract,
+  payoutToken: "BRICK",
+  bondIconSvg: BrickLusdImg,
+  bondContractABI: BondBrickLusdContract,
+  reserveContract: ReserveBrickLusdContract,
   isBondable: {
     [NetworkID.Mainnet]: false,
     [NetworkID.Testnet]: false,
@@ -385,7 +385,7 @@ export const ohm_lusd = new LPBond({
       reserveAddress: "0xfDf12D1F85b5082877A6E070524f50F6c84FAa6b",
     },
     [NetworkID.Testnet]: {
-      // NOTE (appleseed-lusd): using ohm-dai rinkeby contracts
+      // NOTE (appleseed-lusd): using brick-dai rinkeby contracts
       bondAddress: "0xcF449dA417cC36009a1C6FbA78918c31594B9377",
       reserveAddress: "0x8D5a22Fb6A1840da602E56D1a260E56770e0bCE2",
     },
@@ -394,14 +394,14 @@ export const ohm_lusd = new LPBond({
     "https://app.sushi.com/add/0x383518188C0C6d7730D91b2c03a03C837814a899/0x5f98805A4E8be255a32880FDeC7F6728C6568bA0",
 });
 
-export const ohm_weth = new CustomBond({
-  name: "ohm_weth_lp",
-  displayName: "OHM-WETH LP",
+export const brick_weth = new CustomBond({
+  name: "brick_weth_lp",
+  displayName: "BRICK-WETH LP",
   bondToken: "WETH",
-  payoutToken: "OHM",
-  bondIconSvg: OhmEthImg,
-  bondContractABI: BondOhmEthContract,
-  reserveContract: ReserveOhmEthContract,
+  payoutToken: "BRICK",
+  bondIconSvg: BrickEthImg,
+  bondContractABI: BondBrickEthContract,
+  reserveContract: ReserveBrickEthContract,
   isBondable: {
     [NetworkID.Mainnet]: true,
     [NetworkID.Testnet]: true,
@@ -424,7 +424,7 @@ export const ohm_weth = new CustomBond({
       reserveAddress: "0xfffae4a0f4ac251f4705717cd24cadccc9f33e06",
     },
     [NetworkID.Testnet]: {
-      // NOTE (unbanksy): using ohm-dai rinkeby contracts
+      // NOTE (unbanksy): using brick-dai rinkeby contracts
       bondAddress: "0xcF449dA417cC36009a1C6FbA78918c31594B9377",
       reserveAddress: "0x8D5a22Fb6A1840da602E56D1a260E56770e0bCE2",
     },
@@ -447,7 +447,7 @@ export const ohm_weth = new CustomBond({
         (Number(valuation.toString()) / Math.pow(10, 9)) * (Number(markdown.toString()) / Math.pow(10, 18));
       return tokenUSD * Number(ethPrice.toString());
     } else {
-      // NOTE (appleseed): using OHM-DAI on rinkeby
+      // NOTE (appleseed): using BRICK-DAI on rinkeby
       const token = this.getContractForReserve(networkID, provider);
       const tokenAddress = this.getAddressForReserve(networkID);
       const bondCalculator = getBondCalculator(networkID, provider);
@@ -465,7 +465,7 @@ export const ohm_weth = new CustomBond({
 // Is it a stableCoin bond? use `new StableBond`
 // Is it an LP Bond? use `new LPBond`
 // Add new bonds to this array!!
-export const allBonds = [dai, frax, eth, cvx, ohm_dai, ohm_frax, lusd, ohm_lusd, ohm_weth];
+export const allBonds = [dai, frax, eth, cvx, brick_dai, brick_frax, lusd, brick_lusd, brick_weth];
 // TODO (appleseed-expiredBonds): there may be a smarter way to refactor this
 export const allExpiredBonds = [cvx_expired];
 export const allBondsMap = allBonds.reduce((prevVal, bond) => {

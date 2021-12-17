@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 import { addresses } from "../constants";
 import { abi as OlympusStakingv2ABI } from "../abi/OlympusStakingv2.json";
-import { abi as sOHMv2 } from "../abi/sOhmv2.json";
+import { abi as sBRICKv2 } from "../abi/sOhmv2.json";
 import { setAll, getTokenPrice, getMarketPrice } from "../helpers";
 import { NodeHelper } from "src/helpers/NodeHelper";
 import apollo from "../lib/apolloClient";
@@ -12,15 +12,15 @@ import { OlympusStakingv2, SOhmv2 } from "../typechain";
 
 interface IProtocolMetrics {
   readonly timestamp: string;
-  readonly ohmCirculatingSupply: string;
-  readonly sOhmCirculatingSupply: string;
+  readonly brickCirculatingSupply: string;
+  readonly sBrickCirculatingSupply: string;
   readonly totalSupply: string;
-  readonly ohmPrice: string;
+  readonly brickPrice: string;
   readonly marketCap: string;
   readonly totalValueLocked: string;
   readonly treasuryMarketValue: string;
   readonly nextEpochRebase: string;
-  readonly nextDistributedOhm: string;
+  readonly nextDistributedBrick: string;
 }
 
 export const loadAppDetails = createAsyncThunk(
@@ -35,15 +35,15 @@ export const loadAppDetails = createAsyncThunk(
         }
         protocolMetrics(first: 1, orderBy: timestamp, orderDirection: desc) {
           timestamp
-          ohmCirculatingSupply
-          sOhmCirculatingSupply
+          brickCirculatingSupply
+          sBrickCirculatingSupply
           totalSupply
-          ohmPrice
+          brickPrice
           marketCap
           totalValueLocked
           treasuryMarketValue
           nextEpochRebase
-          nextDistributedOhm
+          nextDistributedBrick
         }
       }
     `;
@@ -61,7 +61,7 @@ export const loadAppDetails = createAsyncThunk(
 
     const stakingTVL = parseFloat(graphData.data.protocolMetrics[0].totalValueLocked);
     // NOTE (appleseed): marketPrice from Graph was delayed, so get CoinGecko price
-    // const marketPrice = parseFloat(graphData.data.protocolMetrics[0].ohmPrice);
+    // const marketPrice = parseFloat(graphData.data.protocolMetrics[0].brickPrice);
     let marketPrice;
     try {
       const originalPromiseResult = await dispatch(
@@ -75,7 +75,7 @@ export const loadAppDetails = createAsyncThunk(
     }
 
     const marketCap = parseFloat(graphData.data.protocolMetrics[0].marketCap);
-    const circSupply = parseFloat(graphData.data.protocolMetrics[0].ohmCirculatingSupply);
+    const circSupply = parseFloat(graphData.data.protocolMetrics[0].brickCirculatingSupply);
     const totalSupply = parseFloat(graphData.data.protocolMetrics[0].totalSupply);
     const treasuryMarketValue = parseFloat(graphData.data.protocolMetrics[0].treasuryMarketValue);
     // const currentBlock = parseFloat(graphData.data._meta.block.number);
@@ -99,16 +99,16 @@ export const loadAppDetails = createAsyncThunk(
       provider,
     ) as OlympusStakingv2;
 
-    const sohmMainContract = new ethers.Contract(
-      addresses[networkID].SOHM_ADDRESS as string,
-      sOHMv2,
+    const sbrickMainContract = new ethers.Contract(
+      addresses[networkID].SBRICK_ADDRESS as string,
+      sBRICKv2,
       provider,
     ) as SOhmv2;
 
     // Calculating staking
     const epoch = await stakingContract.epoch();
     const stakingReward = epoch.distribute;
-    const circ = await sohmMainContract.circulatingSupply();
+    const circ = await sbrickMainContract.circulatingSupply();
     const stakingRebase = Number(stakingReward.toString()) / Number(circ.toString());
     const fiveDayRate = Math.pow(1 + stakingRebase, 5 * 3) - 1;
     const stakingAPY = Math.pow(1 + stakingRebase, 365 * 3) - 1;
@@ -171,8 +171,8 @@ export const findOrLoadMarketPrice = createAsyncThunk(
 );
 
 /**
- * - fetches the OHM price from CoinGecko (via getTokenPrice)
- * - falls back to fetch marketPrice from ohm-dai contract
+ * - fetches the BRICK price from CoinGecko (via getTokenPrice)
+ * - falls back to fetch marketPrice from brick-dai contract
  * - updates the App.slice when it runs
  */
 const loadMarketPrice = createAsyncThunk("app/loadMarketPrice", async ({ networkID, provider }: IBaseAsyncThunk) => {

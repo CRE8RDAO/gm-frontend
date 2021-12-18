@@ -72,7 +72,7 @@ export default function ExternalStakePool() {
                       <Box className="ohm-pairs">
                         <MultiLogo images={[gOhmImage, avaxImage]} avatarStyleOverride={avatarStyle} />
                         <Box width="16px" />
-                        <Typography>gOHM-AVAX</Typography>
+                        <Typography>gBRICK-AVAX</Typography>
                       </Box>
                     </TableCell>
                     <TableCell align="center">
@@ -99,7 +99,7 @@ export default function ExternalStakePool() {
                 <Box className="ohm-pairs">
                   <MultiLogo images={[gOhmImage, avaxImage]} avatarStyleOverride={avatarStyle} />
                   <Box width="16px" />
-                  <Typography gutterBottom={false}>gOHM-AVAX</Typography>
+                  <Typography gutterBottom={false}>gBRICK-AVAX</Typography>
                 </Box>
               </div>
               <div className="pool-data">

@@ -111,12 +111,12 @@ export const bridgeBack = createAsyncThunk(
 
     try {
       unMigrateTx = await migrator.bridgeBack(ethers.utils.parseUnits(value, "ether"), TokenType.STAKED);
-      const text = `Bridge Back gOHM`;
+      const text = `Bridge Back gBRICK`;
       const pendingTxnType = `migrate`;
 
       dispatch(fetchPendingTxns({ txnHash: unMigrateTx.hash, text, type: pendingTxnType }));
       await unMigrateTx.wait();
-      dispatch(info("Successfully unwrapped gOHM!"));
+      dispatch(info("Successfully unwrapped gBRICK!"));
     } catch (e: unknown) {
       dispatch(error((e as IJsonRPCError).message));
     } finally {

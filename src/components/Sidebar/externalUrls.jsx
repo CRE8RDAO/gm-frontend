@@ -8,17 +8,17 @@ import { Trans } from "@lingui/macro";
 const externalUrls = [
   {
     title: <Trans>Forum</Trans>,
-    url: "https://forum.olympusdao.finance/",
+    url: "https://discourse.cre8r.vip/",
     icon: <SvgIcon color="primary" component={ForumIcon} />,
   },
   {
     title: <Trans>Governance</Trans>,
-    url: "https://vote.olympusdao.finance/",
+    url: "https://snapshot.org/#/cre8r.eth",
     icon: <SvgIcon color="primary" component={GovIcon} />,
   },
   {
     title: <Trans>Docs</Trans>,
-    url: "https://docs.olympusdao.finance/",
+    url: "https://cre8rdao.gitbook.io/cre8r/",
     icon: <SvgIcon color="primary" component={DocsIcon} />,
   },
   // {

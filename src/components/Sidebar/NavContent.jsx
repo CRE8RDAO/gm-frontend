@@ -25,7 +25,6 @@ function NavContent() {
   const [isActive] = useState();
   const address = useAddress();
   const networkId = useSelector(state => state.network.networkId);
-  console.log(networkId);
   const { bonds } = useBonds(networkId);
 
   const checkPage = useCallback((_, location, page) => {

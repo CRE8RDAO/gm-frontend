@@ -98,7 +98,7 @@ export const PoolDeposit = props => {
 
   useEffect(() => {
     props.setInfoTooltipMessage([
-      t`Deposit sOHM to win! Once deposited, you will receive a corresponding amount of 33T and be entered to win until your sOHM is withdrawn.`,
+      t`Deposit sBRICK to win! Once deposited, you will receive a corresponding amount of 33T and be entered to win until your sBRICK is withdrawn.`,
     ]);
   }, []);
 
@@ -161,7 +161,7 @@ export const PoolDeposit = props => {
                 fullWidth
                 style={{ margin: "5px" }}
               >
-                {txnButtonText(pendingTransactions, "pool_deposit", t`Deposit sOHM`)}
+                {txnButtonText(pendingTransactions, "pool_deposit", t`Deposit sBRICK`)}
               </Button>
             ) : (
               <Button
@@ -180,7 +180,7 @@ export const PoolDeposit = props => {
             <Box padding={1}>
               <Typography variant="body2" style={{ color: "#33BB33" }}>
                 <Trans>
-                  Depositing {quantity} sOHM will increase odds of winning to 1 in {newOdds}
+                  Depositing {quantity} sBRICK will increase odds of winning to 1 in {newOdds}
                 </Trans>
                 &nbsp;
               </Typography>
@@ -196,7 +196,7 @@ export const PoolDeposit = props => {
                 {isAppLoading ? (
                   <Skeleton width="80px" />
                 ) : (
-                  <>{new Intl.NumberFormat("en-US").format(sohmBalance)} sOHM</>
+                  <>{new Intl.NumberFormat("en-US").format(sohmBalance)} sBRICK</>
                 )}
               </Typography>
             </div>

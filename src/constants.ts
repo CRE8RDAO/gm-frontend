@@ -233,7 +233,7 @@ export const NETWORKS: { [key: number]: INetwork } = {
     imageAltText: "Ethereum Logo",
     uri: () => NodeHelper.getMainnetURI(1),
   },
-    1: {
+    4002: {
     chainName: "Fantom Testnet",
     chainId: 4002,
     nativeCurrency: {
@@ -339,6 +339,15 @@ export const VIEWS_FOR_NETWORK: { [key: number]: IViewsForNetwork } = {
     wrap: true,
     zap: true,
     threeTogether: true,
+    bonds: true,
+    network: true,
+  },
+  4002: {
+    dashboard: true,
+    stake: true,
+    wrap: true,
+    zap: false,
+    threeTogether: false,
     bonds: true,
     network: true,
   },

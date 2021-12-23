@@ -166,6 +166,27 @@ export const addresses: IAddresses = {
     GOHM_ADDRESS: "0x321e7092a180bb43555132ec53aaa65a5bf84251",
     MIGRATOR_ADDRESS: "0xB10209BFbb37d38EC1B5F0c964e489564e223ea7",
   }, // TODO: Avalanche Mainnet addresses
+    4002: {                     // this is our FTM testnet list
+    DAI_ADDRESS: "",
+    OHM_ADDRESS: "0x80FAcC2c14E6F1B31A952C43264b333C2788f30f", //this is BRICK soon will be fBRICK
+    // STAKING_ADDRESS: "0x6137c9684283D515DE179cb897a5d0345C61488F", // The new staking contract
+    STAKING_HELPER_ADDRESS: "0x2663a2E5f4DF96b79377DA6B15e448b012838Cb8", // Helper contract used for Staking only
+   
+    SOHM_ADDRESS: "0x9f6fBD3ac94BA9c823c43F2Ae0dcA80A4783e3b5", // sfBRICK
+   
+  
+    MIGRATE_ADDRESS: "",
+    DISTRIBUTOR_ADDRESS: "0xf0424efD7295e0b81f143cA23eFBA3b476ed9C1e",  // need to add the readme
+    FraxBondDepository: "0x38E4560A1DB2DAe89F78F98b308eE6F890b27712",   //added this -dunks
+    WftmBondDepository: "0x1e0AD0F8DDFF84FDc938373E9aa66b8d994ea066", 
+    BONDINGCALC_ADDRESS: "",
+    CIRCULATING_SUPPLY_ADDRESS: "",
+    TREASURY_ADDRESS: "0xe8e51612b1606c410E1240b80A5b3F2046ce7006",
+   
+    WSOHM_ADDRESS: "0x8cd309e14575203535ef120b5b0ab4dded0c2073",
+    GOHM_ADDRESS: "0x321e7092a180bb43555132ec53aaa65a5bf84251",
+    MIGRATOR_ADDRESS: "0xB10209BFbb37d38EC1B5F0c964e489564e223ea7",
+  }, // TODO: Avalanche Mainnet addresses
 };
 
 /**
@@ -210,6 +231,20 @@ export const NETWORKS: { [key: number]: INetwork } = {
     blockExplorerUrls: ["https://etherscan.io/#/"],
     image: ethereum,
     imageAltText: "Ethereum Logo",
+    uri: () => NodeHelper.getMainnetURI(1),
+  },
+    1: {
+    chainName: "Fantom Testnet",
+    chainId: 4002,
+    nativeCurrency: {
+      name: "FTM",
+      symbol: "FTM",
+      decimals: 18,
+    },
+    rpcUrls: [""],
+    blockExplorerUrls: ["https://testnet.ftmscan.com/#/"],
+    image: ethereum,
+    imageAltText: "Fantom Logo",
     uri: () => NodeHelper.getMainnetURI(1),
   },
   4: {

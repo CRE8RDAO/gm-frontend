@@ -8,21 +8,12 @@
   "apiVersion": "0.0.1",
   "manifestVersion": "1",
   "branch": "stable",
-  "categories": [
-    "defi",
-    "staking",
-    "bonds"
-  ],
-  "currencies": [
-    "ethereum"
-  ],
+  "categories": ["defi", "staking", "bonds"],
+  "currencies": ["ethereum"],
   "content": {
     "shortDescription": "The decentralized reserve infrastructure that's community-owned and liquidity protected.",
     "description": "Olympus is building a community-owned decentralized financial infrastructure to bring more stability and transparency for the world."
   },
   "permissions": [],
-  "domains": [
-    "https://*",
-    "http://*"
-  ]
+  "domains": ["https://*", "http://*"]
 }

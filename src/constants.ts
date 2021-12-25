@@ -217,11 +217,11 @@ interface INetwork {
 
 // These networks will be available for users to select. Other networks may be functional
 // (e.g. testnets, or mainnets being prepared for launch) but need to be selected directly via the wallet.
-export const USER_SELECTABLE_NETWORKS = [1, 42161, 43114];
+export const USER_SELECTABLE_NETWORKS = [1, 42161, 43114, 4002];
 
 // Set this to the chain number of the most recently added network in order to enable the 'Now supporting X network'
 // message in the UI. Set to -1 if we don't want to display the message at the current time.
-export const NEWEST_NETWORK_ID = 43114;
+export const NEWEST_NETWORK_ID = 4002;
 
 export const NETWORKS: { [key: number]: INetwork } = {
   4002: {
@@ -232,7 +232,7 @@ export const NETWORKS: { [key: number]: INetwork } = {
       symbol: "FTM",
       decimals: 18,
     },
-    rpcUrls: [""],
+    rpcUrls: ["https://rpc.testnet.fantom.network"],
     blockExplorerUrls: ["https://testnet.ftmscan.com/#/"],
     image: ethereum,
     imageAltText: "Fantom Logo",
@@ -321,19 +321,5 @@ export const NETWORKS: { [key: number]: INetwork } = {
     image: avalanche,
     imageAltText: "Avalanche Logo",
     uri: () => NodeHelper.getMainnetURI(43114),
-  },
-  4002: {
-    chainName: "Fantom Testnet",
-    chainId: 4002,
-    nativeCurrency: {
-      name: "FTM",
-      symbol: "FTM",
-      decimals: 18,
-    },
-    rpcUrls: [""],
-    blockExplorerUrls: ["https://testnet.ftmscan.com/#/"],
-    image: ethereum,
-    imageAltText: "Fantom Logo",
-    uri: () => NodeHelper.getMainnetURI(1),
   }
 };

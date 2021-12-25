@@ -63,7 +63,7 @@ function NavContent() {
                 color="primary"
                 component={OlympusIcon}
                 viewBox="0 0 151 100"
-                style={{ minWdth: "151px", maxWidth: "200px", minHeight: "98px", width: "151px" }}
+                style={{ minWidth: "151px", maxWidth: "200px", minHeight: "165px", width: "151px" }}
               />
             </Link>
 

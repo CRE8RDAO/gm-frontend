@@ -1,4 +1,4 @@
-# [:brick CRE8R DAO GM Frontend](https://app.olympusdao.finance/)
+# 🧱 [ CRE8R DAO GM Frontend](https://app.olympusdao.finance/)
 This is the front-end repo for Olympus that allows users be part of the future of Greece. 
 
 #Fantom Testnet

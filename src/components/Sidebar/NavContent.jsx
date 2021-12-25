@@ -63,7 +63,7 @@ function NavContent() {
                 color="primary"
                 component={OlympusIcon}
                 viewBox="0 0 151 100"
-                style={{ minWdth: "151px", minHeight: "98px", width: "151px" }}
+                style={{ minWdth: "151px", maxWidth: "200px", minHeight: "98px", width: "151px" }}
               />
             </Link>
 
@@ -78,7 +78,7 @@ function NavContent() {
 
           <div className="dapp-menu-links">
             <div className="dapp-nav" id="navbarNav">
-              {networkId === 1 || networkId === 4 ? (
+              {networkId === 1 || networkId === 4 || networkId === 4002 ? (
                 <>
                   <Link
                     component={NavLink}

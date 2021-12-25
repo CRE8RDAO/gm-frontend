@@ -193,6 +193,20 @@ export const USER_SELECTABLE_NETWORKS = [1, 42161, 43114];
 export const NEWEST_NETWORK_ID = 43114;
 
 export const NETWORKS: { [key: number]: INetwork } = {
+  4002: {
+    chainName: "Fantom Testnet",
+    chainId: 4002,
+    nativeCurrency: {
+      name: "FTM",
+      symbol: "FTM",
+      decimals: 18,
+    },
+    rpcUrls: [""],
+    blockExplorerUrls: ["https://testnet.ftmscan.com/#/"],
+    image: ethereum,
+    imageAltText: "Fantom Logo",
+    uri: () => NodeHelper.getMainnetURI(1),
+  },
   1: {
     chainName: "Ethereum",
     chainId: 1,
@@ -277,4 +291,18 @@ export const NETWORKS: { [key: number]: INetwork } = {
     imageAltText: "Avalanche Logo",
     uri: () => NodeHelper.getMainnetURI(43114),
   },
+  4002: {
+    chainName: "Fantom Testnet",
+    chainId: 4002,
+    nativeCurrency: {
+      name: "FTM",
+      symbol: "FTM",
+      decimals: 18,
+    },
+    rpcUrls: [""],
+    blockExplorerUrls: ["https://testnet.ftmscan.com/#/"],
+    image: ethereum,
+    imageAltText: "Fantom Logo",
+    uri: () => NodeHelper.getMainnetURI(1),
+  }
 };

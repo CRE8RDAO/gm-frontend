@@ -38,13 +38,12 @@ function NavContent() {
         <div className="dapp-menu-top">
           <Box className="branding-header">
             <Link href="https://cre8r.vip" target="_blank">
-              <SvgIcon
+             <SvgIcon
                 color="primary"
                 component={OlympusIcon}
 
                 viewBox="0 0 150 150"
                 style={{ width: 150, height: 150 }}
-
               />
             </Link>
 
@@ -59,7 +58,6 @@ function NavContent() {
 
           <div className="dapp-menu-links">
             <div className="dapp-nav" id="navbarNav">
-
               {(networkId === 250 || networkId === 4002) && (
 
                 <>

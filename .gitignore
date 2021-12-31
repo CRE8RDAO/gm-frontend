@@ -44,3 +44,4 @@ yarn-error.log*
 .vscode
 
 src/typechain
+package-lock.json

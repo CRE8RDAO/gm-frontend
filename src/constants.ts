@@ -161,8 +161,40 @@ export const addresses: IAddresses = {
     GOHM_ADDRESS: "0x321e7092a180bb43555132ec53aaa65a5bf84251",
     MIGRATOR_ADDRESS: "0xB10209BFbb37d38EC1B5F0c964e489564e223ea7",
   }, // TODO: Avalanche Mainnet addresses
+  4002: {
+    // FTM Testnet /  Fantom Testnet
+    OHM_ADDRESS: "0x80FAcC2c14E6F1B31A952C43264b333C2788f30f",
+    BRICK_ADDRESS: "0x80FAcC2c14E6F1B31A952C43264b333C2788f30f", // I think OHM has been renamed to BRICK ??
+    STAKING_ADDRESS: "0x6137c9684283D515DE179cb897a5d0345C61488F", // added by dunks
+    STAKING_HELPER_ADDRESS: "0x2663a2E5f4DF96b79377DA6B15e448b012838Cb8", // added by dunks
+    //  OLD_STAKING_ADDRESS: "0x0822F3C03dcc24d200AFF33493Dc08d0e1f274A2", // dont need
+    SOHM_ADDRESS: "0x9f6fBD3ac94BA9c823c43F2Ae0dcA80A4783e3b5", // added by dunks
+    SBRICK_ADDRESS: "0x9f6fBD3ac94BA9c823c43F2Ae0dcA80A4783e3b5", // added by dunks
+    //  WSOHM_ADDRESS: "0xca76543cf381ebbb277be79574059e32108e3e65",    // dont need
+    //  OLD_SOHM_ADDRESS: "0x31932E6e45012476ba3A3A4953cbA62AeE77Fbbe",  // dont need
+    // PRESALE_ADDRESS: "0xcBb60264fe0AC96B0EFa0145A9709A825afa17D8",   // dont need
+    //  AOHM_ADDRESS: "0x24ecfd535675f36ba1ab9c5d39b50dc097b0792e",  // dont need
+    MIGRATE_ADDRESS: "0xC7f56EC779cB9e60afA116d73F3708761197dB3d",
+    DISTRIBUTOR_ADDRESS: "0xf0424efD7295e0b81f143cA23eFBA3b476ed9C1e", // added
+    BONDINGCALC_ADDRESS: "0x17FC72CA16208b085613B0CA120914c8D546A764", // added by dunks
+    CIRCULATING_SUPPLY_ADDRESS: "0x0efff9199aa1ac3c3e34e957567c1be8bf295034", // do we have this?
+    TREASURY_ADDRESS: "0x31f8cc382c9898b273eff4e0b7626a6987c846e8", // need to add kowloons address here for now
+    REDEEM_HELPER_ADDRESS: "0xE1e83825613DE12E8F0502Da939523558f0B819E",
+    //   MIGRATOR_ADDRESS: "0x184f3FAd8618a6F458C16bae63F70C426fE784B3",
+  },
 };
-
+// BRICK 0x80FAcC2c14E6F1B31A952C43264b333C2788f30f
+// Mock FRAX 0x9e008Cc93b4D2179dB48Fe5A0fed6B484aFf1739 //Not adding this yet.... need abi
+// Mock WFTM 0x0Ae825CD631d5b59D56ACc635f1599ebb3390A6d   // need abi
+// BondingCalculator 0x17FC72CA16208b085613B0CA120914c8D546A764
+// Treasury 0xe8e51612b1606c410E1240b80A5b3F2046ce7006
+// Distributor 0xf0424efD7295e0b81f143cA23eFBA3b476ed9C1e
+// sBRICK 0x9f6fBD3ac94BA9c823c43F2Ae0dcA80A4783e3b5
+// Staking 0x6137c9684283D515DE179cb897a5d0345C61488F
+// StakingWarmup 0xB8408Fc5f5aE1980a6af4CaA6118E98F7c328A5d   // not sure why these are not here??? @0xkowloon
+// StakingHelper 0x2663a2E5f4DF96b79377DA6B15e448b012838Cb8
+// FraxBondDepository 0x38E4560A1DB2DAe89F78F98b308eE6F890b27712  // not added need to figure out how to add bonds
+// WftmBondDepository 0x1e0AD0F8DDFF84FDc938373E9aa66b8d994ea066  // need to figure out how to add bonds
 /**
  * Network details required to add a network to a user's wallet, as defined in EIP-3085 (https://eips.ethereum.org/EIPS/eip-3085)
  */
@@ -186,13 +218,27 @@ interface INetwork {
 
 // These networks will be available for users to select. Other networks may be functional
 // (e.g. testnets, or mainnets being prepared for launch) but need to be selected directly via the wallet.
-export const USER_SELECTABLE_NETWORKS = [1, 42161, 43114];
+export const USER_SELECTABLE_NETWORKS = [1, 42161, 43114, 4002];
 
 // Set this to the chain number of the most recently added network in order to enable the 'Now supporting X network'
 // message in the UI. Set to -1 if we don't want to display the message at the current time.
-export const NEWEST_NETWORK_ID = 43114;
+export const NEWEST_NETWORK_ID = 4002;
 
 export const NETWORKS: { [key: number]: INetwork } = {
+  4002: {
+    chainName: "Fantom Testnet",
+    chainId: 4002,
+    nativeCurrency: {
+      name: "FTM",
+      symbol: "FTM",
+      decimals: 18,
+    },
+    rpcUrls: ["https://rpc.testnet.fantom.network"],
+    blockExplorerUrls: ["https://testnet.ftmscan.com/#/"],
+    image: ethereum,
+    imageAltText: "Fantom Logo",
+    uri: () => NodeHelper.getMainnetURI(1),
+  },
   1: {
     chainName: "Ethereum",
     chainId: 1,

@@ -5,7 +5,7 @@ import externalUrls from "./externalUrls";
 import { ReactComponent as StakeIcon } from "../../assets/icons/stake.svg";
 import { ReactComponent as BondIcon } from "../../assets/icons/bond.svg";
 import { ReactComponent as DashboardIcon } from "../../assets/icons/dashboard.svg";
-import { ReactComponent as OlympusIcon } from "../../assets/icons/olympus-nav-header.svg";
+import { ReactComponent as OlympusIcon } from "../../assets/icons/basicLogo.svg";
 import { ReactComponent as PoolTogetherIcon } from "../../assets/icons/33-together.svg";
 import { ReactComponent as ZapIcon } from "../../assets/icons/zap.svg";
 import { ReactComponent as NewIcon } from "../../assets/icons/new-icon.svg";
@@ -41,8 +41,10 @@ function NavContent() {
               <SvgIcon
                 color="primary"
                 component={OlympusIcon}
+
                 viewBox="0 0 150 150"
                 style={{ width: 150, height: 150 }}
+
               />
             </Link>
 
@@ -57,7 +59,9 @@ function NavContent() {
 
           <div className="dapp-menu-links">
             <div className="dapp-nav" id="navbarNav">
+
               {(networkId === 250 || networkId === 4002) && (
+
                 <>
                   <Link
                     component={NavLink}

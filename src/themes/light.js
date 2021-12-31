@@ -3,7 +3,7 @@ import fonts from "./fonts";
 import commonSettings, { handleBackdropFilter } from "./global.js";
 
 const lightTheme = {
-  color: "#253449",
+  color: "#ffffff",
   gold: "#F8CC82",
   gray: "#A3A3A3",
   blueish_gray: "#768299",

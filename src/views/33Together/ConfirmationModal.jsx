@@ -35,7 +35,7 @@ export const ConfirmationModal = props => {
               <Typography variant="body2" className="info-text">
                 <em>
                   By entering the 3,3 Together Pool, you understand that you will <strong>not</strong> receive your
-                  normal sOHM rebase reward and that it will instead go directly into funding the prize pool.
+                  normal sBRICK rebase reward and that it will instead go directly into funding the prize pool.
                 </em>
               </Typography>
               <Typography variant="body2" className="info-text">

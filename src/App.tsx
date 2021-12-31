@@ -250,21 +250,11 @@ function App() {
               <Stake />
             </Route>
 
-            <Route path="/wrap">
+            {/* <Route path="/wrap">
               <Route exact path={`/wrap`}>
                 <Wrap />
               </Route>
-            </Route>
-
-            <Route path="/zap">
-              <Route exact path={`/zap`}>
-                <Zap />
-              </Route>
-            </Route>
-
-            <Route path="/33-together">
-              <PoolTogether />
-            </Route>
+            </Route> */}
 
             <Route path="/bonds">
               {(bonds as IAllBondData[]).map(bond => {

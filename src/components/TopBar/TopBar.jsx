@@ -50,7 +50,7 @@ function TopBar({ theme, toggleTheme, handleDrawerToggle }) {
         </Button>
 
         <Box display="flex">
-          {!isVerySmallScreen && <OhmMenu />}
+          {/* {!isVerySmallScreen && <OhmMenu />} */}
 
           {/* <NetworkMenu /> */}
 

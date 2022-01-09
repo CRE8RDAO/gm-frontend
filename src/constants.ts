@@ -26,6 +26,31 @@ interface IAddresses {
 }
 
 export const addresses: IAddresses = {
+  4002: {
+    DAI_ADDRESS: "", // duplicate
+    OHM_ADDRESS: "0x80FAcC2c14E6F1B31A952C43264b333C2788f30f",
+    STAKING_ADDRESS: "0x6137c9684283D515DE179cb897a5d0345C61488F",
+    STAKING_HELPER_ADDRESS: "0x2663a2E5f4DF96b79377DA6B15e448b012838Cb8",
+    OLD_STAKING_ADDRESS: "",
+    SOHM_ADDRESS: "0x9f6fBD3ac94BA9c823c43F2Ae0dcA80A4783e3b5",
+    WSOHM_ADDRESS: "0xE713F39411138B19F4525269F5ea8006595C58F0",
+    OLD_SOHM_ADDRESS: "",
+    MIGRATE_ADDRESS: "", // PUF17640: should be of type aOHMMigration
+    DISTRIBUTOR_ADDRESS: "0xf0424efD7295e0b81f143cA23eFBA3b476ed9C1e",
+    BONDINGCALC_ADDRESS: "0x17FC72CA16208b085613B0CA120914c8D546A764",
+    CIRCULATING_SUPPLY_ADDRESS: "", // PUF17640: should be of type OHMCirculatingSupplyConrtact
+    TREASURY_ADDRESS: "0xe8e51612b1606c410E1240b80A5b3F2046ce7006",
+    REDEEM_HELPER_ADDRESS: "", // PUF17640: should be of type RedeemHelper
+    PT_TOKEN_ADDRESS: "", // 33T token address, taken from `ticket` function on PRIZE_STRATEGY_ADDRESS
+    PT_PRIZE_POOL_ADDRESS: "", // NEW
+    PT_PRIZE_STRATEGY_ADDRESS: "", // NEW
+    MIGRATOR_ADDRESS: "", // PUF17640: should be of type OlympusTokenMigrator
+    // GOHM_ADDRESS: "",
+    // OHM_V2: "",
+    // TREASURY_V2: "",
+    // SOHM_V2: "",
+    // STAKING_V2: "",
+  },
   4: {
     DAI_ADDRESS: "0xB2180448f8945C8Cc8AE9809E67D6bd27d8B2f2C", // duplicate
     OHM_ADDRESS: "0xC0b491daBf3709Ee5Eb79E603D73289Ca6060932",
@@ -198,6 +223,20 @@ export const USER_SELECTABLE_NETWORKS = [1, 42161, 43114];
 export const NEWEST_NETWORK_ID = 43114;
 
 export const NETWORKS: { [key: number]: INetwork } = {
+  4002: {
+    chainName: "Fantom Testnet",
+    chainId: 4002,
+    nativeCurrency: {
+      name: "Fantom",
+      symbol: "FTM",
+      decimals: 18,
+    },
+    rpcUrls: [""],
+    blockExplorerUrls: ["https://ftmscan.com/#/"],
+    image: ethereum,
+    imageAltText: "Ethereum Logo",
+    uri: () => EnvHelper.fantomTestnetURI,
+  },
   1: {
     chainName: "Ethereum",
     chainId: 1,
@@ -298,6 +337,24 @@ interface IViewsForNetwork {
 }
 
 export const VIEWS_FOR_NETWORK: { [key: number]: IViewsForNetwork } = {
+  250: {
+    dashboard: true,
+    stake: true,
+    wrap: true,
+    zap: false,
+    threeTogether: true,
+    bonds: true,
+    network: true,
+  },
+  4002: {
+    dashboard: true,
+    stake: true,
+    wrap: true,
+    zap: false,
+    threeTogether: true,
+    bonds: true,
+    network: true,
+  },
   1: {
     dashboard: true,
     stake: true,

@@ -15,6 +15,9 @@ export class EnvHelper {
   static alchemyArbitrumTestnetURI = `https://arb-rinkeby.g.alchemy.com/v2/${EnvHelper.env.REACT_APP_ARBITRUM_TESTNET_ALCHEMY}`;
   static alchemyAvalancheTestnetURI = ``;
 
+  static fantomTestnetURI = "https://rpc.testnet.fantom.network/";
+  static fantomURI = "";
+
   static whitespaceRegex = /\s+/;
 
   /**

@@ -1,5 +1,5 @@
 import { ChangeEvent, Fragment, ReactNode, ReactElement, useEffect, useState } from "react";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 import { usePathForNetwork } from "src/hooks/usePathForNetwork";
 import { t, Trans } from "@lingui/macro";
 import { formatCurrency, trim } from "../../helpers";

@@ -19,8 +19,15 @@ export const initializeNetwork = createAsyncThunk(
       let uri: string;
       let supported: boolean = true;
       const id: number = await provider.getNetwork().then(network => network.chainId);
-
       switch (id) {
+        case 250:
+          networkName = "Fantom";
+          uri = EnvHelper.fantomURI;
+          break;
+        case 4002:
+          networkName = "Fantom Testnet";
+          uri = EnvHelper.fantomTestnetURI;
+          break;
         case 1:
           networkName = "Ethereum";
           uri = NodeHelper.getMainnetURI(id);

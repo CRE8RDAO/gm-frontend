@@ -8,7 +8,7 @@ import ZapInfo from "./ZapInfo";
 import { useAppSelector } from "src/hooks";
 import { Trans } from "@lingui/macro";
 import { usePathForNetwork } from "src/hooks/usePathForNetwork";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 
 function Zap() {
   const { address, connect } = useWeb3Context();

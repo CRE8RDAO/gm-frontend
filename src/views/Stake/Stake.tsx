@@ -1,7 +1,7 @@
 import { useCallback, useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { usePathForNetwork } from "src/hooks/usePathForNetwork";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 import {
   Box,
   Button,

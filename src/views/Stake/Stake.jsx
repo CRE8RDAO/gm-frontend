@@ -29,7 +29,7 @@ import { getOhmTokenImage, getTokenImage, trim } from "../../helpers";
 import { changeApproval, changeStake } from "../../slices/StakeThunk";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import "../Stake/stake.scss";
-import "./v1stake.scss";
+import "./stake.scss";
 import StakeRow from "../Stake/StakeRow";
 import { useWeb3Context } from "src/hooks/web3Context";
 import { isPendingTxn, txnButtonText } from "src/slices/PendingTxnsSlice";

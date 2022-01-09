@@ -212,11 +212,11 @@ interface INetwork {
 
 // These networks will be available for users to select. Other networks may be functional
 // (e.g. testnets, or mainnets being prepared for launch) but need to be selected directly via the wallet.
-export const USER_SELECTABLE_NETWORKS = [1, 42161, 43114];
+export const USER_SELECTABLE_NETWORKS = [1, 42161, 43114, 4];
 
 // Set this to the chain number of the most recently added network in order to enable the 'Now supporting X network'
 // message in the UI. Set to -1 if we don't want to display the message at the current time.
-export const NEWEST_NETWORK_ID = 43114;
+export const NEWEST_NETWORK_ID = 4;
 
 export const NETWORKS: { [key: number]: INetwork } = {
   1: {
@@ -251,7 +251,7 @@ export const NETWORKS: { [key: number]: INetwork } = {
     chainName: "Rinkeby Testnet",
     chainId: 4,
     nativeCurrency: {
-      name: "Ethereum",
+      name: "Rinkeby",
       symbol: "ETH",
       decimals: 18,
     },
@@ -354,9 +354,9 @@ export const VIEWS_FOR_NETWORK: { [key: number]: IViewsForNetwork } = {
   4: {
     dashboard: true,
     stake: true,
-    wrap: true,
-    zap: true,
-    threeTogether: true,
+    wrap: false,
+    zap: false,
+    threeTogether: false,
     bonds: true,
     network: true,
   },

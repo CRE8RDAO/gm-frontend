@@ -51,30 +51,30 @@ export const addresses: IAddresses = {
     // SOHM_V2: "",
     // STAKING_V2: "",
   },
-  4: {
+  4: {  //rinkeby
     DAI_ADDRESS: "0xB2180448f8945C8Cc8AE9809E67D6bd27d8B2f2C", // duplicate
-    OHM_ADDRESS: "0xC0b491daBf3709Ee5Eb79E603D73289Ca6060932",
-    STAKING_ADDRESS: "0xC5d3318C0d74a72cD7C55bdf844e24516796BaB2",
-    STAKING_HELPER_ADDRESS: "0xf73f23Bb0edCf4719b12ccEa8638355BF33604A1",
-    OLD_STAKING_ADDRESS: "0xb640AA9082ad720c60102489b806E665d67DCE32",
-    SOHM_ADDRESS: "0x1Fecda1dE7b6951B248C0B62CaeBD5BAbedc2084",
-    WSOHM_ADDRESS: "0xe73384f11Bb748Aa0Bc20f7b02958DF573e6E2ad",
-    OLD_SOHM_ADDRESS: "0x8Fc4167B0bdA22cb9890af2dB6cB1B818D6068AE",
-    MIGRATE_ADDRESS: "0x3BA7C6346b93DA485e97ba55aec28E8eDd3e33E2",
-    DISTRIBUTOR_ADDRESS: "0x0626D5aD2a230E05Fb94DF035Abbd97F2f839C3a",
-    BONDINGCALC_ADDRESS: "0xaDBE4FA3c2fcf36412D618AfCfC519C869400CEB",
-    CIRCULATING_SUPPLY_ADDRESS: "0x5b0AA7903FD2EaA16F1462879B71c3cE2cFfE868",
-    TREASURY_ADDRESS: "0x0d722D813601E48b7DAcb2DF9bae282cFd98c6E7",
+    OHM_ADDRESS: "0x8fa13d80D98A11F094843AaDab8129b42C49E186", //updated -dunks
+    STAKING_ADDRESS: "0xbB8b39A92D916D4c1c46c67CA22920A366127A4B", // updated -dunks
+    STAKING_HELPER_ADDRESS: "0x179C45D4c6F8370c68A53aF068b5Fa20e3fE2Af4", // updated -dunks
+    OLD_STAKING_ADDRESS: "0xb640AA9082ad720c60102489b806E665d67DCE32",  // remove
+    SOHM_ADDRESS: "0x230a8dC3c34336372b75549915DeBAEAACCF129D", // updated not sure if correct tho -dunks
+    WSOHM_ADDRESS: "0xDd1875ddC7c832FA1CB82DfB8B34d3abD1F67a87",  // updated using address from wrappedToken.json -dunks
+    OLD_SOHM_ADDRESS: "0x8Fc4167B0bdA22cb9890af2dB6cB1B818D6068AE",  // remove
+    MIGRATE_ADDRESS: "0x3BA7C6346b93DA485e97ba55aec28E8eDd3e33E2", 
+    DISTRIBUTOR_ADDRESS: "0xAECEc67825F49AAD1962F0557266A6Ba501Ddcea",   //updated -dunks
+    BONDINGCALC_ADDRESS: "0x03E82c27761DaaA69852cF5238Bc2597a14592cd",  // updated -dunks
+    CIRCULATING_SUPPLY_ADDRESS: "0x5b0AA7903FD2EaA16F1462879B71c3cE2cFfE868",   // I dont see this in our list -dunks
+    TREASURY_ADDRESS: "0x0d722D813601E48b7DAcb2DF9bae282cFd98c6E7",  // lets try test multisig soon!
     REDEEM_HELPER_ADDRESS: "0xBd35d8b2FDc2b720842DB372f5E419d39B24781f",
-    PT_TOKEN_ADDRESS: "0x0a2d026bacc573a8b5a2b049f956bdf8e5256cfd", // 33T token address, taken from `ticket` function on PRIZE_STRATEGY_ADDRESS
-    PT_PRIZE_POOL_ADDRESS: "0xf9081132864ed5e4980CFae83bDB122d86619281", // NEW
-    PT_PRIZE_STRATEGY_ADDRESS: "0x2Df17EA8D6B68Ec444c9a698315AfB36425dac8b", // NEW
+    PT_TOKEN_ADDRESS: "0x0a2d026bacc573a8b5a2b049f956bdf8e5256cfd", // remove
+    PT_PRIZE_POOL_ADDRESS: "0xf9081132864ed5e4980CFae83bDB122d86619281", // remove
+    PT_PRIZE_STRATEGY_ADDRESS: "0x2Df17EA8D6B68Ec444c9a698315AfB36425dac8b", // remove
     MIGRATOR_ADDRESS: "0x568c257BF4714864382b643fC8e6Ce5fbBcC6d3C",
-    GOHM_ADDRESS: "0xcF2D6893A1CB459fD6B48dC9C41c6110B968611E",
-    OHM_V2: "0xd7B98050962ec7cC8D11a83446B3217257C754B7",
-    TREASURY_V2: "0x8dd0d811CEFb5CF41528C495E76638B2Ea39d2e6",
-    SOHM_V2: "0xebED323CEbe4FfF65F7D7612Ea04313F718E5A75",
-    STAKING_V2: "0x06984c3A9EB8e3A8df02A4C09770D5886185792D",
+    GOHM_ADDRESS: "0xcF2D6893A1CB459fD6B48dC9C41c6110B968611E",  // remove?
+    OHM_V2: "0xd7B98050962ec7cC8D11a83446B3217257C754B7",  // remove ?
+    TREASURY_V2: "0x8dd0d811CEFb5CF41528C495E76638B2Ea39d2e6", // remove ?
+    SOHM_V2: "0xebED323CEbe4FfF65F7D7612Ea04313F718E5A75",  // remove ?
+    STAKING_V2: "0x06984c3A9EB8e3A8df02A4C09770D5886185792D", // remove ?
   },
   1: {
     DAI_ADDRESS: "0x6b175474e89094c44da98b954eedeac495271d0f", // duplicate
@@ -191,6 +191,27 @@ export const addresses: IAddresses = {
     GOHM_ADDRESS: "0x321e7092a180bb43555132ec53aaa65a5bf84251",
     MIGRATOR_ADDRESS: "0xB10209BFbb37d38EC1B5F0c964e489564e223ea7",
   }, // TODO: Avalanche Mainnet addresses
+    4002: {                     // this is our FTM testnet list
+    DAI_ADDRESS: "",
+    OHM_ADDRESS: "0x80FAcC2c14E6F1B31A952C43264b333C2788f30f", //this is BRICK soon will be fBRICK
+    // STAKING_ADDRESS: "0x6137c9684283D515DE179cb897a5d0345C61488F", // The new staking contract
+    STAKING_HELPER_ADDRESS: "0x2663a2E5f4DF96b79377DA6B15e448b012838Cb8", // Helper contract used for Staking only
+   
+    SOHM_ADDRESS: "0x9f6fBD3ac94BA9c823c43F2Ae0dcA80A4783e3b5", // sfBRICK
+   
+  
+    MIGRATE_ADDRESS: "",
+    DISTRIBUTOR_ADDRESS: "0xf0424efD7295e0b81f143cA23eFBA3b476ed9C1e",  // need to add the readme
+    FraxBondDepository: "0x38E4560A1DB2DAe89F78F98b308eE6F890b27712",   //added this -dunks
+    WftmBondDepository: "0x1e0AD0F8DDFF84FDc938373E9aa66b8d994ea066", 
+    BONDINGCALC_ADDRESS: "",
+    CIRCULATING_SUPPLY_ADDRESS: "",
+    TREASURY_ADDRESS: "0xe8e51612b1606c410E1240b80A5b3F2046ce7006",
+   
+    WSOHM_ADDRESS: "0x8cd309e14575203535ef120b5b0ab4dded0c2073",
+    GOHM_ADDRESS: "0x321e7092a180bb43555132ec53aaa65a5bf84251",
+    MIGRATOR_ADDRESS: "0xB10209BFbb37d38EC1B5F0c964e489564e223ea7",
+  }, // TODO: Avalanche Mainnet addresses
 };
 
 /**
@@ -249,6 +270,20 @@ export const NETWORKS: { [key: number]: INetwork } = {
     blockExplorerUrls: ["https://etherscan.io/#/"],
     image: ethereum,
     imageAltText: "Ethereum Logo",
+    uri: () => NodeHelper.getMainnetURI(1),
+  },
+    4002: {
+    chainName: "Fantom Testnet",
+    chainId: 4002,
+    nativeCurrency: {
+      name: "FTM",
+      symbol: "FTM",
+      decimals: 18,
+    },
+    rpcUrls: [""],
+    blockExplorerUrls: ["https://testnet.ftmscan.com/#/"],
+    image: ethereum,
+    imageAltText: "Fantom Logo",
     uri: () => NodeHelper.getMainnetURI(1),
   },
   4: {
@@ -361,6 +396,15 @@ export const VIEWS_FOR_NETWORK: { [key: number]: IViewsForNetwork } = {
     wrap: true,
     zap: true,
     threeTogether: true,
+    bonds: true,
+    network: true,
+  },
+  4002: {
+    dashboard: true,
+    stake: true,
+    wrap: true,
+    zap: false,
+    threeTogether: false,
     bonds: true,
     network: true,
   },

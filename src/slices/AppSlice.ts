@@ -2,7 +2,7 @@ import { ethers } from "ethers";
 import { addresses } from "../constants";
 import { abi as OlympusStakingv2ABI } from "../abi/OlympusStakingv2.json";
 import { abi as sOHMv2 } from "../abi/sOhmv2.json";
-import { setAll, getTokenPrice, getMarketPrice } from "../helpers";
+import { setAll, getTokenPrice } from "../helpers";
 import { NodeHelper } from "src/helpers/NodeHelper";
 import apollo from "../lib/apolloClient";
 import { createSlice, createSelector, createAsyncThunk } from "@reduxjs/toolkit";
@@ -48,9 +48,9 @@ export const loadAppDetails = createAsyncThunk(
       }
     `;
 
-    if (networkID !== 1) {
+    if (networkID !== 4002) {
       provider = NodeHelper.getMainnetStaticProvider();
-      networkID = 1;
+      networkID = 4002;
     }
     const graphData = await apollo<{ protocolMetrics: IProtocolMetrics[] }>(protocolMetricsQuery);
 
@@ -100,7 +100,7 @@ export const loadAppDetails = createAsyncThunk(
     ) as OlympusStakingv2;
 
     const sohmMainContract = new ethers.Contract(
-      addresses[networkID].SOHM_ADDRESS as string,
+      addresses[networkID].SBRICK_ADDRESS as string,
       sOHMv2,
       provider,
     ) as SOhmv2;
@@ -177,14 +177,16 @@ export const findOrLoadMarketPrice = createAsyncThunk(
  */
 const loadMarketPrice = createAsyncThunk("app/loadMarketPrice", async ({ networkID, provider }: IBaseAsyncThunk) => {
   let marketPrice: number;
-  try {
-    // only get marketPrice from eth mainnet
-    marketPrice = await getMarketPrice({ networkID, provider });
-    // let mainnetProvider = (marketPrice = await getMarketPrice({ 1: NetworkID, provider }));
-    marketPrice = marketPrice / Math.pow(10, 9);
-  } catch (e) {
-    marketPrice = await getTokenPrice("olympus");
-  }
+  marketPrice = await getTokenPrice("olympus");
+
+  // try {
+  //   // only get marketPrice from eth mainnet
+  //   marketPrice = await getMarketPrice({ networkID, provider });
+  //   // let mainnetProvider = (marketPrice = await getMarketPrice({ 1: NetworkID, provider }));
+  //   marketPrice = marketPrice / Math.pow(10, 9);
+  // } catch (e) {
+  //   marketPrice = await getTokenPrice("olympus");
+  // }
   return { marketPrice };
 });
 

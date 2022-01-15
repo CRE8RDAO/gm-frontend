@@ -47,6 +47,18 @@ export class EnvHelper {
 
     // If in production, split the provided API keys on whitespace. Otherwise use default.
     switch (networkId) {
+      case 4002:
+        if (
+          EnvHelper.env.NODE_ENV !== "development" &&
+          EnvHelper.env.REACT_APP_FANTOM_ALCHEMY_IDS &&
+          EnvHelper.isNotEmpty(EnvHelper.env.REACT_APP_FANTOM_ALCHEMY_IDS)
+        ) {
+          ALCHEMY_ID_LIST = EnvHelper.env.REACT_APP_FANTOM_ALCHEMY_IDS.split(EnvHelper.whitespaceRegex);
+        } else {
+          ALCHEMY_ID_LIST = [];
+        }
+        uriPath = "https://rpc.testnet.fantom.network/";
+        break;
       case 1:
         if (
           EnvHelper.env.NODE_ENV !== "development" &&

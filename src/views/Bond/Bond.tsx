@@ -34,6 +34,7 @@ const Bond = ({ bond }: { bond: IAllBondData }) => {
   const [quantity, setQuantity] = useState<number | undefined>();
 
   const isBondLoading = useAppSelector<boolean>(state => state.bonding.loading ?? true);
+  // console.log("isBondLoading", isBondLoading);
 
   const onRecipientAddressChange = (e: InputEvent): void => {
     return setRecipientAddress(e.target.value);
@@ -50,6 +51,8 @@ const Bond = ({ bond }: { bond: IAllBondData }) => {
   const changeView = (event: ChangeEvent<{}>, value: string | number): void => {
     setView(Number(value));
   };
+
+  // console.log("bond", bond);
 
   return (
     <Fade in={true} mountOnEnter unmountOnExit>

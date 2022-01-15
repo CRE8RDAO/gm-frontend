@@ -19,7 +19,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import avaxImage from "src/assets/tokens/avax.png";
 import gOhmImage from "src/assets/tokens/gohm.png";
 import { ReactComponent as ArrowUp } from "../../assets/icons/arrow-up.svg";
-import { getLusdData } from "../../slices/LusdSlice";
+// import { getLusdData } from "../../slices/LusdSlice";
 import { useWeb3Context } from "src/hooks/web3Context";
 import MultiLogo from "src/components/MultiLogo";
 import { useAppSelector } from "../../hooks";
@@ -46,13 +46,13 @@ export default function ExternalStakePool() {
     }
   }, []);
 
-  // this useEffect fires on state change from above. It will ALWAYS fire AFTER
-  useEffect(() => {
-    // don't load ANY details until wallet is Checked
-    if (walletChecked && networkId !== -1) {
-      dispatch(getLusdData({ address, provider, networkID: networkId }));
-    }
-  }, [walletChecked, networkId, address, provider]);
+  // // this useEffect fires on state change from above. It will ALWAYS fire AFTER
+  // useEffect(() => {
+  //   // don't load ANY details until wallet is Checked
+  //   if (walletChecked && networkId !== -1) {
+  //     dispatch(getLusdData({ address, provider, networkID: networkId }));
+  //   }
+  // }, [walletChecked, networkId, address, provider]);
 
   return (
     <Zoom in={true}>

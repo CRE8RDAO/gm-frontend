@@ -1,26 +1,26 @@
 import { EPOCH_INTERVAL, BLOCK_RATE_SECONDS, addresses } from "../constants";
 import { BigNumber, ethers } from "ethers";
 import axios from "axios";
-import { abi as PairContractABI } from "../abi/PairContract.json";
+// import { abi as PairContractABI } from "../abi/PairContract.json";
 import { abi as RedeemHelperABI } from "../abi/RedeemHelper.json";
 
 import { SvgIcon } from "@material-ui/core";
 import { ReactComponent as OhmImg } from "../assets/tokens/token_OHM.svg";
 import { ReactComponent as SOhmImg } from "../assets/tokens/token_sOHM.svg";
 
-import { ohm_dai } from "./AllBonds";
+// import { ohm_dai } from "./AllBonds";
 import { JsonRpcSigner, StaticJsonRpcProvider } from "@ethersproject/providers";
-import { IBaseAsyncThunk } from "src/slices/interfaces";
+// import { IBaseAsyncThunk } from "src/slices/interfaces";
 import { PairContract, RedeemHelper } from "../typechain";
 
-export async function getMarketPrice({ networkID, provider }: IBaseAsyncThunk) {
-  const ohm_dai_address = ohm_dai.getAddressForReserve(networkID);
-  const pairContract = new ethers.Contract(ohm_dai_address || "", PairContractABI, provider) as PairContract;
-  const reserves = await pairContract.getReserves();
-  const marketPrice = Number(reserves[1].toString()) / Number(reserves[0].toString());
+// export async function getMarketPrice({ networkID, provider }: IBaseAsyncThunk) {
+//   const ohm_dai_address = ohm_dai.getAddressForReserve(networkID);
+//   const pairContract = new ethers.Contract(ohm_dai_address || "", PairContractABI, provider) as PairContract;
+//   const reserves = await pairContract.getReserves();
+//   const marketPrice = Number(reserves[1].toString()) / Number(reserves[0].toString());
 
-  return marketPrice;
-}
+//   return marketPrice;
+// }
 
 /**
  * gets price of token from coingecko
@@ -122,8 +122,8 @@ export function getOhmTokenImage(w?: number, h?: number) {
 }
 
 export function getTokenImage(name: string) {
-  if (name === "ohm") return getOhmTokenImage();
-  if (name === "sohm") return getSohmTokenImage();
+  if (name === "brick") return getOhmTokenImage();
+  if (name === "sbrick") return getSohmTokenImage();
 }
 
 // TS-REFACTOR-NOTE - Used for:

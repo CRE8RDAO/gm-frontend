@@ -113,7 +113,7 @@ export const PoolInfo = props => {
               <Trans>Pool owner</Trans>
             </Typography>
             <Box display="flex" alignItems="center">
-              <Typography>OlympusDAO</Typography>
+              <Typography>Cre8rDAO</Typography>
             </Box>
           </div>
           <Divider color="secondary" />

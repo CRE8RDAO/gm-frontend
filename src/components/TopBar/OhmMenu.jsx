@@ -9,7 +9,7 @@ import { ReactComponent as wsOhmTokenImg } from "../../assets/tokens/token_wsOHM
 import { ReactComponent as ohmTokenImg } from "../../assets/tokens/token_OHM.svg";
 import { ReactComponent as t33TokenImg } from "../../assets/tokens/token_33T.svg";
 import "./ohmmenu.scss";
-import { dai, frax } from "src/helpers/AllBonds";
+import { ftm, frax } from "src/helpers/AllBonds";
 import { Trans } from "@lingui/macro";
 import Grid from "@material-ui/core/Grid";
 import OhmImg from "src/assets/tokens/token_OHM.svg";
@@ -72,10 +72,10 @@ function OhmMenu() {
   const { address } = useWeb3Context();
   const networkId = useSelector(state => state.network.networkId);
 
-  const SOHM_ADDRESS = addresses[networkId] && addresses[networkId].SOHM_ADDRESS;
-  const OHM_ADDRESS = addresses[networkId] && addresses[networkId].OHM_ADDRESS;
-  const PT_TOKEN_ADDRESS = addresses[networkId] && addresses[networkId].PT_TOKEN_ADDRESS;
-  const GOHM_ADDRESS = addresses[networkId] && addresses[networkId].GOHM_ADDRESS;
+  const SBRICK_ADDRESS = addresses[networkId] && addresses[networkId].SBRICK_ADDRESS;
+  const BRICK_ADDRESS = addresses[networkId] && addresses[networkId].BRICK_ADDRESS;
+  // const PT_TOKEN_ADDRESS = addresses[networkId] && addresses[networkId].PT_TOKEN_ADDRESS;
+  // const GBRICK_ADDRESS = addresses[networkId] && addresses[networkId].GBRICK_ADDRESS;
 
   const handleClick = event => {
     setAnchorEl(anchorEl ? null : event.currentTarget);
@@ -83,7 +83,7 @@ function OhmMenu() {
 
   const open = Boolean(anchorEl);
   const id = "ohm-popper";
-  const daiAddress = dai.getAddressForReserve(networkId);
+  // const daiAddress = dai.getAddressForReserve(networkId);
   const fraxAddress = frax.getAddressForReserve(networkId);
   return (
     <Grid
@@ -112,7 +112,7 @@ function OhmMenu() {
               <Paper className="ohm-menu" elevation={1}>
                 <Box component="div" className="buy-tokens">
                   <Link
-                    href={`https://app.sushi.com/swap?inputCurrency=${daiAddress}&outputCurrency=${OHM_ADDRESS}`}
+                    href={`https://app.sushi.com/swap?inputCurrency=${daiAddress}&outputCurrency=${BRICK_ADDRESS}`}
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -125,7 +125,7 @@ function OhmMenu() {
                   </Link>
 
                   <Link
-                    href={`https://app.uniswap.org/#/swap?inputCurrency=${fraxAddress}&outputCurrency=${OHM_ADDRESS}`}
+                    href={`https://app.uniswap.org/#/swap?inputCurrency=${fraxAddress}&outputCurrency=${BRICK_ADDRESS}`}
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -162,11 +162,11 @@ function OhmMenu() {
                       <Trans>ADD TOKEN TO WALLET</Trans>
                     </p>
                     <Box display="flex" flexDirection="row" justifyContent="space-between">
-                      {OHM_ADDRESS && (
+                      {BRICK_ADDRESS && (
                         <Button
                           variant="contained"
                           color="secondary"
-                          onClick={addTokenToWallet("OHM", OHM_ADDRESS, address)}
+                          onClick={addTokenToWallet("OHM", BRICK_ADDRESS, address)}
                         >
                           <SvgIcon
                             component={ohmTokenImg}
@@ -176,11 +176,11 @@ function OhmMenu() {
                           <Typography variant="body1">BRICK</Typography>
                         </Button>
                       )}
-                      {SOHM_ADDRESS && (
+                      {SBRICK_ADDRESS && (
                         <Button
                           variant="contained"
                           color="secondary"
-                          onClick={addTokenToWallet("sOHM", SOHM_ADDRESS, address)}
+                          onClick={addTokenToWallet("sOHM", SBRICK_ADDRESS, address)}
                         >
                           <SvgIcon
                             component={sOhmTokenImg}
@@ -190,11 +190,11 @@ function OhmMenu() {
                           <Typography variant="body1">sBRICK</Typography>
                         </Button>
                       )}
-                      {GOHM_ADDRESS && (
+                      {GBRICK_ADDRESS && (
                         <Button
                           variant="contained"
                           color="secondary"
-                          onClick={addTokenToWallet("gOHM", GOHM_ADDRESS, address)}
+                          onClick={addTokenToWallet("gOHM", GBRICK_ADDRESS, address)}
                         >
                           <SvgIcon
                             component={wsOhmTokenImg}
@@ -204,7 +204,7 @@ function OhmMenu() {
                           <Typography variant="body1">gBRICK</Typography>
                         </Button>
                       )}
-                      {PT_TOKEN_ADDRESS && (
+                      {/* {PT_TOKEN_ADDRESS && (
                         <Button
                           variant="contained"
                           color="secondary"
@@ -217,14 +217,14 @@ function OhmMenu() {
                           />
                           <Typography variant="body1">33T</Typography>
                         </Button>
-                      )}
+                      )} */}
                     </Box>
                   </Box>
                 ) : null}
 
                 <Divider color="secondary" />
                 <Link
-                  href="https://docs.olympusdao.finance/using-the-website/unstaking_lp"
+                  href="https://docs.cre8rdao.finance/using-the-website/unstaking_lp"
                   target="_blank"
                   rel="noreferrer"
                 >

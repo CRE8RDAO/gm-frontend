@@ -23,7 +23,7 @@ const externalUrls = [
   },
   // {
   //   title: "Feedback",
-  //   url: "https://olympusdao.canny.io/",
+  //   url: "https://cre8rdao.canny.io/",
   //   icon: <SvgIcon color="primary" component={FeedbackIcon} />,
   // },
 ];

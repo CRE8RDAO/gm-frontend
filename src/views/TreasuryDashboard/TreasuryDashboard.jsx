@@ -2,7 +2,7 @@ import { memo } from "react";
 import "./treasury-dashboard.scss";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Paper, Grid, Box, Zoom, Container, useMediaQuery } from "@material-ui/core";
-import { MarketCap, OHMPrice, WSOHMPrice, CircSupply, BackingPerOHM, CurrentIndex } from "./components/Metric/Metric";
+import { MarketCap, BRICKPrice, WSBRICKPrice, CircSupply, BackingPerBRICK, CurrentIndex } from "./components/Metric/Metric";
 
 import {
   TotalValueDepositedGraph,
@@ -29,10 +29,10 @@ const TreasuryDashboard = memo(() => {
           <Paper className="ohm-card">
             <Box display="flex" flexWrap="wrap" justifyContent="space-between" alignItems="center">
               <MarketCap />
-              <OHMPrice />
-              <WSOHMPrice />
+              <BRICKPrice />
+              <WSBRICKPrice />
               <CircSupply />
-              <BackingPerOHM />
+              <BackingPerBRICK />
               <CurrentIndex />
             </Box>
           </Paper>

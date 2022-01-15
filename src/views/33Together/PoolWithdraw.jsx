@@ -25,7 +25,7 @@ import { calculateOdds } from "../../helpers/33Together";
 import { ReactComponent as ArrowUp } from "src/assets/icons/arrow-up.svg";
 import { error } from "../../slices/MessagesSlice";
 
-const sohmImg = getTokenImage("sohm");
+const sohmImg = getTokenImage("sbrick");
 
 export const PoolWithdraw = props => {
   const dispatch = useDispatch();

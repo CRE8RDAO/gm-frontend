@@ -23,14 +23,10 @@ enum TokenType {
 
 const chooseContract = (token: string, networkID: NetworkID, signer: ethers.providers.JsonRpcSigner): IERC20 => {
   let address: string;
-  if (token === "ohm") {
-    address = addresses[networkID].OHM_ADDRESS;
-  } else if (token === "sohm") {
-    address = addresses[networkID].SOHM_ADDRESS;
-  } else if (token === "wsohm") {
-    address = addresses[networkID].WSOHM_ADDRESS;
-  } else if (token === "gohm") {
-    address = addresses[networkID].GOHM_ADDRESS;
+  if (token === "brick") {
+    address = addresses[networkID].BRICK_ADDRESS;
+  } else if (token === "sbrick") {
+    address = addresses[networkID].SBRICK_ADDRESS;
   } else {
     const message = `Invalid token type: ${token}`;
     console.error(message);

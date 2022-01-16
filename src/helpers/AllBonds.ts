@@ -1,16 +1,16 @@
-import { StableBond, LPBond, NetworkID, CustomBond, BondType } from "src/lib/Bond";
-import { addresses } from "src/constants";
+import { StableBond, LPBond, NetworkID, CustomBond, BondType } from "src/lib/Bond"
+import { addresses } from "src/constants"
 
-import { ReactComponent as FraxImg } from "src/assets/tokens/FRAX.svg";
-import { ReactComponent as wFTMImg } from "src/assets/tokens/wFTM.svg";
+import { ReactComponent as FraxImg } from "src/assets/tokens/FRAX.svg"
+import { ReactComponent as wFTMImg } from "src/assets/tokens/wFTM.svg"
 // import { ReactComponent as OhmEthImg } from "src/assets/tokens/OHM-WETH.svg";
 
 import { abi as FraxBondContract } from "src/abi/ftmTestnet/FraxBondDepository.json";
 import { abi as wFTMBondContract } from "src/abi/ftmTestnet/WftmBondDepository.json";
 
-import { abi as ierc20Abi } from "src/abi/IERC20.json";
+import { abi as ierc20Abi } from "src/abi/IERC20.json"
 // import { getBondCalculator } from "src/helpers/BondCalculator";
-import { BigNumberish } from "ethers";
+import { BigNumberish } from "ethers"
 // import { getTokenPrice } from "src/helpers";
 
 // TODO(zx): Further modularize by splitting up reserveAssets into vendor token definitions
@@ -36,7 +36,7 @@ export const frax = new StableBond({
   },
   networkAddrs: {
     // [NetworkID.Mainnet]: {
-    //   bondAddress: "0x575409F8d77c12B05feD8B455815f0e54797381c",
+    //   bondAddress: "0x575409F8d77c12B05feD8B455815f0e54797381c", // bond depository
     //   reserveAddress: "0x6b175474e89094c44da98b954eedeac495271d0f",
     // },
     [NetworkID.Testnet]: {
@@ -52,7 +52,7 @@ export const frax = new StableBond({
       reserveAddress: "0x9e008Cc93b4D2179dB48Fe5A0fed6B484aFf1739",
     },
   },
-});
+})
 
 export const ftm = new CustomBond({
   name: "ftm",
@@ -95,15 +95,15 @@ export const ftm = new CustomBond({
     },
   },
   customTreasuryBalanceFunc: async function (this: CustomBond, networkID, provider) {
-    const ftmBondContract = this.getContractForBond(networkID, provider);
-    let ftmPrice: BigNumberish = await ftmBondContract.assetPrice();
-    ftmPrice = Number(ftmPrice.toString()) / Math.pow(10, 8);
-    const token = this.getContractForReserve(networkID, provider);
-    let ftmAmount: BigNumberish = await token.balanceOf(addresses[networkID].TREASURY_ADDRESS);
-    ftmAmount = Number(ftmAmount.toString()) / Math.pow(10, 18);
-    return ftmAmount * ftmPrice;
+    const ftmBondContract = this.getContractForBond(networkID, provider)
+    let ftmPrice: BigNumberish = await ftmBondContract.assetPrice()
+    ftmPrice = Number(ftmPrice.toString()) / Math.pow(10, 8)
+    const token = this.getContractForReserve(networkID, provider)
+    let ftmAmount: BigNumberish = await token.balanceOf(addresses[networkID].TREASURY_ADDRESS)
+    ftmAmount = Number(ftmAmount.toString()) / Math.pow(10, 18)
+    return ftmAmount * ftmPrice
   },
-});
+})
 
 // export const dai = new StableBond({
 //   name: "dai",
@@ -465,13 +465,13 @@ export const ftm = new CustomBond({
 // Is it a stableCoin bond? use `new StableBond`
 // Is it an LP Bond? use `new LPBond`
 // Add new bonds to this array!!
-export const allBonds = [ftm, frax];
+export const allBonds = [ftm, frax]
 // TODO (appleseed-expiredBonds): there may be a smarter way to refactor this
-export const allExpiredBonds = [];
+export const allExpiredBonds = []
 export const allBondsMap = allBonds.reduce((prevVal, bond) => {
-  return { ...prevVal, [bond.name]: bond };
-}, {});
+  return { ...prevVal, [bond.name]: bond }
+}, {})
 
 // Debug Log
 // console.log(allBondsMap);
-export default allBonds;
+export default allBonds

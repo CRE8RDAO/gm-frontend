@@ -72,13 +72,13 @@ export const addresses: IAddresses = {
     BONDINGCALC_ADDRESS: "0xcaaa6a2d4b26067a391e7b7d65c16bb2d5fa571a",
     CIRCULATING_SUPPLY_ADDRESS: "0x0efff9199aa1ac3c3e34e957567c1be8bf295034",
     TREASURY_ADDRESS: "0x31f8cc382c9898b273eff4e0b7626a6987c846e8",
-    CRUCIBLE_OHM_LUSD: "0x2230ad29920D61A535759678191094b74271f373",
+    CRUCIBLE_BRICK_LUSD: "0x2230ad29920D61A535759678191094b74271f373",
     LQTY: "0x6dea81c8171d0ba574754ef6f8b412f2ed88c54d",
     MIST: "0x88acdd2a6425c3faae4bc9650fd7e27e0bebb7ab",
     REDEEM_HELPER_ADDRESS: "0xE1e83825613DE12E8F0502Da939523558f0B819E",
-    FUSE_6_SOHM: "0x59bd6774c22486d9f4fab2d448dce4f892a9ae25", // Tetranode's Locker
-    FUSE_18_SOHM: "0x6eDa4b59BaC787933A4A21b65672539ceF6ec97b", // Olympus Pool Party
-    FUSE_36_SOHM: "0x252d447c54F33e033AD04048baEAdE7628cB1274", // Fraximalist Money Market
+    FUSE_6_SBRICK: "0x59bd6774c22486d9f4fab2d448dce4f892a9ae25", // Tetranode's Locker
+    FUSE_18_SBRICK: "0x6eDa4b59BaC787933A4A21b65672539ceF6ec97b", // Olympus Pool Party
+    FUSE_36_SBRICK: "0x252d447c54F33e033AD04048baEAdE7628cB1274", // Fraximalist Money Market
     PT_TOKEN_ADDRESS: "0x0E930b8610229D74Da0A174626138Deb732cE6e9", // 33T token address, taken from `ticket` function on PRIZE_STRATEGY_ADDRESS
     PT_PRIZE_POOL_ADDRESS: "0xEaB695A8F5a44f583003A8bC97d677880D528248", // NEW
     PT_PRIZE_STRATEGY_ADDRESS: "0xf3d253257167c935f8C62A02AEaeBB24c9c5012a", // NEW
@@ -102,7 +102,7 @@ export const addresses: IAddresses = {
     CIRCULATING_SUPPLY_ADDRESS: "0x0efff9199aa1ac3c3e34e957567c1be8bf295034",
     TREASURY_ADDRESS: "0x31f8cc382c9898b273eff4e0b7626a6987c846e8",
     // TODO (appleseed-lusd): swap this out
-    PICKLE_OHM_LUSD_ADDRESS: "0xc3d03e4f041fd4cd388c549ee2a29a9e5075882f",
+    PICKLE_BRICK_LUSD_ADDRESS: "0xc3d03e4f041fd4cd388c549ee2a29a9e5075882f",
     REDEEM_HELPER_ADDRESS: "0xE1e83825613DE12E8F0502Da939523558f0B819E",
   }, // TODO: Replace with Arbitrum contract addresses when ready
   421611: {
@@ -121,7 +121,7 @@ export const addresses: IAddresses = {
     CIRCULATING_SUPPLY_ADDRESS: "0x0efff9199aa1ac3c3e34e957567c1be8bf295034",
     TREASURY_ADDRESS: "0x31f8cc382c9898b273eff4e0b7626a6987c846e8",
     // TODO (appleseed-lusd): swap this out
-    PICKLE_OHM_LUSD_ADDRESS: "0xc3d03e4f041fd4cd388c549ee2a29a9e5075882f",
+    PICKLE_BRICK_LUSD_ADDRESS: "0xc3d03e4f041fd4cd388c549ee2a29a9e5075882f",
     REDEEM_HELPER_ADDRESS: "0xE1e83825613DE12E8F0502Da939523558f0B819E",
   }, // TODO: Replace with Arbitrum Testnet contract addresses when ready
   43113: {
@@ -139,7 +139,7 @@ export const addresses: IAddresses = {
     BONDINGCALC_ADDRESS: "",
     CIRCULATING_SUPPLY_ADDRESS: "",
     TREASURY_ADDRESS: "",
-    PICKLE_OHM_LUSD_ADDRESS: "",
+    PICKLE_BRICK_LUSD_ADDRESS: "",
     REDEEM_HELPER_ADDRESS: "",
     // WSBRICK_ADDRESS: "",
     // GBRICK_ADDRESS: "",
@@ -160,7 +160,7 @@ export const addresses: IAddresses = {
     BONDINGCALC_ADDRESS: "",
     CIRCULATING_SUPPLY_ADDRESS: "",
     TREASURY_ADDRESS: "",
-    PICKLE_OHM_LUSD_ADDRESS: "",
+    PICKLE_BRICK_LUSD_ADDRESS: "",
     REDEEM_HELPER_ADDRESS: "",
     WSBRICK_ADDRESS: "0x8cd309e14575203535ef120b5b0ab4dded0c2073",
     GBRICK_ADDRESS: "0x321e7092a180bb43555132ec53aaa65a5bf84251",
@@ -202,7 +202,7 @@ interface INetwork {
 
 // These networks will be available for users to select. Other networks may be functional
 // (e.g. testnets, or mainnets being prepared for launch) but need to be selected directly via the wallet.
-export const USER_SELECTABLE_NETWORKS = [1, 42161, 43114, 4002];
+export const USER_SELECTABLE_NETWORKS = [1, 42161, 43114, 4002, 4];
 
 // Set this to the chain number of the most recently added network in order to enable the 'Now supporting X network'
 // message in the UI. Set to -1 if we don't want to display the message at the current time.
@@ -245,7 +245,7 @@ export const NETWORKS: { [key: number]: INetwork } = {
       symbol: "ETH",
       decimals: 18,
     },
-    rpcUrls: [""],
+    rpcUrls: ["https://rinkeby.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161"],
     blockExplorerUrls: ["https://rinkeby.etherscan.io/#/"],
     image: ethereum,
     imageAltText: "Ethereum Logo",

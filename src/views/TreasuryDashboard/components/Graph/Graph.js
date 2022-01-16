@@ -112,7 +112,7 @@ export const ProtocolOwnedLiquidityGraph = () => {
   );
 };
 
-export const OHMStakedGraph = () => {
+export const BrickStakedGraph = () => {
   const theme = useTheme();
   const { data } = useTreasuryMetrics({ refetchOnMount: false });
 

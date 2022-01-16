@@ -88,10 +88,10 @@ function Stake() {
     return state.account.balances && state.account.balances.wsohmAsSohm;
   });
   const stakeAllowance = useAppSelector(state => {
-    return (state.account.staking && state.account.staking.ohmStake) || 0;
+    return (state.account.staking && state.account.staking.brickStake) || 0;
   });
   const unstakeAllowance = useAppSelector(state => {
-    return (state.account.staking && state.account.staking.ohmUnstake) || 0;
+    return (state.account.staking && state.account.staking.brickUnstake) || 0;
   });
   const stakingRebase = useAppSelector(state => {
     return state.app.stakingRebase || 0;

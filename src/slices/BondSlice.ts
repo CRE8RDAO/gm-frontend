@@ -67,11 +67,11 @@ export const changeApproval = createAsyncThunk(
 export interface IBondDetails {
   bond: string;
   bondDiscount: number;
-  // debtRatio: number;
+  debtRatio: number;
   bondQuote: number;
   purchased: number;
-  // vestingTerm: number;
-  // maxBondPrice: number;
+  vestingTerm: number;
+  maxBondPrice: number;
   bondPrice: number;
   marketPrice: number;
 }
@@ -89,18 +89,17 @@ export const calcBondDetails = createAsyncThunk(
       bondQuote: BigNumberish = BigNumber.from(0);
     const bondContract = bond.getContractForBond(networkID, provider);
     const bondCalcContract = getBondCalculator(networkID, provider);
-    // console.log("bondContract", bondContract);
 
-    // const terms = await bondContract.terms();
-    // const maxBondPrice = await bondContract.maxPayout();
-    // let debtRatio: BigNumberish;
-    // // TODO (appleseed): improve this logic
-    // if (bond.name === "cvx") {
-    //   debtRatio = await bondContract.debtRatio();
-    // } else {
-    //   debtRatio = await bondContract.standardizedDebtRatio();
-    // }
-    // debtRatio = Number(debtRatio.toString()) / Math.pow(10, 9);
+    const terms = await bondContract.terms();
+    const maxBondPrice = await bondContract.maxPayout();
+    let debtRatio: BigNumberish;
+    // TODO (appleseed): improve this logic
+    if (bond.name === "cvx") {
+      debtRatio = await bondContract.debtRatio();
+    } else {
+      debtRatio = await bondContract.standardizedDebtRatio();
+    }
+    debtRatio = Number(debtRatio.toString()) / Math.pow(10, 9);
 
     let marketPrice: number = 0;
     try {
@@ -157,14 +156,14 @@ export const calcBondDetails = createAsyncThunk(
       }
     }
 
-    // // Display error if user tries to exceed maximum.
-    // if (!!value && parseFloat(bondQuote.toString()) > Number(maxBondPrice.toString()) / Math.pow(10, 9)) {
-    //   const errorString =
-    //     "You're trying to bond more than the maximum payout available! The maximum bond payout is " +
-    //     (Number(maxBondPrice.toString()) / Math.pow(10, 9)).toFixed(2).toString() +
-    //     " BRICK.";
-    //   dispatch(error(errorString));
-    // }
+    // Display error if user tries to exceed maximum.
+    if (!!value && parseFloat(bondQuote.toString()) > Number(maxBondPrice.toString()) / Math.pow(10, 9)) {
+      const errorString =
+        "You're trying to bond more than the maximum payout available! The maximum bond payout is " +
+        (Number(maxBondPrice.toString()) / Math.pow(10, 9)).toFixed(2).toString() +
+        " BRICK.";
+      dispatch(error(errorString));
+    }
 
     // Calculate bonds purchased
     let purchased = await bond.getTreasuryBalance(networkID, provider);
@@ -172,11 +171,11 @@ export const calcBondDetails = createAsyncThunk(
     return {
       bond: bond.name,
       bondDiscount,
-      // debtRatio: Number(debtRatio.toString()),
+      debtRatio: Number(debtRatio.toString()),
       bondQuote: Number(bondQuote.toString()),
       purchased,
-      // vestingTerm: Number(terms.vestingTerm.toString()),
-      // maxBondPrice: Number(maxBondPrice.toString()) / Math.pow(10, 9),
+      vestingTerm: Number(terms.vestingTerm.toString()),
+      maxBondPrice: Number(maxBondPrice.toString()) / Math.pow(10, 9),
       bondPrice: Number(bondPrice.toString()) / Math.pow(10, 18),
       marketPrice: marketPrice,
     };

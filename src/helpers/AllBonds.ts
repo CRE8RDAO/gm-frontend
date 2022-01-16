@@ -5,8 +5,8 @@ import { ReactComponent as FraxImg } from "src/assets/tokens/FRAX.svg";
 import { ReactComponent as wFTMImg } from "src/assets/tokens/wFTM.svg";
 // import { ReactComponent as OhmEthImg } from "src/assets/tokens/OHM-WETH.svg";
 
-import { abi as FraxBondContract } from "src/abi/ftmTestnet/FRAX.json";
-import { abi as wFTMBondContract } from "src/abi/ftmTestnet/WrappedToken.json";
+import { abi as FraxBondContract } from "src/abi/ftmTestnet/FraxBondDepository.json";
+import { abi as wFTMBondContract } from "src/abi/ftmTestnet/WftmBondDepository.json";
 
 import { abi as ierc20Abi } from "src/abi/IERC20.json";
 // import { getBondCalculator } from "src/helpers/BondCalculator";
@@ -40,8 +40,8 @@ export const frax = new StableBond({
     //   reserveAddress: "0x6b175474e89094c44da98b954eedeac495271d0f",
     // },
     [NetworkID.Testnet]: {
-      bondAddress: "0xF651283543fB9D61A91f318b78385d187D300738",
-      reserveAddress: "0x2F7249cb599139e560f0c81c269Ab9b04799E453",
+      bondAddress: "0xd3D1aD79DC0eeF622f71E786270CFf53719D261C",
+      reserveAddress: "0x0B81a995b28254D76e5148d29E8eb4c5c26D3aC0",
     },
     // [NetworkID.Fantom]: {
     //   bondAddress: "0x575409F8d77c12B05feD8B455815f0e54797381c",
@@ -49,7 +49,7 @@ export const frax = new StableBond({
     // },
     [NetworkID.FantomTestnet]: {
       bondAddress: "0x38E4560A1DB2DAe89F78F98b308eE6F890b27712",
-      reserveAddress: "0x6b175474e89094c44da98b954eedeac495271d0f",
+      reserveAddress: "0x9e008Cc93b4D2179dB48Fe5A0fed6B484aFf1739",
     },
   },
 });
@@ -82,8 +82,8 @@ export const ftm = new CustomBond({
     //   reserveAddress: "0x853d955acef822db058eb8505911ed77f175b99e",
     // },
     [NetworkID.Testnet]: {
-      bondAddress: "0xF651283543fB9D61A91f318b78385d187D300738",
-      reserveAddress: "0x2F7249cb599139e560f0c81c269Ab9b04799E453",
+      bondAddress: "0x1e0AD0F8DDFF84FDc938373E9aa66b8d994ea066",
+      reserveAddress: "0xDd1875ddC7c832FA1CB82DfB8B34d3abD1F67a87",
     },
     // [NetworkID.Fantom]: {
     //   bondAddress: "0x575409F8d77c12B05feD8B455815f0e54797381c",
@@ -91,7 +91,7 @@ export const ftm = new CustomBond({
     // },
     [NetworkID.FantomTestnet]: {
       bondAddress: "0x1e0AD0F8DDFF84FDc938373E9aa66b8d994ea066",
-      reserveAddress: "0x6b175474e89094c44da98b954eedeac495271d0f",
+      reserveAddress: "0x0Ae825CD631d5b59D56ACc635f1599ebb3390A6d",
     },
   },
   customTreasuryBalanceFunc: async function (this: CustomBond, networkID, provider) {

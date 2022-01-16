@@ -107,11 +107,11 @@ export const getBalances = createAsyncThunk(
 
 interface IUserAccountDetails {
   staking: {
-    ohmStake: number;
-    ohmUnstake: number;
+    brickStake: number;
+    brickUnstake: number;
   };
   wrapping: {
-    sohmWrap: number;
+    sbrickWrap: number;
     wsohmUnwrap: number;
     gOhmUnwrap: number;
   };
@@ -120,37 +120,37 @@ interface IUserAccountDetails {
 export const getMigrationAllowances = createAsyncThunk(
   "account/getMigrationAllowances",
   async ({ networkID, provider, address }: IBaseAddressAsyncThunk) => {
-    let ohmAllowance = BigNumber.from(0);
-    let sOhmAllowance = BigNumber.from(0);
-    let wsOhmAllowance = BigNumber.from(0);
-    let gOhmAllowance = BigNumber.from(0);
+    let brickAllowance = BigNumber.from(0);
+    let sbrickAllowance = BigNumber.from(0);
+    // let wsbrickAllowance = BigNumber.from(0);
+    // let gbrickAllowance = BigNumber.from(0);
 
     if (addresses[networkID].BRICK_ADDRESS) {
       const brickContract = IERC20__factory.connect(addresses[networkID].BRICK_ADDRESS, provider);
-      ohmAllowance = await brickContract.allowance(address, addresses[networkID].MIGRATOR_ADDRESS);
+      brickAllowance = await brickContract.allowance(address, addresses[networkID].MIGRATOR_ADDRESS);
     }
 
     if (addresses[networkID].SBRICK_ADDRESS) {
       const sBrickContract = IERC20__factory.connect(addresses[networkID].SBRICK_ADDRESS, provider);
-      sOhmAllowance = await sBrickContract.allowance(address, addresses[networkID].MIGRATOR_ADDRESS);
+      sbrickAllowance = await sBrickContract.allowance(address, addresses[networkID].MIGRATOR_ADDRESS);
     }
 
-    if (addresses[networkID].WSBRICK_ADDRESS) {
-      const wsBrickContract = IERC20__factory.connect(addresses[networkID].WSBRICK_ADDRESS, provider);
-      wsOhmAllowance = await wsBrickContract.allowance(address, addresses[networkID].MIGRATOR_ADDRESS);
-    }
+    // if (addresses[networkID].WSBRICK_ADDRESS) {
+    //   const wsBrickContract = IERC20__factory.connect(addresses[networkID].WSBRICK_ADDRESS, provider);
+    //   wsbrickAllowance = await wsBrickContract.allowance(address, addresses[networkID].MIGRATOR_ADDRESS);
+    // }
 
-    if (addresses[networkID].GBRICK_ADDRESS) {
-      const gBrickContract = IERC20__factory.connect(addresses[networkID].GBRICK_ADDRESS, provider);
-      gOhmAllowance = await gBrickContract.allowance(address, addresses[networkID].MIGRATOR_ADDRESS);
-    }
+    // if (addresses[networkID].GBRICK_ADDRESS) {
+    //   const gBrickContract = IERC20__factory.connect(addresses[networkID].GBRICK_ADDRESS, provider);
+    //   gbrickAllowance = await gBrickContract.allowance(address, addresses[networkID].MIGRATOR_ADDRESS);
+    // }
 
     return {
       migration: {
-        ohm: +ohmAllowance,
-        sohm: +sOhmAllowance,
-        wsohm: +wsOhmAllowance,
-        gohm: +gOhmAllowance,
+        ohm: +brickAllowance,
+        sohm: +sbrickAllowance,
+        // wsohm: +wsbrickAllowance,
+        // gohm: +gbrickAllowance,
       },
       isMigrationComplete: false,
     };
@@ -200,11 +200,11 @@ export const loadAccountDetails = createAsyncThunk(
 
     return {
       staking: {
-        ohmStake: +stakeAllowance,
-        ohmUnstake: +unstakeAllowance,
+        brickStake: +stakeAllowance,
+        brickUnstake: +unstakeAllowance,
       },
       wrapping: {
-        ohmWrap: Number(ethers.utils.formatUnits(wrapAllowance, "gwei")),
+        brickWrap: Number(ethers.utils.formatUnits(wrapAllowance, "gwei")),
         // ohmUnwrap: Number(ethers.utils.formatUnits(unwrapAllowance, "gwei")),
         // gOhmUnwrap: Number(ethers.utils.formatUnits(gOhmUnwrapAllowance, "ether")),
       },
@@ -286,8 +286,8 @@ interface IAccountSlice extends IUserAccountDetails, IUserBalances {
   };
   loading: boolean;
   staking: {
-    ohmStake: number;
-    ohmUnstake: number;
+    brickStake: number;
+    brickUnstake: number;
   };
   migration: {
     ohm: number;
@@ -315,8 +315,8 @@ const initialState: IAccountSlice = {
     pool: "",
     wsohmAsSohm: "",
   },
-  staking: { ohmStake: 0, ohmUnstake: 0 },
-  wrapping: { sohmWrap: 0, wsohmUnwrap: 0, gOhmUnwrap: 0 },
+  staking: { brickStake: 0, brickUnstake: 0 },
+  wrapping: { sbrickWrap: 0, wsohmUnwrap: 0, gOhmUnwrap: 0 },
   pooling: { sohmPool: 0 },
   migration: { ohm: 0, sohm: 0, wsohm: 0, gohm: 0 },
 };

@@ -93,15 +93,15 @@ function Wrap() {
     return state.account.wrapping && state.account.wrapping.ohmUnwrap;
   });
 
-  const migrateSohmAllowance = useSelector(state => {
+  const migrateSbrickAllowance = useSelector(state => {
     return state.account.migration && state.account.migration.sohm;
   });
 
-  const migrateWsohmAllowance = useSelector(state => {
+  const migrateWsbrickAllowance = useSelector(state => {
     return state.account.migration && state.account.migration.wsohm;
   });
 
-  const unwrapGohmAllowance = useSelector(state => {
+  const unwrapGbrickAllowance = useSelector(state => {
     return state.account.wrapping && state.account.wrapping.gOhmUnwrap;
   });
 
@@ -157,13 +157,13 @@ function Wrap() {
   };
 
   const hasCorrectAllowance = useCallback(() => {
-    if (assetFrom === "sBRICK" && assetTo === "gBRICK") return migrateSohmAllowance > sohmBalance;
-    if (assetFrom === "wsBRICK" && assetTo === "gBRICK") return migrateWsohmAllowance > wsohmBalance;
+    if (assetFrom === "sBRICK" && assetTo === "gBRICK") return migrateSbrickAllowance > sohmBalance;
+    if (assetFrom === "wsBRICK" && assetTo === "gBRICK") return migrateWsbrickAllowance > wsohmBalance;
     if (assetFrom === "wsBRICK" && assetTo === "sBRICK") return unwrapAllowance > wsohmBalance;
-    if (assetFrom === "gBRICK") return unwrapGohmAllowance > gohmBalance;
+    if (assetFrom === "gBRICK") return unwrapGbrickAllowance > gohmBalance;
 
     return 0;
-  }, [unwrapAllowance, migrateSohmAllowance, migrateWsohmAllowance, assetTo, assetFrom]);
+  }, [unwrapAllowance, migrateSbrickAllowance, migrateWsbrickAllowance, assetTo, assetFrom]);
 
   const isAllowanceDataLoading = unwrapAllowance == null && currentAction === "Unwrap";
   // const convertedQuantity = 0;

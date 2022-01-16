@@ -244,7 +244,7 @@ function Wrap() {
   };
 
   const chooseCorrectWrappingFunction = () => {
-    if (assetFrom === "sBRICK" && assetTo === "gBRICK") migrateToGohm("sohm");
+    if (assetFrom === "sBRICK" && assetTo === "gBRICK") migrateToGohm("sbrick");
     if (assetFrom === "wsBRICK" && assetTo === "gBRICK") migrateToGohm("wsohm");
     if (assetFrom === "gBRICK" && assetTo === "sBRICK") unwrapGohm();
     if (assetFrom === "wsBRICK" && assetTo === "sBRICK") unWrapWSOHM();
@@ -257,7 +257,7 @@ function Wrap() {
       return (
         <div className="no-input-visible">
           Wrapping to <b>wsBRICK</b> is disabled at this time due to the upcoming{" "}
-          <a className="v2-migration-link" href="https://olympusdao.medium.com/introducing-olympus-v2-c4ade14e9fe">
+          <a className="v2-migration-link" href="https://cre8rdao.medium.com/introducing-olympus-v2-c4ade14e9fe">
             V2 migration
           </a>
           .
@@ -352,8 +352,8 @@ function Wrap() {
                   style={{ textDecoration: "none" }}
                   href={
                     assetTo === "wsBRICK"
-                      ? "https://docs.olympusdao.finance/main/contracts/tokens#wsohm"
-                      : "https://docs.olympusdao.finance/main/contracts/tokens#gohm"
+                      ? "https://docs.cre8rdao.finance/main/contracts/tokens#wsohm"
+                      : "https://docs.cre8rdao.finance/main/contracts/tokens#gohm"
                   }
                   aria-label="wsohm-wut"
                   target="_blank"

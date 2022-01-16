@@ -43,6 +43,8 @@ function ConnectMenu({ theme }) {
 
   const getEtherscanUrl = txnHash => {
     switch (networkId) {
+      case 4002:
+        return "https://testnet.ftmscan.com/" + txnHash;
       case 1:
         return "https://etherscan.io/tx/" + txnHash;
       case 4:

@@ -141,8 +141,8 @@ function Stake() {
 
   const hasAllowance = useCallback(
     token => {
-      if (token === "ohm") return stakeAllowance > 0;
-      if (token === "sohm") return unstakeAllowance > 0;
+      if (token === "brick") return stakeAllowance > 0;
+      if (token === "sbrick") return unstakeAllowance > 0;
       return 0;
     },
     [stakeAllowance, unstakeAllowance],
@@ -188,7 +188,7 @@ function Stake() {
                   <Link
                     className="migrate-sohm-button"
                     style={{ textDecoration: "none" }}
-                    href="https://docs.olympusdao.finance/using-the-website/migrate"
+                    href="https://docs.cre8rdao.finance/using-the-website/migrate"
                     aria-label="migrate-sohm"
                     target="_blank"
                   >
@@ -298,21 +298,21 @@ function Stake() {
                     <Grid container className="stake-action-row">
                       <Grid item xs={12} sm={8} className="stake-grid-item">
                         {address && !isAllowanceDataLoading ? (
-                          (!hasAllowance("ohm") && view === 0) || (!hasAllowance("sohm") && view === 1) ? (
+                          (!hasAllowance("brick") && view === 0) || (!hasAllowance("sbrick") && view === 1) ? (
                             <Box className="help-text">
                               <Typography variant="body1" className="stake-note" color="textSecondary">
                                 {view === 0 ? (
                                   <>
                                     <Trans>First time staking</Trans> <b>BRICK</b>?
                                     <br />
-                                    <Trans>Please approve Olympus Dao to use your</Trans> <b>BRICK</b>{" "}
+                                    <Trans>Please approve Cre8r Dao to use your</Trans> <b>BRICK</b>{" "}
                                     <Trans>for staking</Trans>.
                                   </>
                                 ) : (
                                   <>
                                     <Trans>First time unstaking</Trans> <b>sBRICK</b>?
                                     <br />
-                                    <Trans>Please approve Olympus Dao to use your</Trans> <b>sBRICK</b>{" "}
+                                    <Trans>Please approve Cre8r Dao to use your</Trans> <b>sBRICK</b>{" "}
                                     <Trans>for unstaking</Trans>.
                                   </>
                                 )}
@@ -348,7 +348,7 @@ function Stake() {
                           <Box m={-2}>
                             {isAllowanceDataLoading ? (
                               <Skeleton />
-                            ) : address && hasAllowance("ohm") ? (
+                            ) : address && hasAllowance("brick") ? (
                               <Button
                                 className="stake-button"
                                 variant="contained"
@@ -367,7 +367,7 @@ function Stake() {
                                 color="primary"
                                 disabled={isPendingTxn(pendingTransactions, "approve_staking")}
                                 onClick={() => {
-                                  onSeekApproval("ohm");
+                                  onSeekApproval("brick");
                                 }}
                               >
                                 {txnButtonText(pendingTransactions, "approve_staking", t`Approve`)}
@@ -380,7 +380,7 @@ function Stake() {
                           <Box m={-2}>
                             {isAllowanceDataLoading ? (
                               <Skeleton />
-                            ) : address && hasAllowance("sohm") ? (
+                            ) : address && hasAllowance("sbrick") ? (
                               <Button
                                 className="stake-button"
                                 variant="contained"
@@ -399,7 +399,7 @@ function Stake() {
                                 color="primary"
                                 disabled={isPendingTxn(pendingTransactions, "approve_unstaking")}
                                 onClick={() => {
-                                  onSeekApproval("sohm");
+                                  onSeekApproval("sbrick");
                                 }}
                               >
                                 {txnButtonText(pendingTransactions, "approve_unstaking", t`Approve`)}
@@ -482,7 +482,7 @@ function Stake() {
           </Grid>
         </Paper>
       </Zoom>
-      <ZapCta />
+      {/* <ZapCta /> */}
       <ExternalStakePool />
     </div>
   );

@@ -6,8 +6,8 @@ export default function NotFound() {
   return (
     <div id="not-found">
       <div className="not-found-header">
-        <a href="https://olympusdao.finance" target="_blank">
-          <img className="branding-header-icon" src={OlympusLogo} alt="OlympusDAO" />
+        <a href="https://cre8rdao.finance" target="_blank">
+          <img className="branding-header-icon" src={OlympusLogo} alt="Cre8rDAO" />
         </a>
 
         <h4>

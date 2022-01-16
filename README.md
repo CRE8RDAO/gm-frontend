@@ -1,4 +1,4 @@
-# 🧱 [ CRE8R DAO GM Frontend](https://app.olympusdao.finance/)
+# 🧱 [ CRE8R DAO GM Frontend](https://app.cre8rdao.finance/)
 
 This is the front-end repo for Olympus that allows users be part of the future of Greece.
 
@@ -17,7 +17,7 @@ This is the front-end repo for Olympus that allows users be part of the future o
 - FraxBondDepository 0x38E4560A1DB2DAe89F78F98b308eE6F890b27712
 - WftmBondDepository 0x1e0AD0F8DDFF84FDc938373E9aa66b8d994ea066
 
-**_ Note We're currently in the process of switching to TypeScript. Please read this guide on how to use TypeScript for this repository. https://github.com/OlympusDAO/olympus-frontend/wiki/TypeScript-Refactor-General-Guidelines _**
+**_ Note We're currently in the process of switching to TypeScript. Please read this guide on how to use TypeScript for this repository. https://github.com/Cre8rDAO/olympus-frontend/wiki/TypeScript-Refactor-General-Guidelines _**
 
 ## 🔧 Setting up Local Development
 
@@ -28,8 +28,8 @@ Required:
 - [Git](https://git-scm.com/downloads)
 
 ```bash
-$ git clone https://github.com/OlympusDAO/olympusdao.git
-$ cd olympusdao
+$ git clone https://github.com/Cre8rDAO/cre8rdao.git
+$ cd cre8rdao
 
 # set up your environment variables
 # read the comments in the .env files for what is required/optional
@@ -89,7 +89,7 @@ The files/folder structure are a **WIP** and may contain some unused files. The 
 
 Olympus uses [linguijs](https://github.com/lingui/js-lingui) to manage translation.
 
-The language files are located in a submodule deployed in `src/locales/translations`. This submodule points to the [olympus translation repository](https://github.com/OlympusDAO/olympus-translations)
+The language files are located in a submodule deployed in `src/locales/translations`. This submodule points to the [olympus translation repository](https://github.com/Cre8rDAO/olympus-translations)
 
 In order to mark text for translation you can use:
 
@@ -104,7 +104,7 @@ t({
 })
 ```
 
-When new texts are created or existing texts are modified in the application please leave a message in the OlympusDao app-translation channel for the translators to translate them.
+When new texts are created or existing texts are modified in the application please leave a message in the Cre8rDAO app-translation channel for the translators to translate them.
 
 ## 🚀 Deployment
 
@@ -117,19 +117,19 @@ _**TODO**: TheGraph implementation/how/why we use it._
 Commits to the follow branches are automatically deployed to their respective URLs.
 | Branch | URL |
 | --- | --- |
-| master | https://app.olympusdao.finance |
-| deploy | https://staging.olympusdao.finance |
+| master | https://app.cre8rdao.finance |
+| deploy | https://staging.cre8rdao.finance |
 
 **Pull Requests**:
 Each PR into master will get its own custom URL that is visible on the PR page. QA & validate changes on that URL before merging into the deploy branch.
 
 ## 👏🏽 Contributing Guidelines
 
-We keep an updated list of bugs/feature requests in [Github Issues](https://github.com/OlympusDAO/olympusdao/issues).
+We keep an updated list of bugs/feature requests in [Github Issues](https://github.com/Cre8rDAO/cre8rdao/issues).
 
-![GitHub issues](https://img.shields.io/github/issues/olympusdao/olympusdao?style=flat-square)
+![GitHub issues](https://img.shields.io/github/issues/cre8rdao/cre8rdao?style=flat-square)
 
-Filter by ["good first issue"](https://github.com/OlympusDAO/olympusdao/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22) to get your feet wet!
+Filter by ["good first issue"](https://github.com/Cre8rDAO/cre8rdao/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22) to get your feet wet!
 Once you submit a PR, our CI will generate a temporary testing URL where you can validate your changes. Tag any of the gatekeepers on the review to merge them into master.
 
 _**NOTE**_: For big changes associated with feature releases/milestones, they will be merged onto the `develop` branch for more thorough QA before a final merge to `master`

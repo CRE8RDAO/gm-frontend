@@ -38,10 +38,9 @@ function NavContent() {
         <div className="dapp-menu-top">
           <Box className="branding-header">
             <Link href="https://cre8r.vip" target="_blank">
-             <SvgIcon
+              <SvgIcon
                 color="primary"
                 component={OlympusIcon}
-
                 viewBox="0 0 150 150"
                 style={{ width: 150, height: 150 }}
               />
@@ -49,7 +48,7 @@ function NavContent() {
 
             {address && (
               <div className="wallet-link">
-                <Link href={`https://etherscan.io/address/${address}`} target="_blank">
+                <Link href={`https://testnet.ftmscan.com/address/${address}`} target="_blank">
                   {shorten(address)}
                 </Link>
               </div>
@@ -59,7 +58,6 @@ function NavContent() {
           <div className="dapp-menu-links">
             <div className="dapp-nav" id="navbarNav">
               {(networkId === 250 || networkId === 4002) && (
-
                 <>
                   <Link
                     component={NavLink}

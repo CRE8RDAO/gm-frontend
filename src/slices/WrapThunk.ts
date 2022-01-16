@@ -27,32 +27,36 @@ export const changeApproval = createAsyncThunk(
     }
 
     const signer = provider.getSigner();
-    const sohmContract = new ethers.Contract(addresses[networkID].SOHM_ADDRESS as string, ierc20ABI, signer) as IERC20;
-    const wsohmContract = new ethers.Contract(
-      addresses[networkID].WSOHM_ADDRESS as string,
+    const sbrickContract = new ethers.Contract(
+      addresses[networkID].SBRICK_ADDRESS as string,
+      ierc20ABI,
+      signer,
+    ) as IERC20;
+    const wsbrickContract = new ethers.Contract(
+      addresses[networkID].WSBRICK_ADDRESS as string,
       ierc20ABI,
       signer,
     ) as IERC20;
     let approveTx;
-    let wrapAllowance = await sohmContract.allowance(address, addresses[networkID].WSOHM_ADDRESS);
-    let unwrapAllowance = await wsohmContract.allowance(address, addresses[networkID].WSOHM_ADDRESS);
+    let wrapAllowance = await sbrickContract.allowance(address, addresses[networkID].WSBRICK_ADDRESS);
+    let unwrapAllowance = await wsbrickContract.allowance(address, addresses[networkID].WSBRICK_ADDRESS);
 
     try {
-      if (token === "sohm") {
+      if (token === "sbrick") {
         // won't run if wrapAllowance > 0
-        approveTx = await sohmContract.approve(
-          addresses[networkID].WSOHM_ADDRESS,
+        approveTx = await sbrickContract.approve(
+          addresses[networkID].WSBRICK_ADDRESS,
           ethers.utils.parseUnits("1000000000", "gwei"),
         );
       } else if (token === "wsohm") {
-        approveTx = await wsohmContract.approve(
-          addresses[networkID].WSOHM_ADDRESS,
+        approveTx = await wsbrickContract.approve(
+          addresses[networkID].WSBRICK_ADDRESS,
           ethers.utils.parseUnits("1000000000", "ether"),
         );
       }
 
-      const text = "Approve " + (token === "sohm" ? "Wrapping" : "Unwrapping");
-      const pendingTxnType = token === "sohm" ? "approve_wrapping" : "approve_unwrapping";
+      const text = "Approve " + (token === "sbrick" ? "Wrapping" : "Unwrapping");
+      const pendingTxnType = token === "sbrick" ? "approve_wrapping" : "approve_unwrapping";
       if (approveTx) {
         dispatch(fetchPendingTxns({ txnHash: approveTx.hash, text, type: pendingTxnType }));
         await approveTx.wait();
@@ -68,8 +72,8 @@ export const changeApproval = createAsyncThunk(
     }
 
     // go get fresh allowances
-    wrapAllowance = await sohmContract.allowance(address, addresses[networkID].WSOHM_ADDRESS);
-    unwrapAllowance = await wsohmContract.allowance(address, addresses[networkID].WSOHM_ADDRESS);
+    wrapAllowance = await sbrickContract.allowance(address, addresses[networkID].WSBRICK_ADDRESS);
+    unwrapAllowance = await wsbrickContract.allowance(address, addresses[networkID].WSBRICK_ADDRESS);
 
     return dispatch(
       fetchAccountSuccess({
@@ -91,7 +95,7 @@ export const changeWrap = createAsyncThunk(
     }
 
     const signer = provider.getSigner();
-    const wsohmContract = new ethers.Contract(addresses[networkID].WSOHM_ADDRESS as string, wsOHM, signer) as WsOHM;
+    const wsbrickContract = new ethers.Contract(addresses[networkID].WSBRICK_ADDRESS as string, wsOHM, signer) as WsOHM;
 
     let wrapTx;
     let uaData: IUAData = {
@@ -104,10 +108,10 @@ export const changeWrap = createAsyncThunk(
     try {
       if (action === "wrap") {
         uaData.type = "wrap";
-        wrapTx = await wsohmContract.wrap(ethers.utils.parseUnits(value, "gwei"));
+        wrapTx = await wsbrickContract.wrap(ethers.utils.parseUnits(value, "gwei"));
       } else {
         uaData.type = "unwrap";
-        wrapTx = await wsohmContract.unwrap(ethers.utils.parseUnits(value));
+        wrapTx = await wsbrickContract.unwrap(ethers.utils.parseUnits(value));
       }
       const pendingTxnType = action === "wrap" ? "wrapping" : "unwrapping";
       uaData.txHash = wrapTx.hash;

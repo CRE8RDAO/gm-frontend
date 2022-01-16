@@ -23,7 +23,7 @@ import { Skeleton } from "@material-ui/lab";
 import { error } from "../../slices/MessagesSlice";
 import { ConfirmationModal } from "./ConfirmationModal.jsx";
 
-const sohmImg = getTokenImage("sohm");
+const sohmImg = getTokenImage("sbrick");
 
 export const PoolDeposit = props => {
   const dispatch = useDispatch();
@@ -151,7 +151,7 @@ export const PoolDeposit = props => {
               />
             </FormControl>
 
-            {address && hasAllowance("sohm") ? (
+            {address && hasAllowance("sbrick") ? (
               <Button
                 className="pool-deposit-button"
                 variant="contained"
@@ -169,7 +169,7 @@ export const PoolDeposit = props => {
                 variant="contained"
                 color="primary"
                 disabled={isPendingTxn(pendingTransactions, "approve_pool_together")}
-                onClick={() => onSeekApproval("sohm")}
+                onClick={() => onSeekApproval("sbrick")}
                 style={{ margin: "5px" }}
               >
                 {txnButtonText(pendingTransactions, "approve_pool_together", t`Approve`)}

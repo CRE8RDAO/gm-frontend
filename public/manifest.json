@@ -1,8 +1,8 @@
 {
-  "short_name": "OlympusDAO",
+  "short_name": "Cre8rDAO",
   "start_url": ".",
   "homepage": "./",
-  "name": "OlympusDAO",
+  "name": "Cre8rDAO",
   "launch_path": "/public/index.html",
   "icons": [
     {

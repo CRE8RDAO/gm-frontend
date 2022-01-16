@@ -25,7 +25,7 @@ export const MarketCap = () => {
   );
 };
 
-export const OHMPrice = () => {
+export const BRICKPrice = () => {
   const marketPrice = useSelector(state => state.app.marketPrice);
 
   return (
@@ -50,7 +50,7 @@ export const CircSupply = () => {
   );
 };
 
-export const BackingPerOHM = () => {
+export const BackingPerBRICK = () => {
   const backingPerOhm = useSelector(state => state.app.treasuryMarketValue / state.app.circSupply);
 
   return (
@@ -75,7 +75,7 @@ export const CurrentIndex = () => {
   );
 };
 
-export const WSOHMPrice = () => {
+export const WSBRICKPrice = () => {
   const wsOhmPrice = useSelector(state => state.app.marketPrice * state.app.currentIndex);
 
   return (

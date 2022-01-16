@@ -38,7 +38,7 @@ function ZapCta() {
             <Box alignItems="center" display="flex" flexDirection="column">
               <Typography color="textPrimary" align="center" className="cta-header">
                 <Trans>
-                  Zap with more assets and stake <strong>OHM</strong>
+                  Zap with more assets and stake <strong>BRICK</strong>
                 </Trans>
               </Typography>
               <Typography
@@ -55,7 +55,7 @@ function ZapCta() {
             <Link component={NavLink} to="/zap">
               <Button component="div" variant="outlined" color="secondary" className="learn-more-button">
                 <Typography variant="body1">
-                  <Trans>Swap into sOHM</Trans>
+                  <Trans>Swap into sBRICK</Trans>
                 </Typography>
               </Button>
             </Link>

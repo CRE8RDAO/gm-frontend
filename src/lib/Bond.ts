@@ -8,13 +8,12 @@ import { EthContract, PairContract } from "src/typechain";
 import { addresses } from "src/constants";
 import React from "react";
 
+// TODO currently works on Testnet and Fantom
 export enum NetworkID {
-  Mainnet = 1,
+  // Mainnet = 1,
   Testnet = 4,
-  Arbitrum = 42161,
-  ArbitrumTestnet = 421611,
-  AvalancheTestnet = 43113,
-  Avalanche = 43114,
+  // Fantom = 250,
+  FantomTestnet = 4002,
 }
 
 export enum BondType {
@@ -28,21 +27,17 @@ export interface BondAddresses {
 }
 
 export interface NetworkAddresses {
-  [NetworkID.Mainnet]?: BondAddresses;
+  // [NetworkID.Mainnet]?: BondAddresses;
   [NetworkID.Testnet]?: BondAddresses;
-  [NetworkID.Arbitrum]?: BondAddresses;
-  [NetworkID.ArbitrumTestnet]?: BondAddresses;
-  [NetworkID.Avalanche]?: BondAddresses;
-  [NetworkID.AvalancheTestnet]?: BondAddresses;
+  // [NetworkID.Fantom]?: BondAddresses;
+  [NetworkID.FantomTestnet]?: BondAddresses;
 }
 
 export interface Available {
-  [NetworkID.Mainnet]: boolean;
+  // [NetworkID.Mainnet]: boolean;
   [NetworkID.Testnet]: boolean;
-  [NetworkID.Arbitrum]: boolean;
-  [NetworkID.ArbitrumTestnet]: boolean;
-  [NetworkID.Avalanche]: boolean;
-  [NetworkID.AvalancheTestnet]: boolean;
+  // [NetworkID.Fantom]: boolean;
+  [NetworkID.FantomTestnet]: boolean;
 }
 
 interface BondOpts {

@@ -36,7 +36,7 @@ export const frax = new StableBond({
   },
   networkAddrs: {
     // [NetworkID.Mainnet]: {
-    //   bondAddress: "0x575409F8d77c12B05feD8B455815f0e54797381c",
+    //   bondAddress: "0x575409F8d77c12B05feD8B455815f0e54797381c", // bond depository
     //   reserveAddress: "0x6b175474e89094c44da98b954eedeac495271d0f",
     // },
     [NetworkID.Testnet]: {
@@ -48,8 +48,9 @@ export const frax = new StableBond({
     //   reserveAddress: "0x6b175474e89094c44da98b954eedeac495271d0f",
     // },
     [NetworkID.FantomTestnet]: {
-      bondAddress: "0x38E4560A1DB2DAe89F78F98b308eE6F890b27712",
-      reserveAddress: "0x6b175474e89094c44da98b954eedeac495271d0f",
+      bondAddress: "0x1e0ad0f8ddff84fdc938373e9aa66b8d994ea066", // This is the bond depository on fantom (trying to match up with the mainnet example to get bonds working.)
+      reserveAddress: "0x0ae825cd631d5b59d56acc635f1599ebb3390a6d", // used Mock WFTM
+
     },
   },
 });

@@ -57,7 +57,7 @@ function NavContent() {
 
           <div className="dapp-menu-links">
             <div className="dapp-nav" id="navbarNav">
-              {(networkId === 250 || networkId === 4002) && (
+              {(networkId === 1 || networkId === 4 || networkId === 250 || networkId === 4002) && (
                 <>
                   <Link
                     component={NavLink}

@@ -82,7 +82,7 @@ export const ftm = new CustomBond({
     //   reserveAddress: "0x853d955acef822db058eb8505911ed77f175b99e",
     // },
     [NetworkID.Testnet]: {
-      bondAddress: "0x1e0AD0F8DDFF84FDc938373E9aa66b8d994ea066",
+      bondAddress: "0x6fE3e4644a1CBB087D411A52C931B630cD5F899f",
       reserveAddress: "0xDd1875ddC7c832FA1CB82DfB8B34d3abD1F67a87",
     },
     // [NetworkID.Fantom]: {

@@ -12,17 +12,17 @@ import { createAsyncThunk, createSelector, createSlice } from "@reduxjs/toolkit"
 import { RootState } from "src/store";
 import { IBaseAddressAsyncThunk, ICalcUserBondDetailsAsyncThunk } from "./interfaces";
 import { FuseProxy, IERC20, IERC20__factory, SOhmv2 } from "src/typechain";
-import { GOHM__factory } from "src/typechain/factories/GOHM__factory";
+// import { GOHM__factory } from "src/typechain/factories/GOHM__factory";
 
 interface IUserBalances {
   balances: {
-    gohm: string;
-    ohm: string;
-    sohm: string;
-    fsohm: string;
-    wsohm: string;
-    fiatDaowsohm: string;
-    wsohmAsSohm: string;
+    // gohm: string;
+    brick: string;
+    sbrick: string;
+    // fsohm: string;
+    // wsohm: string;
+    // fiatDaowsbrick: string;
+    // wsohmAsSohm: string;
     pool: string;
   };
 }
@@ -31,8 +31,8 @@ export const getBalances = createAsyncThunk(
   "account/getBalances",
   async ({ address, networkID, provider }: IBaseAddressAsyncThunk) => {
     // let gOhmBalance = BigNumber.from("0");
-    let ohmBalance = BigNumber.from("0");
-    let sohmBalance = BigNumber.from("0");
+    let brickBalance = BigNumber.from("0");
+    let sbrickBalance = BigNumber.from("0");
     // let wsohmBalance = BigNumber.from("0");
     // let wsohmAsSohm = BigNumber.from("0");
     let poolBalance = BigNumber.from("0");
@@ -51,13 +51,13 @@ export const getBalances = createAsyncThunk(
         ierc20Abi,
         provider,
       ) as IERC20;
-      ohmBalance = await brickContract.balanceOf(address);
+      brickBalance = await brickContract.balanceOf(address);
       const sbrickContract = new ethers.Contract(
         addresses[networkID].SBRICK_ADDRESS as string,
         ierc20Abi,
         provider,
       ) as IERC20;
-      sohmBalance = await sbrickContract.balanceOf(address);
+      sbrickBalance = await sbrickContract.balanceOf(address);
 
       // const poolTokenContract = new ethers.Contract(
       //   addresses[networkID].PT_TOKEN_ADDRESS as string,
@@ -93,13 +93,13 @@ export const getBalances = createAsyncThunk(
     return {
       balances: {
         // gohm: ethers.utils.formatEther(gOhmBalance),
-        ohm: ethers.utils.formatUnits(ohmBalance, "gwei"),
-        sohm: ethers.utils.formatUnits(sohmBalance, "gwei"),
+        brick: ethers.utils.formatUnits(brickBalance, "gwei"),
+        sbrick: ethers.utils.formatUnits(sbrickBalance, "gwei"),
         // fsohm: ethers.utils.formatUnits(fsohmBalance, "gwei"),
         // wsohm: ethers.utils.formatEther(wsohmBalance),
-        // fiatDaowsohm: ethers.utils.formatEther(fiatDaowsohmBalance),
+        // fiatDaowsbrick: ethers.utils.formatEther(fiatDaowsohmBalance),
         // wsohmAsSohm: ethers.utils.formatUnits(wsohmAsSohm, "gwei"),
-        // pool: ethers.utils.formatUnits(poolBalance, "gwei"),
+        pool: ethers.utils.formatUnits(poolBalance, "gwei"),
       },
     };
   },
@@ -112,8 +112,8 @@ interface IUserAccountDetails {
   };
   wrapping: {
     sbrickWrap: number;
-    wsohmUnwrap: number;
-    gOhmUnwrap: number;
+    // wsohmUnwrap: number;
+    // gOhmUnwrap: number;
   };
 }
 
@@ -147,8 +147,8 @@ export const getMigrationAllowances = createAsyncThunk(
 
     return {
       migration: {
-        ohm: +brickAllowance,
-        sohm: +sbrickAllowance,
+        brick: +brickAllowance,
+        sbrick: +sbrickAllowance,
         // wsohm: +wsbrickAllowance,
         // gohm: +gbrickAllowance,
       },
@@ -241,7 +241,7 @@ export const calculateUserBondDetails = createAsyncThunk(
     // Calculate bond details.
     const bondContract = bond.getContractForBond(networkID, provider);
     const reserveContract = bond.getContractForReserve(networkID, provider);
-    console.log("bondContract, reserveContract", bondContract, reserveContract);
+    // console.log("bondContract, reserveContract", bondContract, reserveContract);
 
     let pendingPayout, bondMaturationBlock;
 
@@ -274,15 +274,16 @@ export const calculateUserBondDetails = createAsyncThunk(
 interface IAccountSlice extends IUserAccountDetails, IUserBalances {
   bonds: { [key: string]: IUserBondDetails };
   balances: {
-    gohm: string;
-    ohm: string;
-    sohm: string;
-    dai: string;
-    oldsohm: string;
-    fsohm: string;
-    wsohm: string;
-    fiatDaowsohm: string;
-    wsohmAsSohm: string;
+    // gohm: string;
+    brick: string;
+    sbrick: string;
+    frax: string;
+    // dai: string;
+    // oldsohm: string;
+    // fsohm: string;
+    // wsohm: string;
+    // fiatDaowsbrick: string;
+    // wsohmAsSohm: string;
     pool: string;
   };
   loading: boolean;
@@ -291,35 +292,36 @@ interface IAccountSlice extends IUserAccountDetails, IUserBalances {
     brickUnstake: number;
   };
   migration: {
-    ohm: number;
-    sohm: number;
-    wsohm: number;
-    gohm: number;
+    brick: number;
+    sbrick: number;
+    // wsohm: number;
+    // gohm: number;
   };
-  pooling: {
-    sohmPool: number;
-  };
+  // pooling: {
+  //   // sohmPool: number;
+  // };
 }
 
 const initialState: IAccountSlice = {
   loading: false,
   bonds: {},
   balances: {
-    gohm: "",
-    ohm: "",
-    sohm: "",
-    dai: "",
-    oldsohm: "",
-    fsohm: "",
-    wsohm: "",
-    fiatDaowsohm: "",
+    // gohm: "",
+    brick: "",
+    sbrick: "",
+    frax: "",
+    // dai: "",
+    // oldsohm: "",
+    // fsohm: "",
+    // wsohm: "",
+    // fiatDaowsbrick: "",
     pool: "",
-    wsohmAsSohm: "",
+    // wsohmAsSohm: "",
   },
   staking: { brickStake: 0, brickUnstake: 0 },
-  wrapping: { sbrickWrap: 0, wsohmUnwrap: 0, gOhmUnwrap: 0 },
-  pooling: { sohmPool: 0 },
-  migration: { ohm: 0, sohm: 0, wsohm: 0, gohm: 0 },
+  wrapping: { sbrickWrap: 0 },
+  // pooling: { sohmPool: 0 },
+  migration: { brick: 0, sbrick: 0 },
 };
 
 const accountSlice = createSlice({

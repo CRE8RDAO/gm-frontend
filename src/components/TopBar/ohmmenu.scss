@@ -5,7 +5,7 @@
     color: inherit !important;
   }
 }
-.ohm-menu-button-hover {
+.brick-menu-button-hover {
   z-index: 9;
 }
 #ohm-popper,
@@ -16,7 +16,7 @@
   -webkit-backdrop-filter: blur(33px);
   margin-top: 10px;
   border-radius: 10px;
-  .MuiPaper-root.ohm-menu {
+  .MuiPaper-root.brick-menu {
     padding: 16px 6px;
     display: flex;
     flex-direction: column;
@@ -74,7 +74,7 @@
 }
 
 .mobile #ohm-menu-button-hover {
-  .ohm-menu-button-text {
+  .brick-menu-button-text {
     display: none !important;
   }
 

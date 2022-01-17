@@ -97,12 +97,12 @@ const commonSettings = {
           marginBottom: "1.8rem",
           overflow: "hidden",
         },
-        "&.ohm-menu": {
+        "&.brick-menu": {
           padding: "22px 0px",
           borderRadius: "10px",
           margin: "0px",
         },
-        "&.ohm-chart-card": {
+        "&.brick-chart-card": {
           padding: "20px 0px",
           whiteSpace: "nowrap",
           maxWidth: "700px",

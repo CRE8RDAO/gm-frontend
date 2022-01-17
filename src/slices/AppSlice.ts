@@ -1,21 +1,21 @@
 import { ethers } from "ethers";
 import { addresses } from "../constants";
-import { abi as OlympusStakingv2ABI } from "../abi/OlympusStakingv2.json";
-import { abi as sOHMv2 } from "../abi/sOhmv2.json";
+import { abi as OlympusStaking } from "../abi/ftmTestnet/OlympusStaking.json";
+import { abi as sBrick } from "../abi/ftmTestnet/sOlympus.json";
 import { setAll, getTokenPrice } from "../helpers";
 import { NodeHelper } from "src/helpers/NodeHelper";
 import apollo from "../lib/apolloClient";
 import { createSlice, createSelector, createAsyncThunk } from "@reduxjs/toolkit";
 import { RootState } from "src/store";
 import { IBaseAsyncThunk } from "./interfaces";
-import { OlympusStakingv2, SOhmv2 } from "../typechain";
+import { OlympusStakingv2, SOHM } from "../typechain";
 
 interface IProtocolMetrics {
   readonly timestamp: string;
-  readonly ohmCirculatingSupply: string;
-  readonly sOhmCirculatingSupply: string;
+  readonly brickCirculatingSupply: string;
+  readonly sBrickCirculatingSupply: string;
   readonly totalSupply: string;
-  readonly ohmPrice: string;
+  readonly brickPrice: string;
   readonly marketCap: string;
   readonly totalValueLocked: string;
   readonly treasuryMarketValue: string;
@@ -35,10 +35,10 @@ export const loadAppDetails = createAsyncThunk(
         }
         protocolMetrics(first: 1, orderBy: timestamp, orderDirection: desc) {
           timestamp
-          ohmCirculatingSupply
-          sOhmCirculatingSupply
+          brickCirculatingSupply
+          sBrickCirculatingSupply
           totalSupply
-          ohmPrice
+          brickPrice
           marketCap
           totalValueLocked
           treasuryMarketValue
@@ -61,7 +61,7 @@ export const loadAppDetails = createAsyncThunk(
 
     const stakingTVL = parseFloat(graphData.data.protocolMetrics[0].totalValueLocked);
     // NOTE (appleseed): marketPrice from Graph was delayed, so get CoinGecko price
-    // const marketPrice = parseFloat(graphData.data.protocolMetrics[0].ohmPrice);
+    // const marketPrice = parseFloat(graphData.data.protocolMetrics[0].brickPrice);
     let marketPrice;
     try {
       const originalPromiseResult = await dispatch(
@@ -75,7 +75,7 @@ export const loadAppDetails = createAsyncThunk(
     }
 
     const marketCap = parseFloat(graphData.data.protocolMetrics[0].marketCap);
-    const circSupply = parseFloat(graphData.data.protocolMetrics[0].ohmCirculatingSupply);
+    const circSupply = parseFloat(graphData.data.protocolMetrics[0].brickCirculatingSupply);
     const totalSupply = parseFloat(graphData.data.protocolMetrics[0].totalSupply);
     const treasuryMarketValue = parseFloat(graphData.data.protocolMetrics[0].treasuryMarketValue);
     // const currentBlock = parseFloat(graphData.data._meta.block.number);
@@ -95,15 +95,15 @@ export const loadAppDetails = createAsyncThunk(
 
     const stakingContract = new ethers.Contract(
       addresses[networkID].STAKING_ADDRESS as string,
-      OlympusStakingv2ABI,
+      OlympusStaking,
       provider,
     ) as OlympusStakingv2;
 
     const sohmMainContract = new ethers.Contract(
       addresses[networkID].SBRICK_ADDRESS as string,
-      sOHMv2,
+      sBrick,
       provider,
-    ) as SOhmv2;
+    ) as SOHM;
 
     // Calculating staking
     const epoch = await stakingContract.epoch();
@@ -115,6 +115,22 @@ export const loadAppDetails = createAsyncThunk(
 
     // Current index
     const currentIndex = await stakingContract.index();
+
+    // console.log(
+    //   "currentIndex, currentBlock, fiveDayRate, stakingAPY, stakingTVL, stakingRebase, marketCap, marketPrice, circSupply, totalSupply, treasuryMarketValue",
+    //   currentIndex,
+    //   currentBlock,
+    //   fiveDayRate,
+    //   stakingAPY,
+    //   stakingTVL,
+    //   stakingRebase,
+    //   marketCap,
+    //   marketPrice,
+    //   circSupply,
+    //   totalSupply,
+    //   treasuryMarketValue,
+    // );
+
     return {
       currentIndex: ethers.utils.formatUnits(currentIndex, "gwei"),
       currentBlock,

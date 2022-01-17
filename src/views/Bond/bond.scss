@@ -43,7 +43,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    .ohm-pair-img,
+    .brick-pair-img,
     .reserve-pair-img {
       height: 38px;
       width: 38px;
@@ -78,7 +78,7 @@
     }
   }
 
-  .ohm-input {
+  .brick-input {
     min-width: 50%;
     max-width: 408px;
     margin: 5px;
@@ -105,7 +105,7 @@
         justify-content: center;
         align-items: center;
         align-content: center;
-        .input-group.ohm-input-group {
+        .input-group.brick-input-group {
           margin: 10px !important;
           width: 75%;
           height: 50px;

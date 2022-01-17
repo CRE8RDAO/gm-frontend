@@ -79,8 +79,8 @@ function Wrap() {
     return state.app.marketPrice * state.app.currentIndex;
   });
 
-  const sohmBalance = useSelector(state => {
-    return state.account.balances && state.account.balances.sohm;
+  const sbrickBalance = useSelector(state => {
+    return state.account.balances && state.account.balances.sbrick;
   });
   const wsohmBalance = useSelector(state => {
     return state.account.balances && state.account.balances.wsohm;
@@ -94,7 +94,7 @@ function Wrap() {
   });
 
   const migrateSbrickAllowance = useSelector(state => {
-    return state.account.migration && state.account.migration.sohm;
+    return state.account.migration && state.account.migration.sbrick;
   });
 
   const migrateWsbrickAllowance = useSelector(state => {
@@ -126,7 +126,7 @@ function Wrap() {
       : `${currentAction} ${assetFrom}`;
 
   const setMax = () => {
-    if (assetFrom === "sBRICK") setQuantity(sohmBalance);
+    if (assetFrom === "sBRICK") setQuantity(sbrickBalance);
     if (assetFrom === "wsBRICK") setQuantity(wsohmBalance);
     if (assetFrom === "gBRICK") setQuantity(gohmBalance);
   };
@@ -157,7 +157,7 @@ function Wrap() {
   };
 
   const hasCorrectAllowance = useCallback(() => {
-    if (assetFrom === "sBRICK" && assetTo === "gBRICK") return migrateSbrickAllowance > sohmBalance;
+    if (assetFrom === "sBRICK" && assetTo === "gBRICK") return migrateSbrickAllowance > sbrickBalance;
     if (assetFrom === "wsBRICK" && assetTo === "gBRICK") return migrateWsbrickAllowance > wsohmBalance;
     if (assetFrom === "wsBRICK" && assetTo === "sBRICK") return unwrapAllowance > wsohmBalance;
     if (assetFrom === "gBRICK") return unwrapGbrickAllowance > gohmBalance;
@@ -497,7 +497,7 @@ function Wrap() {
                         <div className="data-row">
                           <Typography variant="body1">sBRICK Balance</Typography>
                           <Typography variant="body1">
-                            {isAppLoading ? <Skeleton width="80px" /> : <>{trim(sohmBalance, 4)} sBRICK</>}
+                            {isAppLoading ? <Skeleton width="80px" /> : <>{trim(sbrickBalance, 4)} sBRICK</>}
                           </Typography>
                         </div>
                         <div className="data-row">

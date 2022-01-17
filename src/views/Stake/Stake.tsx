@@ -20,8 +20,8 @@ import {
   AccordionDetails,
 } from "@material-ui/core";
 import { t, Trans } from "@lingui/macro";
-import NewReleases from "@material-ui/icons/NewReleases";
-import RebaseTimer from "../../components/RebaseTimer/RebaseTimer";
+// import NewReleases from "@material-ui/icons/NewReleases";
+// import RebaseTimer from "../../components/RebaseTimer/RebaseTimer";
 import TabPanel from "../../components/TabPanel";
 import { trim } from "../../helpers";
 import { changeApproval, changeStake } from "../../slices/StakeThunk";
@@ -32,7 +32,7 @@ import { Skeleton } from "@material-ui/lab";
 import ExternalStakePool from "./ExternalStakePool";
 import { error } from "../../slices/MessagesSlice";
 import { ethers } from "ethers";
-import ZapCta from "../Zap/ZapCta";
+// import ZapCta from "../Zap/ZapCta";
 import { useAppSelector } from "src/hooks";
 import { ExpandMore } from "@material-ui/icons";
 import StakeRow from "./StakeRow";
@@ -53,7 +53,9 @@ function Stake() {
   const [view, setView] = useState(0);
   const [quantity, setQuantity] = useState(0);
 
-  const tokens = useAppSelector(state => state.zap.balances);
+  // const tokens = useAppSelector(state => state.zap.balances);
+  const app = useAppSelector(state => state.app);
+  // console.log("app", app);
   const isAppLoading = useAppSelector(state => state.app.loading);
   const currentIndex = useAppSelector(state => {
     return state.app.currentIndex;
@@ -61,32 +63,32 @@ function Stake() {
   const fiveDayRate = useAppSelector(state => {
     return state.app.fiveDayRate;
   });
-  const ohmBalance = useAppSelector(state => {
-    return state.account.balances && state.account.balances.ohm;
+  const brickBalance = useAppSelector(state => {
+    return state.account.balances && state.account.balances.brick;
   });
-  const oldSohmBalance = useAppSelector(state => {
-    return state.account.balances && state.account.balances.oldsohm;
+  // const oldSohmBalance = useAppSelector(state => {
+  //   return state.account.balances && state.account.balances.oldsohm;
+  // });
+  const sbrickBalance = useAppSelector(state => {
+    return state.account.balances && state.account.balances.sbrick;
   });
-  const sohmBalance = useAppSelector(state => {
-    return state.account.balances && state.account.balances.sohm;
-  });
-  const fsohmBalance = useAppSelector(state => {
-    return state.account.balances && state.account.balances.fsohm;
-  });
-  const wsohmBalance = useAppSelector(state => {
-    return state.account.balances && state.account.balances.wsohm;
-  });
-  const fiatDaowsohmBalance = useAppSelector(state => {
-    return state.account.balances && state.account.balances.fiatDaowsohm;
-  });
-  const fiatDaoAsSohm = Number(fiatDaowsohmBalance) * Number(currentIndex);
-  const gOhmBalance = useAppSelector(state => {
-    return state.account.balances && state.account.balances.gohm;
-  });
-  const gOhmAsSohm = Number(gOhmBalance) * Number(currentIndex);
-  const wsohmAsSohm = useAppSelector(state => {
-    return state.account.balances && state.account.balances.wsohmAsSohm;
-  });
+  // const fsohmBalance = useAppSelector(state => {
+  //   return state.account.balances && state.account.balances.fsohm;
+  // });
+  // const wsohmBalance = useAppSelector(state => {
+  //   return state.account.balances && state.account.balances.wsohm;
+  // });
+  // const fiatDaowsohmBalance = useAppSelector(state => {
+  //   return state.account.balances && state.account.balances.fiatDaowsohm;
+  // });
+  // const fiatDaoAsSohm = Number(fiatDaowsohmBalance) * Number(currentIndex);
+  // const gOhmBalance = useAppSelector(state => {
+  //   return state.account.balances && state.account.balances.gohm;
+  // });
+  // const gOhmAsSohm = Number(gOhmBalance) * Number(currentIndex);
+  // const wsohmAsSohm = useAppSelector(state => {
+  //   return state.account.balances && state.account.balances.wsohmAsSohm;
+  // });
   const stakeAllowance = useAppSelector(state => {
     return (state.account.staking && state.account.staking.brickStake) || 0;
   });
@@ -109,9 +111,9 @@ function Stake() {
 
   const setMax = () => {
     if (view === 0) {
-      setQuantity(Number(ohmBalance));
+      setQuantity(Number(brickBalance));
     } else {
-      setQuantity(Number(sohmBalance));
+      setQuantity(Number(sbrickBalance));
     }
   };
 
@@ -128,11 +130,11 @@ function Stake() {
 
     // 1st catch if quantity > balance
     let gweiValue = ethers.utils.parseUnits(quantity.toString(), "gwei");
-    if (action === "stake" && gweiValue.gt(ethers.utils.parseUnits(ohmBalance, "gwei"))) {
+    if (action === "stake" && gweiValue.gt(ethers.utils.parseUnits(brickBalance, "gwei"))) {
       return dispatch(error(t`You cannot stake more than your BRICK balance.`));
     }
 
-    if (action === "unstake" && gweiValue.gt(ethers.utils.parseUnits(sohmBalance, "gwei"))) {
+    if (action === "unstake" && gweiValue.gt(ethers.utils.parseUnits(sbrickBalance, "gwei"))) {
       return dispatch(error(t`You cannot unstake more than your sBRICK balance.`));
     }
 
@@ -163,7 +165,7 @@ function Stake() {
   };
 
   const trimmedBalance = Number(
-    [sohmBalance, fsohmBalance, wsohmAsSohm, gOhmAsSohm, fiatDaoAsSohm]
+    [sbrickBalance]
       .filter(Boolean)
       .map(balance => Number(balance))
       .reduce((a, b) => a + b, 0)
@@ -179,7 +181,7 @@ function Stake() {
       <Zoom in={true} onEntered={() => setZoomed(true)}>
         <Paper className={`brick-card`}>
           <Grid container direction="column" spacing={2}>
-            <Grid item>
+            {/* <Grid item>
               <div className="card-header">
                 <Typography variant="h5">Single Stake (3, 3 test)</Typography>
                 <RebaseTimer />
@@ -199,7 +201,7 @@ function Stake() {
                   </Link>
                 )}
               </div>
-            </Grid>
+            </Grid> */}
 
             <Grid item>
               <div className="stake-top-metrics">
@@ -414,7 +416,7 @@ function Stake() {
                     <StakeRow
                       title={t`Unstaked Balance`}
                       id="user-balance"
-                      balance={`${trim(Number(ohmBalance), 4)} BRICK`}
+                      balance={`${trim(Number(brickBalance), 4)} BRICK`}
                       {...{ isAppLoading }}
                     />
                     <Accordion className="stake-accordion" square>
@@ -429,11 +431,11 @@ function Stake() {
                       <AccordionDetails>
                         <StakeRow
                           title={t`Single Staking`}
-                          balance={`${trim(Number(sohmBalance), 4)} sBRICK`}
+                          balance={`${trim(Number(sbrickBalance), 4)} sBRICK`}
                           indented
                           {...{ isAppLoading }}
                         />
-                        <StakeRow
+                        {/* <StakeRow
                           title={t`Staked Balance in Fuse`}
                           balance={`${trim(Number(fsohmBalance), 4)} fsBRICK`}
                           indented
@@ -456,7 +458,7 @@ function Stake() {
                           balance={`${trim(Number(gOhmBalance), 4)} gBRICK`}
                           indented
                           {...{ isAppLoading }}
-                        />
+                        /> */}
                       </AccordionDetails>
                     </Accordion>
                     <Divider color="secondary" />

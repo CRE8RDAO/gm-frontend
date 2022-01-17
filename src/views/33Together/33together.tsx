@@ -61,8 +61,8 @@ const PoolTogether = () => {
   ]);
   const isAccountLoading = useAppSelector(state => state.account.loading ?? true);
 
-  const sohmBalance = useAppSelector(state => {
-    return state.account.balances && state.account.balances.sohm;
+  const sbrickBalance = useAppSelector(state => {
+    return state.account.balances && state.account.balances.sbrick;
   });
 
   const poolBalance = useAppSelector(state => {
@@ -79,7 +79,6 @@ const PoolTogether = () => {
   }, [networkId]);
 
   useEffect(() => {
-    console.log("apollo", networkId);
     let apolloUrl: string;
     if (networkId === -1) {
       apolloUrl = poolDataQuery(addresses[1].PT_PRIZE_POOL_ADDRESS);
@@ -200,7 +199,7 @@ const PoolTogether = () => {
         graphLoading={graphLoading}
         isAccountLoading={isAccountLoading}
         poolBalance={trimOdds(parseFloat(poolBalance))}
-        sohmBalance={trimOdds(parseFloat(sohmBalance))}
+        sbrickBalance={trimOdds(parseFloat(sbrickBalance))}
         yourTotalAwards={trimOdds(yourTotalAwards)}
         yourOdds={trimOdds(yourOdds)}
         winners={winners}

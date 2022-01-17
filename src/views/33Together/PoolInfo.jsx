@@ -34,7 +34,7 @@ export const PoolInfo = props => {
 
   return (
     <Zoom in={true}>
-      <Paper className="ohm-card">
+      <Paper className="brick-card">
         <div className="card-header">
           <Typography variant="h5">
             <Trans>Prize Pool Info</Trans>

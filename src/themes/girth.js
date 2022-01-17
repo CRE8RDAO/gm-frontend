@@ -72,7 +72,7 @@ export const girth = responsiveFontSizes(
             "&.ohm-menu": {
               backgroundColor: girthTheme.menuBg,
             },
-            "&.ohm-modal": {
+            "&.brick-modal": {
               backgroundColor: girthTheme.menuBg,
             },
           },

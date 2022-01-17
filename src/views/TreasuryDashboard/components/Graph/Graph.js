@@ -120,7 +120,7 @@ export const BrickStakedGraph = () => {
     data &&
     data
       .map(metric => ({
-        staked: (metric.sOhmCirculatingSupply / metric.ohmCirculatingSupply) * 100,
+        staked: (metric.sBrickCirculatingSupply / metric.brickCirculatingSupply) * 100,
         timestamp: metric.timestamp,
       }))
       .filter(metric => metric.staked < 100);

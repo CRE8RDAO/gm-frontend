@@ -77,10 +77,10 @@ export const light = responsiveFontSizes(
         MuiPaper: {
           root: {
             backgroundColor: lightTheme.paperBg,
-            "&.ohm-card": {
+            "&.brick-card": {
               backgroundColor: lightTheme.paperBg,
             },
-            "&.ohm-modal": {
+            "&.brick-modal": {
               backgroundColor: lightTheme.modalBg,
             },
             "&.ohm-menu": {

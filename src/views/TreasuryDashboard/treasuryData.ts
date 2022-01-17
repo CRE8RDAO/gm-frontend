@@ -4,10 +4,10 @@ query {
   protocolMetrics(first: 100, orderBy: timestamp, orderDirection: desc) {
     id
     timestamp
-    ohmCirculatingSupply
-    sOhmCirculatingSupply
+    brickCirculatingSupply
+    sBrickCirculatingSupply
     totalSupply
-    ohmPrice
+    brickPrice
     marketCap
     totalValueLocked
     treasuryRiskFreeValue

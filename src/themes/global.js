@@ -89,7 +89,7 @@ const commonSettings = {
     MuiPaper: {
       root: {
         backdropFilter: "blur(33px)",
-        "&.ohm-card": {
+        "&.brick-card": {
           padding: "20px 30px 30px 30px",
           borderRadius: "10px",
           maxWidth: "833px",

@@ -10,7 +10,7 @@ export const ConfirmationModal = props => {
     <Modal open={props.show} onClose={props.onClose}>
       <Fade in={true}>
         <Backdrop open style>
-          <Paper className="ohm-card ohm-modal" style={{ maxWidth: "450px" }}>
+          <Paper className="brick-card brick-modal" style={{ maxWidth: "450px" }}>
             <Button style={{ alignSelf: "flex-start" }}>
               <SvgIcon component={XIcon} color="primary" onClick={props.onClose} />
             </Button>

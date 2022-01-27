@@ -283,7 +283,7 @@ function Wrap() {
       );
 
     return (
-      <FormControl className="ohm-input" variant="outlined" color="primary">
+      <FormControl className="brick-input" variant="outlined" color="primary">
         <InputLabel htmlFor="amount-input"></InputLabel>
         <OutlinedInput
           id="amount-input"

@@ -141,6 +141,13 @@ function App() {
       dispatch(getMigrationAllowances({ address, provider: loadProvider, networkID: networkId }));
       bonds.map(bond => {
         // NOTE: get any Claimable bonds, they may not be bondable
+        console.log(
+          "address, bond, provider: loadProvider, networkID: networkId",
+          address,
+          bond,
+          loadProvider,
+          networkId,
+        );
         if (bond.getClaimability(networkId)) {
           dispatch(calculateUserBondDetails({ address, bond, provider: loadProvider, networkID: networkId }));
         }

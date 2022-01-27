@@ -13,7 +13,7 @@ query {
     treasuryRiskFreeValue
     treasuryMarketValue
     nextEpochRebase
-    nextDistributedOhm
+    nextDistributedBrick
     treasuryDaiRiskFreeValue
     treasuryFraxMarketValue
     treasuryDaiMarketValue
@@ -32,7 +32,7 @@ query {
     runwayCurrent
     holders
     treasuryOhmDaiPOL
-    treasuryOhmFraxPOL
+    treasuryBrickFtmPOL
   }
 }
 `;

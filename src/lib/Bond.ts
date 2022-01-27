@@ -34,10 +34,10 @@ export interface NetworkAddresses {
 }
 
 export interface Available {
-  // [NetworkID.Mainnet]: boolean;
-  [NetworkID.Testnet]: boolean;
+  // [NetworkID.Mainnet]?: boolean;
+  [NetworkID.Testnet]?: boolean;
   // [NetworkID.Fantom]: boolean;
-  [NetworkID.FantomTestnet]: boolean;
+  [NetworkID.FantomTestnet]?: boolean;
 }
 
 interface BondOpts {

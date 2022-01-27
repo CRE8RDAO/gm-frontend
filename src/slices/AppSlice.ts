@@ -20,7 +20,7 @@ interface IProtocolMetrics {
   readonly totalValueLocked: string;
   readonly treasuryMarketValue: string;
   readonly nextEpochRebase: string;
-  readonly nextDistributedOhm: string;
+  readonly nextDistributedBrick: string;
 }
 
 export const loadAppDetails = createAsyncThunk(
@@ -43,15 +43,15 @@ export const loadAppDetails = createAsyncThunk(
           totalValueLocked
           treasuryMarketValue
           nextEpochRebase
-          nextDistributedOhm
+          nextDistributedBrick
         }
       }
     `;
 
-    if (networkID !== 4002) {
-      provider = NodeHelper.getMainnetStaticProvider();
-      networkID = 4002;
-    }
+    // if (networkID !== 4002) {
+    //   provider = NodeHelper.getMainnetStaticProvider();
+    //   networkID = 4002;
+    // }
     const graphData = await apollo<{ protocolMetrics: IProtocolMetrics[] }>(protocolMetricsQuery);
 
     if (!graphData || graphData == null) {

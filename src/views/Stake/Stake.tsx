@@ -307,21 +307,21 @@ function Stake() {
                                   <>
                                     <Trans>First time staking</Trans> <b>BRICK</b>?
                                     <br />
-                                    <Trans>Please approve Cre8r Dao to use your</Trans> <b>BRICK</b>{" "}
+                                    <Trans>Please approve CRE8R DAO to use your</Trans> <b>BRICK</b>{" "}
                                     <Trans>for staking</Trans>.
                                   </>
                                 ) : (
                                   <>
                                     <Trans>First time unstaking</Trans> <b>sBRICK</b>?
                                     <br />
-                                    <Trans>Please approve Cre8r Dao to use your</Trans> <b>sBRICK</b>{" "}
+                                    <Trans>Please approve CRE8R DAO to use your</Trans> <b>sBRICK</b>{" "}
                                     <Trans>for unstaking</Trans>.
                                   </>
                                 )}
                               </Typography>
                             </Box>
                           ) : (
-                            <FormControl className="ohm-input" variant="outlined" color="primary">
+                            <FormControl className="brick-input" variant="outlined" color="primary">
                               <InputLabel htmlFor="amount-input"></InputLabel>
                               <OutlinedInput
                                 id="amount-input"

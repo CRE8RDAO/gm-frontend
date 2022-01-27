@@ -1,6 +1,7 @@
 import { ethers, BigNumber } from "ethers";
 import { addresses } from "../constants";
 import { abi as ierc20ABI } from "../abi/IERC20.json";
+import { abi as BrickStakingABI } from "../abi/rinkeby/OlympusStaking.json";
 import { abi as OlympusStakingABI } from "../abi/OlympusStakingv2.json";
 import { abi as StakingHelperABI } from "../abi/StakingHelper.json";
 import { clearPendingTxn, fetchPendingTxns, getStakingTypeText } from "./PendingTxnsSlice";
@@ -9,7 +10,7 @@ import { fetchAccountSuccess, getBalances } from "./AccountSlice";
 import { error, info } from "../slices/MessagesSlice";
 import { IActionValueAsyncThunk, IChangeApprovalAsyncThunk, IJsonRPCError } from "./interfaces";
 import { segmentUA } from "../helpers/userAnalyticHelpers";
-import { IERC20, OlympusStakingv2, StakingHelper } from "src/typechain";
+import { IERC20, OlympusStaking, OlympusStakingv2, StakingHelper } from "src/typechain";
 import ReactGA from "react-ga";
 
 interface IUAData {
@@ -18,6 +19,25 @@ interface IUAData {
   approved: boolean;
   txHash: string | null;
   type: string | null;
+}
+
+interface IProtocolMetrics {
+  timestamp?: string;
+  brickCirculatingSupply: string;
+  totalSupply: string;
+  brickPrice: string;
+  marketCap: string;
+  totalValueLocked: string;
+  nextEpochRebase?: string;
+  nextDistributedBrick?: string;
+  treasuryRiskFreeValue: string;
+  treasuryMarketValue: string;
+  treasuryFtmRiskFreeValue: string;
+  treasuryFraxMarketValue: string;
+  treasuryFtmMarketValue: string;
+  treasuryFraxRiskFreeValue: string;
+  treasuryWETHRiskFreeValue: string;
+  treasuryWETHMarketValue: string;
 }
 
 function alreadyApprovedToken(token: string, stakeAllowance: BigNumber, unstakeAllowance: BigNumber) {
@@ -186,3 +206,48 @@ export const changeStake = createAsyncThunk(
     dispatch(getBalances({ address, networkID, provider }));
   },
 );
+
+// export const stakeMatrix = createAsyncThunk(
+//   "stake/stakeMatrix",
+//   async ({ action, value, provider, address, networkID }: IActionValueAsyncThunk, { dispatch }) => {
+//     if (!provider) {
+//       dispatch(error("Please connect your wallet!"));
+//       return;
+//     }
+
+//     const signer = provider.getSigner();
+//     const brickContract = new ethers.Contract(
+//       addresses[networkID].STAKING_ADDRESS as string,
+//       BrickStakingABI,
+//       signer,
+//     ) as OlympusStaking;
+//     const stakingHelper = new ethers.Contract(
+//       addresses[networkID].STAKING_HELPER_ADDRESS as string,
+//       StakingHelperABI,
+//       signer,
+//     ) as StakingHelper;
+
+//     let stakeTx;
+//     let matrixData: IProtocolMetrics = {
+//       brickCirculatingSupply: "", // total brick supply - total staked brick - total brick in treasury contract
+//       totalSupply: "", // total brick supply
+//       brickPrice: "", // brick price
+//       marketCap: "", // brickPrice * brickCirculatingSupply
+//       totalValueLocked: "", // total staked brick
+//       nextEpochRebase: "",
+//       nextDistributedBrick: "",
+//       treasuryFraxRiskFreeValue: "", // frax price * total frax in treasury contract
+//       treasuryFraxMarketValue: "", // frax price * total frax in treasury contract
+//       treasuryFtmRiskFreeValue: "", // ftm price * total ftm in treasury contract
+//       treasuryFtmMarketValue: "", // ftm price * total ftm in treasury contract
+//       treasuryRiskFreeValue: "",  //
+//       treasuryMarketValue: "", // add up all coins value in treasury contract
+//     };
+
+//     if (action === "initiate") {
+//       const totalSupply = brickContract.totalSupply();
+//       console.log("totalSupply", totalSupply);
+//     } else {
+//     }
+//   },
+// );

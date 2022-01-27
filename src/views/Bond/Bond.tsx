@@ -52,8 +52,6 @@ const Bond = ({ bond }: { bond: IAllBondData }) => {
     setView(Number(value));
   };
 
-  // console.log("bond", bond);
-
   return (
     <Fade in={true} mountOnEnter unmountOnExit>
       <Grid container id="bond-view">

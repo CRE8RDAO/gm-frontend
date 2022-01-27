@@ -1,4 +1,4 @@
-#ohm-menu-button {
+#brick-menu-button {
   padding: 12px;
   svg {
     margin-right: 3px;
@@ -8,8 +8,8 @@
 .brick-menu-button-hover {
   z-index: 9;
 }
-#ohm-popper,
-#ohm-popper-pending {
+#brick-popper,
+#brick-popper-pending {
   z-index: 5;
   background-color: #00000003;
   backdrop-filter: blur(33px);
@@ -67,13 +67,13 @@
   }
 }
 
-.mobile #ohm-menu-button {
+.mobile #brick-menu-button {
   padding: 0px;
   max-width: 40px !important;
   width: 40px !important;
 }
 
-.mobile #ohm-menu-button-hover {
+.mobile #brick-menu-button-hover {
   .brick-menu-button-text {
     display: none !important;
   }

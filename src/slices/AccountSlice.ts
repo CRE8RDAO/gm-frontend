@@ -241,7 +241,7 @@ export const calculateUserBondDetails = createAsyncThunk(
     // Calculate bond details.
     const bondContract = bond.getContractForBond(networkID, provider);
     const reserveContract = bond.getContractForReserve(networkID, provider);
-    // console.log("bondContract, reserveContract", bondContract, reserveContract);
+    console.log("bondContract, reserveContract", bondContract, reserveContract);
 
     let pendingPayout, bondMaturationBlock;
 

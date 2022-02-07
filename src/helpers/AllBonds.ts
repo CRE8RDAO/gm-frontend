@@ -44,8 +44,8 @@ export const frax = new StableBond({
     //   reserveAddress: "0x6b175474e89094c44da98b954eedeac495271d0f",
     // },
     [NetworkID.Testnet]: {
-      bondAddress: "0x1cB859d5e17e785BB41e1BDe5A1FC962BfEE8A5e",
-      reserveAddress: "0x1d2cd7548727d836bee402cdbc22bcb2e0f23535",
+      bondAddress: "0x6eB912a78E025b5d4C4126db34Dcf88cc36e4B48",
+      reserveAddress: "0x0B81a995b28254D76e5148d29E8eb4c5c26D3aC0",
     },
     // [NetworkID.Fantom]: {
     //   bondAddress: "0x575409F8d77c12B05feD8B455815f0e54797381c",
@@ -86,7 +86,7 @@ export const eth = new CustomBond({
     //   reserveAddress: "0x853d955acef822db058eb8505911ed77f175b99e",
     // },
     [NetworkID.Testnet]: {
-      bondAddress: "0x6fE3e4644a1CBB087D411A52C931B630cD5F899f",
+      bondAddress: "0xc08074d133f794033D3310D605b7480184e47dbd",
       reserveAddress: "0xDd1875ddC7c832FA1CB82DfB8B34d3abD1F67a87",
     },
     // [NetworkID.Fantom]: {

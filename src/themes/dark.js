@@ -1,6 +1,6 @@
-import { createTheme, responsiveFontSizes } from "@material-ui/core/styles"
-import fonts from "./fonts"
-import commonSettings, { handleBackdropFilter } from "./global.js"
+import { createTheme, responsiveFontSizes } from "@material-ui/core/styles";
+import fonts from "./fonts";
+import commonSettings, { handleBackdropFilter } from "./global.js";
 
 // TODO: Break repeated use color values out into list of consts declared here
 // then set the values in darkTheme using the global color variables
@@ -32,7 +32,7 @@ const darkTheme = {
   graphStrokeColor: "rgba(255, 255, 255, .1)",
   gridButtonHoverBackground: "rgba(255, 255, 255, 0.6)",
   gridButtonActiveBackground: "#00000038",
-}
+};
 
 export const dark = responsiveFontSizes(
   createTheme(
@@ -301,4 +301,4 @@ export const dark = responsiveFontSizes(
     },
     commonSettings,
   ),
-)
+);

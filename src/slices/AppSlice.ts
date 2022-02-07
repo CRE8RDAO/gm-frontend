@@ -59,6 +59,7 @@ export const loadAppDetails = createAsyncThunk(
       return;
     }
 
+    console.log("graphData.data.protocolMetrics", graphData.data.protocolMetrics);
     const stakingTVL = parseFloat(graphData.data.protocolMetrics[0].totalValueLocked);
     // NOTE (appleseed): marketPrice from Graph was delayed, so get CoinGecko price
     // const marketPrice = parseFloat(graphData.data.protocolMetrics[0].brickPrice);
@@ -113,6 +114,12 @@ export const loadAppDetails = createAsyncThunk(
     const fiveDayRate = Math.pow(1 + stakingRebase, 5 * 3) - 1;
     const stakingAPY = Math.pow(1 + stakingRebase, 365 * 3) - 1;
 
+    console.log("epoch", epoch);
+    console.log("stakingReward", stakingReward);
+    console.log("circ", circ);
+    console.log("stakingRebase", stakingRebase);
+    console.log("fiveDayRate", fiveDayRate);
+    console.log("stakingAPY", stakingAPY);
     // Current index
     const currentIndex = await stakingContract.index();
 

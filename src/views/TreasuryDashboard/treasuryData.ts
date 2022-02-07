@@ -1,6 +1,11 @@
 // TODO: add paramaterization
 export const treasuryDataQuery = `
 query {
+  _meta {
+    block {
+      number
+    }
+  }
   protocolMetrics(first: 100, orderBy: timestamp, orderDirection: desc) {
     id
     timestamp
@@ -14,14 +19,9 @@ query {
     treasuryMarketValue
     nextEpochRebase
     nextDistributedBrick
-    treasuryDaiRiskFreeValue
     treasuryFraxMarketValue
-    treasuryDaiMarketValue
     treasuryFraxRiskFreeValue
-    treasuryXsushiMarketValue
     treasuryWETHMarketValue
-    treasuryLusdRiskFreeValue
-    treasuryLusdMarketValue
     currentAPY
     runway10k
     runway20k
@@ -31,8 +31,7 @@ query {
     runway2dot5k
     runwayCurrent
     holders
-    treasuryOhmDaiPOL
-    treasuryBrickFtmPOL
+    treasuryBrickFraxPOL
   }
 }
 `;

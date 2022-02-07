@@ -37,11 +37,11 @@ export const MarketValueGraph = () => {
       type="stack"
       data={data}
       dataKey={[
-        "treasuryDaiMarketValue",
+        // "treasuryDaiMarketValue",
         "treasuryFraxMarketValue",
         "treasuryWETHMarketValue",
-        "treasuryXsushiMarketValue",
-        "treasuryLusdMarketValue",
+        // "treasuryXsushiMarketValue",
+        // "treasuryLusdMarketValue",
       ]}
       stopColor={[
         ["#F5AC37", "#EA9276"],
@@ -70,7 +70,7 @@ export const RiskFreeValueGraph = () => {
       type="stack"
       data={data}
       format="currency"
-      dataKey={["treasuryDaiRiskFreeValue", "treasuryFraxRiskFreeValue", "treasuryLusdRiskFreeValue"]}
+      dataKey={["treasuryFraxRiskFreeValue"]}
       stopColor={[
         ["#F5AC37", "#EA9276"],
         ["#768299", "#98B3E9"],

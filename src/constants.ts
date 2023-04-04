@@ -26,6 +26,20 @@ interface IAddresses {
 }
 
 export const addresses: IAddresses = {
+  7001: {
+    BRICK_ADDRESS: "0x931B94bbccef6494Fd600E40d052812b8a1E77A6",
+    FRAX_ADDRESS: "0x0fa65CFb2CC43bDF9F245a59DF65C5E93C534fFf",
+    WFTM_ADDRESS: "0xB10598f6A39054D033B58AB035f43E4e5Aa2D557",
+    BONDINGCALC_ADDRESS: "0x2B774122B4FA94bACc5116CCe37772D329a9aac5",
+    TREASURY_ADDRESS: "0x9c8cabCEA4f9b65658eAa3D267Ee299016FFf732",
+    DISTRIBUTOR_ADDRESS: "0x0A00eB88Ce7800CC4bE59B3c799a34Be5f5cD076",
+    SBRICK_ADDRESS: "0x13f88dF38ee4B237d092745912609DE597e80C6F",
+    STAKING_ADDRESS: "0x6964b052d0E4dDCe6F2FC4c431B70cecd40a1fDA",
+    // STACKING_WARMUP_ADDRESS: "0x5a6A2047afEB20Ff4DDc4B38E0FB5E4744e649D7",
+    STAKING_HELPER_ADDRESS: "0x245E9204E33f789258743089Ff15b6A2d6471C49",
+    // WSOHM_ADDRESS: "0xC98a1c26ECE3Bb18d46ae263Bebf974c0C619EeC",
+    REDEEM_HELPER_ADDRESS: "0xaD9Ea404AcDf33F06fCDEB664378ba5b3b5ba6B6",
+  },
   4002: {
     BRICK_ADDRESS: "0x80FAcC2c14E6F1B31A952C43264b333C2788f30f",
     FRAX_ADDRESS: "0x9e008Cc93b4D2179dB48Fe5A0fed6B484aFf1739",
@@ -222,6 +236,34 @@ export const NETWORKS: { [key: number]: INetwork } = {
     image: ethereum,
     imageAltText: "Fantom Logo",
     uri: () => NodeHelper.getMainnetURI(1),
+  },
+  7000: {
+    chainName: "Canto",
+    chainId: 7000,
+    nativeCurrency: {
+      name: "Canto",
+      symbol: "CANTO",
+      decimals: 18,
+    },
+    rpcUrls: ["https://canto.dexvaults.com"],
+    blockExplorerUrls: ["https://tuber.build/"],
+    image: ethereum,
+    imageAltText: "Ethereum Logo",
+    uri: () => EnvHelper.cantoURI,
+  },
+  7001: {
+    chainName: "Canto Testnet",
+    chainId: 7001,
+    nativeCurrency: {
+      name: "Canto",
+      symbol: "CANTO",
+      decimals: 18,
+    },
+    rpcUrls: ["https://canto-testnet.plexnode.wtf"],
+    blockExplorerUrls: ["https://testnet.tuber.build/"],
+    image: ethereum,
+    imageAltText: "Ethereum Logo",
+    uri: () => EnvHelper.cantoTestnetURI,
   },
   1: {
     chainName: "Ethereum",

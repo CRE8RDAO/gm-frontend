@@ -56,7 +56,7 @@ export default function ExternalStakePool() {
 
   return (
     <Zoom in={true}>
-      <Paper className={`ohm-card secondary ${isSmallScreen && "mobile"}`}>
+      <Paper className={`brick-card secondary ${isSmallScreen && "mobile"}`}>
         <div className="card-header">
           <Typography variant="h5">
             <Trans>Farm Pool</Trans>
@@ -69,7 +69,7 @@ export default function ExternalStakePool() {
                 <TableBody>
                   <TableRow>
                     <TableCell>
-                      <Box className="ohm-pairs">
+                      <Box className="brick-pairs">
                         <MultiLogo images={[gOhmImage, avaxImage]} avatarStyleOverride={avatarStyle} />
                         <Box width="16px" />
                         <Typography>gBRICK-AVAX</Typography>
@@ -96,7 +96,7 @@ export default function ExternalStakePool() {
           ) : (
             <div className="stake-pool">
               <div className={`pool-card-top-row ${isMobileScreen && "small"}`}>
-                <Box className="ohm-pairs">
+                <Box className="brick-pairs">
                   <MultiLogo images={[gOhmImage, avaxImage]} avatarStyleOverride={avatarStyle} />
                   <Box width="16px" />
                   <Typography gutterBottom={false}>gBRICK-AVAX</Typography>

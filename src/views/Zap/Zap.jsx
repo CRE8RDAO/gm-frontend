@@ -24,7 +24,7 @@ function Zap() {
   return (
     <div id="zap-view">
       <Zoom in={true}>
-        <Paper className="ohm-card">
+        <Paper className="brick-card">
           <div className="staking-area">
             {!address ? (
               <div className="stake-wallet-notification">

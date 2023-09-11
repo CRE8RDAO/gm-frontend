@@ -66,6 +66,7 @@
   margin: 0 auto;
   display: flex;
   align-items: center;
+  height: 40%;
 }
 .dapp-nav a {
   margin-top: 0.7rem;
@@ -109,9 +110,9 @@
   color: #999999;
   padding-left: 33px;
   margin-top: 8px;
-  > p {
-    margin-left: 33px;
-  }
+  // > p {
+  //   margin-left: 33px;
+  // }
   .bond {
     display: block;
     padding: unset;

@@ -25,6 +25,14 @@ export const initializeNetwork = createAsyncThunk(
           networkName = "Fantom Testnet";
           uri = NodeHelper.getMainnetURI(id);
           break;
+        case 7000:
+          networkName = "Canto";
+          uri = EnvHelper.cantoURI;
+          break;
+        case 7001:
+          networkName = "Canto Testnet";
+          uri = EnvHelper.cantoTestnetURI;
+          break;
         case 1:
           networkName = "Ethereum";
           uri = NodeHelper.getMainnetURI(id);

@@ -79,8 +79,8 @@ function Wrap() {
     return state.app.marketPrice * state.app.currentIndex;
   });
 
-  const sohmBalance = useSelector(state => {
-    return state.account.balances && state.account.balances.sohm;
+  const sbrickBalance = useSelector(state => {
+    return state.account.balances && state.account.balances.sbrick;
   });
   const wsohmBalance = useSelector(state => {
     return state.account.balances && state.account.balances.wsohm;
@@ -93,15 +93,15 @@ function Wrap() {
     return state.account.wrapping && state.account.wrapping.ohmUnwrap;
   });
 
-  const migrateSohmAllowance = useSelector(state => {
-    return state.account.migration && state.account.migration.sohm;
+  const migrateSbrickAllowance = useSelector(state => {
+    return state.account.migration && state.account.migration.sbrick;
   });
 
-  const migrateWsohmAllowance = useSelector(state => {
+  const migrateWsbrickAllowance = useSelector(state => {
     return state.account.migration && state.account.migration.wsohm;
   });
 
-  const unwrapGohmAllowance = useSelector(state => {
+  const unwrapGbrickAllowance = useSelector(state => {
     return state.account.wrapping && state.account.wrapping.gOhmUnwrap;
   });
 
@@ -126,7 +126,7 @@ function Wrap() {
       : `${currentAction} ${assetFrom}`;
 
   const setMax = () => {
-    if (assetFrom === "sBRICK") setQuantity(sohmBalance);
+    if (assetFrom === "sBRICK") setQuantity(sbrickBalance);
     if (assetFrom === "wsBRICK") setQuantity(wsohmBalance);
     if (assetFrom === "gBRICK") setQuantity(gohmBalance);
   };
@@ -157,13 +157,13 @@ function Wrap() {
   };
 
   const hasCorrectAllowance = useCallback(() => {
-    if (assetFrom === "sBRICK" && assetTo === "gBRICK") return migrateSohmAllowance > sohmBalance;
-    if (assetFrom === "wsBRICK" && assetTo === "gBRICK") return migrateWsohmAllowance > wsohmBalance;
+    if (assetFrom === "sBRICK" && assetTo === "gBRICK") return migrateSbrickAllowance > sbrickBalance;
+    if (assetFrom === "wsBRICK" && assetTo === "gBRICK") return migrateWsbrickAllowance > wsohmBalance;
     if (assetFrom === "wsBRICK" && assetTo === "sBRICK") return unwrapAllowance > wsohmBalance;
-    if (assetFrom === "gBRICK") return unwrapGohmAllowance > gohmBalance;
+    if (assetFrom === "gBRICK") return unwrapGbrickAllowance > gohmBalance;
 
     return 0;
-  }, [unwrapAllowance, migrateSohmAllowance, migrateWsohmAllowance, assetTo, assetFrom]);
+  }, [unwrapAllowance, migrateSbrickAllowance, migrateWsbrickAllowance, assetTo, assetFrom]);
 
   const isAllowanceDataLoading = unwrapAllowance == null && currentAction === "Unwrap";
   // const convertedQuantity = 0;
@@ -283,7 +283,7 @@ function Wrap() {
       );
 
     return (
-      <FormControl className="ohm-input" variant="outlined" color="primary">
+      <FormControl className="brick-input" variant="outlined" color="primary">
         <InputLabel htmlFor="amount-input"></InputLabel>
         <OutlinedInput
           id="amount-input"
@@ -342,7 +342,7 @@ function Wrap() {
   return (
     <div id="stake-view" className="wrapper">
       <Zoom in={true} onEntered={() => setZoomed(true)}>
-        <Paper className={`ohm-card`}>
+        <Paper className={`brick-card`}>
           <Grid container direction="column" spacing={2}>
             <Grid item>
               <div className="card-header">
@@ -497,7 +497,7 @@ function Wrap() {
                         <div className="data-row">
                           <Typography variant="body1">sBRICK Balance</Typography>
                           <Typography variant="body1">
-                            {isAppLoading ? <Skeleton width="80px" /> : <>{trim(sohmBalance, 4)} sBRICK</>}
+                            {isAppLoading ? <Skeleton width="80px" /> : <>{trim(sbrickBalance, 4)} sBRICK</>}
                           </Typography>
                         </div>
                         <div className="data-row">

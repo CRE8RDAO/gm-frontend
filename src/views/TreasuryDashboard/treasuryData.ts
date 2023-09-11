@@ -1,27 +1,27 @@
 // TODO: add paramaterization
 export const treasuryDataQuery = `
 query {
+  _meta {
+    block {
+      number
+    }
+  }
   protocolMetrics(first: 100, orderBy: timestamp, orderDirection: desc) {
     id
     timestamp
-    ohmCirculatingSupply
-    sOhmCirculatingSupply
+    brickCirculatingSupply
+    sBrickCirculatingSupply
     totalSupply
-    ohmPrice
+    brickPrice
     marketCap
     totalValueLocked
     treasuryRiskFreeValue
     treasuryMarketValue
     nextEpochRebase
-    nextDistributedOhm
-    treasuryDaiRiskFreeValue
+    nextDistributedBrick
     treasuryFraxMarketValue
-    treasuryDaiMarketValue
     treasuryFraxRiskFreeValue
-    treasuryXsushiMarketValue
     treasuryWETHMarketValue
-    treasuryLusdRiskFreeValue
-    treasuryLusdMarketValue
     currentAPY
     runway10k
     runway20k
@@ -31,8 +31,7 @@ query {
     runway2dot5k
     runwayCurrent
     holders
-    treasuryOhmDaiPOL
-    treasuryOhmFraxPOL
+    treasuryBrickFraxPOL
   }
 }
 `;

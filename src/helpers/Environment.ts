@@ -15,6 +15,9 @@ export class EnvHelper {
   static alchemyArbitrumTestnetURI = `https://arb-rinkeby.g.alchemy.com/v2/${EnvHelper.env.REACT_APP_ARBITRUM_TESTNET_ALCHEMY}`;
   static alchemyAvalancheTestnetURI = ``;
 
+  static cantoURI = `https://canto.dexvaults.com`;
+  static cantoTestnetURI = "https://canto-testnet.plexnode.wtf";
+
   static whitespaceRegex = /\s+/;
 
   /**
@@ -143,6 +146,19 @@ export class EnvHelper {
   static getSelfHostedNode(networkId: number) {
     let URI_LIST: string[] = [];
     switch (networkId) {
+      case 7000:
+        if (EnvHelper.env.REACT_APP_CANTO_NODE && EnvHelper.isNotEmpty(EnvHelper.env.REACT_APP_CANTO_NODE)) {
+          URI_LIST = EnvHelper.env.REACT_APP_CANTO_NODE.split(new RegExp(EnvHelper.whitespaceRegex));
+        }
+        break;
+      case 7001:
+        if (
+          EnvHelper.env.REACT_APP_CANTO_TESTNET_NODE &&
+          EnvHelper.isNotEmpty(EnvHelper.env.REACT_APP_CANTO_TESTNET_NODE)
+        ) {
+          URI_LIST = EnvHelper.env.REACT_APP_CANTO_TESTNET_NODE.split(new RegExp(EnvHelper.whitespaceRegex));
+        }
+        break;
       case 1:
         if (
           EnvHelper.env.REACT_APP_ETHEREUM_SELF_HOSTED_NODE &&

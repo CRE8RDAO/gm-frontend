@@ -52,14 +52,12 @@ const Bond = ({ bond }: { bond: IAllBondData }) => {
     setView(Number(value));
   };
 
-  // console.log("bond", bond);
-
   return (
     <Fade in={true} mountOnEnter unmountOnExit>
       <Grid container id="bond-view">
         <Backdrop open={true}>
           <Fade in={true}>
-            <Paper className="ohm-card ohm-modal">
+            <Paper className="brick-card brick-modal">
               <BondHeader
                 bond={bond}
                 slippage={slippage}

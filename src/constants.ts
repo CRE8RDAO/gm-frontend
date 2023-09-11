@@ -1,31 +1,45 @@
-import { NodeHelper } from "./helpers/NodeHelper"
-import { EnvHelper } from "./helpers/Environment"
-import ethereum from "./assets/tokens/wETH.svg"
-import arbitrum from "./assets/arbitrum.png"
-import avalanche from "./assets/tokens/AVAX.svg"
+import { NodeHelper } from "./helpers/NodeHelper";
+import { EnvHelper } from "./helpers/Environment";
+import ethereum from "./assets/tokens/wETH.svg";
+import arbitrum from "./assets/arbitrum.png";
+import avalanche from "./assets/tokens/AVAX.svg";
 
-export const THE_GRAPH_URL = "https://api.thegraph.com/subgraphs/name/drondin/olympus-graph"
-export const EPOCH_INTERVAL = 2200
+export const THE_GRAPH_URL = "https://api.thegraph.com/subgraphs/name/0xtaichi/demo"; //https://api.thegraph.com/subgraphs/name/drondin/olympus-graph
+export const EPOCH_INTERVAL = 2200;
 
 // NOTE could get this from an outside source since it changes slightly over time
-export const BLOCK_RATE_SECONDS = 13.14
+export const BLOCK_RATE_SECONDS = 13.14;
 
-export const TOKEN_DECIMALS = 9
+export const TOKEN_DECIMALS = 9;
 
 interface IPoolGraphURLS {
-  [index: string]: string
+  [index: string]: string;
 }
 
 export const POOL_GRAPH_URLS: IPoolGraphURLS = {
   4: "https://api.thegraph.com/subgraphs/name/pooltogether/rinkeby-v3_4_3",
   1: "https://api.thegraph.com/subgraphs/name/pooltogether/pooltogether-v3_4_3",
-}
+};
 
 interface IAddresses {
-  [key: number]: { [key: string]: string }
+  [key: number]: { [key: string]: string };
 }
 
 export const addresses: IAddresses = {
+  7001: {
+    BRICK_ADDRESS: "0x931B94bbccef6494Fd600E40d052812b8a1E77A6",
+    FRAX_ADDRESS: "0x0fa65CFb2CC43bDF9F245a59DF65C5E93C534fFf",
+    WFTM_ADDRESS: "0xB10598f6A39054D033B58AB035f43E4e5Aa2D557",
+    BONDINGCALC_ADDRESS: "0x2B774122B4FA94bACc5116CCe37772D329a9aac5",
+    TREASURY_ADDRESS: "0x9c8cabCEA4f9b65658eAa3D267Ee299016FFf732",
+    DISTRIBUTOR_ADDRESS: "0x0A00eB88Ce7800CC4bE59B3c799a34Be5f5cD076",
+    SBRICK_ADDRESS: "0x13f88dF38ee4B237d092745912609DE597e80C6F",
+    STAKING_ADDRESS: "0x6964b052d0E4dDCe6F2FC4c431B70cecd40a1fDA",
+    // STACKING_WARMUP_ADDRESS: "0x5a6A2047afEB20Ff4DDc4B38E0FB5E4744e649D7",
+    STAKING_HELPER_ADDRESS: "0x245E9204E33f789258743089Ff15b6A2d6471C49",
+    // WSOHM_ADDRESS: "0xC98a1c26ECE3Bb18d46ae263Bebf974c0C619EeC",
+    REDEEM_HELPER_ADDRESS: "0xaD9Ea404AcDf33F06fCDEB664378ba5b3b5ba6B6",
+  },
   4002: {
     BRICK_ADDRESS: "0x80FAcC2c14E6F1B31A952C43264b333C2788f30f",
     FRAX_ADDRESS: "0x9e008Cc93b4D2179dB48Fe5A0fed6B484aFf1739",
@@ -39,32 +53,22 @@ export const addresses: IAddresses = {
     STAKING_HELPER_ADDRESS: "0x2663a2E5f4DF96b79377DA6B15e448b012838Cb8",
     // FraxBondDepository_ADDRESS: "0x38E4560A1DB2DAe89F78F98b308eE6F890b27712",
     // WftmBondDepository_ADDRESS: "0x1e0AD0F8DDFF84FDc938373E9aa66b8d994ea066",
-    REDEEM_HELPER_ADDRESS: "0xBd35d8b2FDc2b720842DB372f5E419d39B24781f",
+    REDEEM_HELPER_ADDRESS: "0x952A2D7BE42E04FCC622e4beB4c59d3AD4Ffbe4F",
   },
   4: {
-    FRAX_ADDRESS: "0xB2180448f8945C8Cc8AE9809E67D6bd27d8B2f2C", // duplicate
-    BRICK_ADDRESS: "0x8fa13d80D98A11F094843AaDab8129b42C49E186", //updated -dunks
-    STAKING_ADDRESS: "0xbB8b39A92D916D4c1c46c67CA22920A366127A4B", // updated -dunks
-    STAKING_HELPER_ADDRESS: "0x179C45D4c6F8370c68A53aF068b5Fa20e3fE2Af4", // updated -dunks
-    OLD_STAKING_ADDRESS: "0xb640AA9082ad720c60102489b806E665d67DCE32", // remove
-    SBRICK_ADDRESS: "0x230a8dC3c34336372b75549915DeBAEAACCF129D", // updated not sure if correct tho -dunks
-    WSBRICK_ADDRESS: "0xDd1875ddC7c832FA1CB82DfB8B34d3abD1F67a87", // updated using address from wrappedToken.json -dunks
-    OLD_SBRICK_ADDRESS: "0x8Fc4167B0bdA22cb9890af2dB6cB1B818D6068AE", // remove
-    MIGRATE_ADDRESS: "0x3BA7C6346b93DA485e97ba55aec28E8eDd3e33E2",
-    DISTRIBUTOR_ADDRESS: "0xAECEc67825F49AAD1962F0557266A6Ba501Ddcea", //updated -dunks
-    BONDINGCALC_ADDRESS: "0x03E82c27761DaaA69852cF5238Bc2597a14592cd", // updated -dunks
-    CIRCULATING_SUPPLY_ADDRESS: "0x5b0AA7903FD2EaA16F1462879B71c3cE2cFfE868", // I dont see this in our list -dunks
-    TREASURY_ADDRESS: "0x0d722D813601E48b7DAcb2DF9bae282cFd98c6E7", // lets try test multisig soon!
-    REDEEM_HELPER_ADDRESS: "0xBd35d8b2FDc2b720842DB372f5E419d39B24781f",
-    PT_TOKEN_ADDRESS: "0x0a2d026bacc573a8b5a2b049f956bdf8e5256cfd", // remove
-    PT_PRIZE_POOL_ADDRESS: "0xf9081132864ed5e4980CFae83bDB122d86619281", // remove
-    PT_PRIZE_STRATEGY_ADDRESS: "0x2Df17EA8D6B68Ec444c9a698315AfB36425dac8b", // remove
-    MIGRATOR_ADDRESS: "0x568c257BF4714864382b643fC8e6Ce5fbBcC6d3C",
-    GBRICK_ADDRESS: "0xcF2D6893A1CB459fD6B48dC9C41c6110B968611E", // remove?
-    BRICK_V2: "0xd7B98050962ec7cC8D11a83446B3217257C754B7", // remove ?
-    TREASURY_V2: "0x8dd0d811CEFb5CF41528C495E76638B2Ea39d2e6", // remove ?
-    SBRICK_V2: "0xebED323CEbe4FfF65F7D7612Ea04313F718E5A75", // remove ?
-    STAKING_V2: "0x06984c3A9EB8e3A8df02A4C09770D5886185792D", // remove ?
+    BRICK_ADDRESS: "0x68701099918D806d786E9fbc793907d3b8fEe442",
+    FRAX_ADDRESS: "0x0B81a995b28254D76e5148d29E8eb4c5c26D3aC0",
+    WFTM_ADDRESS: "0xDd1875ddC7c832FA1CB82DfB8B34d3abD1F67a87",
+    BONDINGCALC_ADDRESS: "0x99c5dEE772793484cC617dA8aE3bC0Aa302aa0Df",
+    TREASURY_ADDRESS: "0xb5fF90A88d52dDC230F43891D565710c706FD00B",
+    DISTRIBUTOR_ADDRESS: "0xa2c6C44A9ba611D9598f580ff169d7c9E6fD6E83",
+    SBRICK_ADDRESS: "0xE4dE4087849fd4e5DEb21761e88c0c4ab93C6d56",
+    STAKING_ADDRESS: "0xbD21F81C59D578baE56Cd9d92Ee038C9F18c01F9",
+    // StakingWarmup_ADDRESS: "0xB8408Fc5f5aE1980a6af4CaA6118E98F7c328A5d",
+    STAKING_HELPER_ADDRESS: "0xcF8268618caEF8A8e5386da520022C64EB54930A", // "0x179C45D4c6F8370c68A53aF068b5Fa20e3fE2Af4",
+    // FraxBondDepository_ADDRESS: "0x38E4560A1DB2DAe89F78F98b308eE6F890b27712",
+    // WftmBondDepository_ADDRESS: "0x1e0AD0F8DDFF84FDc938373E9aa66b8d994ea066",
+    REDEEM_HELPER_ADDRESS: "0xb82295902e1ceb1E9Fc7e1de2440331eA8D3aFad",
   },
   1: {
     FRAX_ADDRESS: "0x6b175474e89094c44da98b954eedeac495271d0f", // duplicate
@@ -176,7 +180,7 @@ export const addresses: IAddresses = {
     GBRICK_ADDRESS: "0x321e7092a180bb43555132ec53aaa65a5bf84251",
     MIGRATOR_ADDRESS: "0xB10209BFbb37d38EC1B5F0c964e489564e223ea7",
   }, // TODO: Avalanche Mainnet addresses
-}
+};
 // BRICK 0x80FAcC2c14E6F1B31A952C43264b333C2788f30f
 // Mock FRAX 0x9e008Cc93b4D2179dB48Fe5A0fed6B484aFf1739 //Not adding this yet.... need abi
 // Mock WFTM 0x0Ae825CD631d5b59D56ACc635f1599ebb3390A6d   // need abi
@@ -194,29 +198,29 @@ export const addresses: IAddresses = {
  */
 
 interface INativeCurrency {
-  name: string
-  symbol: string
-  decimals?: number
+  name: string;
+  symbol: string;
+  decimals?: number;
 }
 
 interface INetwork {
-  chainName: string
-  chainId: number
-  nativeCurrency: INativeCurrency
-  rpcUrls: string[]
-  blockExplorerUrls: string[]
-  image: SVGImageElement
-  imageAltText: string
-  uri: () => string
+  chainName: string;
+  chainId: number;
+  nativeCurrency: INativeCurrency;
+  rpcUrls: string[];
+  blockExplorerUrls: string[];
+  image: SVGImageElement;
+  imageAltText: string;
+  uri: () => string;
 }
 
 // These networks will be available for users to select. Other networks may be functional
 // (e.g. testnets, or mainnets being prepared for launch) but need to be selected directly via the wallet.
-export const USER_SELECTABLE_NETWORKS = [1, 42161, 43114, 4002, 4]
+export const USER_SELECTABLE_NETWORKS = [1, 42161, 43114, 4002, 4];
 
 // Set this to the chain number of the most recently added network in order to enable the 'Now supporting X network'
 // message in the UI. Set to -1 if we don't want to display the message at the current time.
-export const NEWEST_NETWORK_ID = 4002
+export const NEWEST_NETWORK_ID = 4002;
 
 export const NETWORKS: { [key: number]: INetwork } = {
   4002: {
@@ -232,6 +236,34 @@ export const NETWORKS: { [key: number]: INetwork } = {
     image: ethereum,
     imageAltText: "Fantom Logo",
     uri: () => NodeHelper.getMainnetURI(1),
+  },
+  7000: {
+    chainName: "Canto",
+    chainId: 7000,
+    nativeCurrency: {
+      name: "Canto",
+      symbol: "CANTO",
+      decimals: 18,
+    },
+    rpcUrls: ["https://canto.dexvaults.com"],
+    blockExplorerUrls: ["https://tuber.build/"],
+    image: ethereum,
+    imageAltText: "Ethereum Logo",
+    uri: () => EnvHelper.cantoURI,
+  },
+  7001: {
+    chainName: "Canto Testnet",
+    chainId: 7001,
+    nativeCurrency: {
+      name: "Canto",
+      symbol: "CANTO",
+      decimals: 18,
+    },
+    rpcUrls: ["https://canto-testnet.plexnode.wtf"],
+    blockExplorerUrls: ["https://testnet.tuber.build/"],
+    image: ethereum,
+    imageAltText: "Ethereum Logo",
+    uri: () => EnvHelper.cantoTestnetURI,
   },
   1: {
     chainName: "Ethereum",
@@ -317,4 +349,4 @@ export const NETWORKS: { [key: number]: INetwork } = {
     imageAltText: "Avalanche Logo",
     uri: () => NodeHelper.getMainnetURI(43114),
   },
-}
+};

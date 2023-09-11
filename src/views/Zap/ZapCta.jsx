@@ -29,7 +29,7 @@ function ZapCta() {
   const classes = useStyles();
   return (
     <>
-      <Paper className="ohm-card" id="olyzaps-cta">
+      <Paper className="brick-card" id="olyzaps-cta">
         <Grid container display="flex" className="cta-box" wrap>
           <Grid item xs={5} sm={3} className="icons-box">
             <MultiLogo images={[]} />

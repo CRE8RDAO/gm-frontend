@@ -36,8 +36,8 @@ export const PoolDeposit = props => {
   const isAppLoading = useSelector(state => state.app.loading);
   const isMobileScreen = useMediaQuery("(max-width: 513px)");
 
-  const sohmBalance = useSelector(state => {
-    return state.account.balances && state.account.balances.sohm;
+  const sbrickBalance = useSelector(state => {
+    return state.account.balances && state.account.balances.sbrick;
   });
 
   const poolBalance = useSelector(state => {
@@ -79,7 +79,7 @@ export const PoolDeposit = props => {
   }, [poolAllowance]);
 
   const setMax = () => {
-    const value = parseFloat(sohmBalance);
+    const value = parseFloat(sbrickBalance);
     setQuantity(value);
     let userBalanceAfterDeposit = poolBalance + value;
 
@@ -126,7 +126,7 @@ export const PoolDeposit = props => {
       ) : (
         <Box className="deposit-container">
           <Box display="flex" alignItems="center" flexDirection={`${isMobileScreen ? "column" : "row"}`}>
-            <FormControl className="ohm-input" variant="outlined" color="primary">
+            <FormControl className="brick-input" variant="outlined" color="primary">
               <InputLabel htmlFor="amount-input"></InputLabel>
               <OutlinedInput
                 id="amount-input"
@@ -196,7 +196,7 @@ export const PoolDeposit = props => {
                 {isAppLoading ? (
                   <Skeleton width="80px" />
                 ) : (
-                  <>{new Intl.NumberFormat("en-US").format(sohmBalance)} sBRICK</>
+                  <>{new Intl.NumberFormat("en-US").format(sbrickBalance)} sBRICK</>
                 )}
               </Typography>
             </div>

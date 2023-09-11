@@ -58,7 +58,7 @@ function ZapInfo({ tokens, address }) {
   const classes = useStyles();
   return (
     <>
-      <Paper className="ohm-card" id="olyzaps-info">
+      <Paper className="brick-card" id="olyzaps-info">
         <Grid container direction="row" wrap spacing={4}>
           <Grid item sm={12} md={4} classes={{ root: classes.infoBox, item: classes.infoBoxItem }}>
             <Box

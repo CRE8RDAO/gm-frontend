@@ -37,11 +37,11 @@ export const MarketValueGraph = () => {
       type="stack"
       data={data}
       dataKey={[
-        "treasuryDaiMarketValue",
+        // "treasuryDaiMarketValue",
         "treasuryFraxMarketValue",
         "treasuryWETHMarketValue",
-        "treasuryXsushiMarketValue",
-        "treasuryLusdMarketValue",
+        // "treasuryXsushiMarketValue",
+        // "treasuryLusdMarketValue",
       ]}
       stopColor={[
         ["#F5AC37", "#EA9276"],
@@ -70,7 +70,7 @@ export const RiskFreeValueGraph = () => {
       type="stack"
       data={data}
       format="currency"
-      dataKey={["treasuryDaiRiskFreeValue", "treasuryFraxRiskFreeValue", "treasuryLusdRiskFreeValue"]}
+      dataKey={["treasuryFraxRiskFreeValue"]}
       stopColor={[
         ["#F5AC37", "#EA9276"],
         ["#768299", "#98B3E9"],
@@ -101,18 +101,18 @@ export const ProtocolOwnedLiquidityGraph = () => {
       dataFormat="percent"
       itemNames={tooltipItems.pol}
       itemType={itemType.percentage}
-      dataKey={["treasuryOhmDaiPOL"]}
+      dataKey={["treasuryBrickFraxPOL"]}
       bulletpointColors={bulletpoints.pol}
       infoTooltipMessage={tooltipInfoMessages.pol}
       headerText="Protocol Owned Liquidity BRICK-DAI"
       expandedGraphStrokeColor={theme.palette.graphStrokeColor}
-      headerSubText={`${data && trim(data[0].treasuryOhmDaiPOL, 2)}% `}
+      headerSubText={`${data && trim(data[0].treasuryBrickFraxPOL, 2)}% `}
       stopColor={[["rgba(128, 204, 131, 1)", "rgba(128, 204, 131, 0)"]]}
     />
   );
 };
 
-export const OHMStakedGraph = () => {
+export const BrickStakedGraph = () => {
   const theme = useTheme();
   const { data } = useTreasuryMetrics({ refetchOnMount: false });
 
@@ -120,7 +120,7 @@ export const OHMStakedGraph = () => {
     data &&
     data
       .map(metric => ({
-        staked: (metric.sOhmCirculatingSupply / metric.ohmCirculatingSupply) * 100,
+        staked: (metric.sBrickCirculatingSupply / metric.brickCirculatingSupply) * 100,
         timestamp: metric.timestamp,
       }))
       .filter(metric => metric.staked < 100);

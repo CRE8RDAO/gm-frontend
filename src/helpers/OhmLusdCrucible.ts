@@ -18,7 +18,7 @@ export {};
 //   ) as OhmLusdCrucible;
 //   const aludelData = await aludelContract.getAludelData();
 //   // getting contractAddresses & Pricing for calculations below
-//   let ohmPrice = await getTokenPrice("olympus");
+//   let brickPrice = await getTokenPrice("olympus");
 //   let brickContractAddress = addresses[networkID].BRICK_ADDRESS.toLowerCase();
 
 //   let lusdPrice = await getTokenPrice("liquity-usd");
@@ -38,7 +38,7 @@ export {};
 
 //   // set addresses & pricing in dictionary
 //   let usdValues: { [key: string]: number } = {};
-//   usdValues[brickContractAddress] = ohmPrice;
+//   usdValues[brickContractAddress] = brickPrice;
 //   usdValues[ohmLusdContractAddress] = Number(ohmLusdPrice.toString());
 //   usdValues[lqtyContractAddress] = lqtyPrice;
 //   usdValues[mistContractAddress] = mistPrice;
@@ -141,7 +141,7 @@ export {};
 //   // 18 decimals for LUSD
 //   let stakedLusd = Number((await lusdContract.balanceOf(aludelData.stakingToken)).toString()) / 10 ** 18;
 
-//   let totalStakedTokensUsd = stakedOhm * ohmPrice + stakedLusd * lusdPrice;
+//   let totalStakedTokensUsd = stakedOhm * brickPrice + stakedLusd * lusdPrice;
 
 //   let stakingTokenContract = new ethers.Contract(aludelData.stakingToken, UniswapIERC20ABI, provider) as UniswapIERC20;
 //   let sushiTokenSupply = Number((await stakingTokenContract.totalSupply()).toString()) / 10 ** 18;

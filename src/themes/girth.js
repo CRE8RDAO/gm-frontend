@@ -69,10 +69,10 @@ export const girth = responsiveFontSizes(
         },
         MuiPaper: {
           root: {
-            "&.ohm-menu": {
+            "&.brick-menu": {
               backgroundColor: girthTheme.menuBg,
             },
-            "&.ohm-modal": {
+            "&.brick-modal": {
               backgroundColor: girthTheme.menuBg,
             },
           },

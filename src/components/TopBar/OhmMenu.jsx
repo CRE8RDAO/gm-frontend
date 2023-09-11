@@ -82,7 +82,7 @@ function OhmMenu() {
   };
 
   const open = Boolean(anchorEl);
-  const id = "ohm-popper";
+  const id = "brick-popper";
   // const daiAddress = dai.getAddressForReserve(networkId);
   const fraxAddress = frax.getAddressForReserve(networkId);
   return (
@@ -91,10 +91,10 @@ function OhmMenu() {
       component="div"
       onMouseEnter={e => handleClick(e)}
       onMouseLeave={e => handleClick(e)}
-      id="ohm-menu-button-hover"
+      id="brick-menu-button-hover"
     >
       <Button
-        id="ohm-menu-button"
+        id="brick-menu-button"
         size="large"
         variant="contained"
         color="secondary"
@@ -102,14 +102,14 @@ function OhmMenu() {
         aria-describedby={id}
       >
         <SvgIcon component={InfoIcon} color="primary" />
-        <Typography className="ohm-menu-button-text">BRICK</Typography>
+        <Typography className="brick-menu-button-text">BRICK</Typography>
       </Button>
 
       <Popper id={id} open={open} anchorEl={anchorEl} placement="bottom-start" transition>
         {({ TransitionProps }) => {
           return (
             <Fade {...TransitionProps} timeout={100}>
-              <Paper className="ohm-menu" elevation={1}>
+              <Paper className="brick-menu" elevation={1}>
                 <Box component="div" className="buy-tokens">
                   <Link
                     href={`https://app.sushi.com/swap?inputCurrency=${daiAddress}&outputCurrency=${BRICK_ADDRESS}`}

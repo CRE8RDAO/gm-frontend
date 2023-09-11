@@ -65,7 +65,7 @@ function ChooseBond() {
       {!isAccountLoading && !isEmpty(accountBonds) && <ClaimBonds activeBonds={accountBonds} />}
 
       <Zoom in={true}>
-        <Paper className="ohm-card">
+        <Paper className="brick-card">
           <Box className="card-header">
             <Typography variant="h5" data-testid="t">
               <Trans>Bond</Trans> (1,1)
@@ -147,7 +147,7 @@ function ChooseBond() {
       </Zoom>
 
       {isSmallScreen && (
-        <Box className="ohm-card-container">
+        <Box className="brick-card-container">
           <Grid container item spacing={2}>
             {bonds.map(bond => {
               if (bond.getBondability(networkId)) {

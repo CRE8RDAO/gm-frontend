@@ -78,7 +78,7 @@ export const changeApproval = createAsyncThunk(
     return dispatch(
       fetchAccountSuccess({
         wrapping: {
-          ohmWrap: +wrapAllowance,
+          brickWrap: +wrapAllowance,
           ohmUnwrap: +unwrapAllowance,
         },
       }),

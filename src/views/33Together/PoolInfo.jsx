@@ -34,7 +34,7 @@ export const PoolInfo = props => {
 
   return (
     <Zoom in={true}>
-      <Paper className="ohm-card">
+      <Paper className="brick-card">
         <div className="card-header">
           <Typography variant="h5">
             <Trans>Prize Pool Info</Trans>
@@ -72,7 +72,9 @@ export const PoolInfo = props => {
                 <Typography>
                   <Trans>Your wallet balance</Trans>
                 </Typography>
-                <Typography>{props.isAccountLoading ? <Skeleton width={100} /> : props.sohmBalance} sBRICK</Typography>
+                <Typography>
+                  {props.isAccountLoading ? <Skeleton width={100} /> : props.sbrickBalance} sBRICK
+                </Typography>
               </div>
             </Box>
             <Divider color="secondary" />
@@ -170,7 +172,7 @@ PoolInfo.propTypes = {
   graphLoading: PropTypes.bool.isRequired,
   isAccountLoading: PropTypes.bool.isRequired,
   poolBalance: PropTypes.string,
-  sohmBalance: PropTypes.string,
+  sbrickBalance: PropTypes.string,
   yourTotalAwards: PropTypes.string,
   yourOdds: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   winners: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),

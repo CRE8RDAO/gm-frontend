@@ -27,13 +27,13 @@
     width: 100%;
   }
 
-  .ohm-card .card-header {
+  .brick-card .card-header {
     position: relative;
   }
-  .ohm-card .header {
+  .brick-card .header {
     min-height: 3em;
   }
-  .ohm-card.secondary .card-header {
+  .brick-card.secondary .card-header {
     min-height: 33px !important;
     height: 20px;
   }
@@ -142,7 +142,7 @@
   text-align: left;
 }
 
-.ohm-logo-tiny {
+.brick-logo-tiny {
   height: 14px;
   width: 14px;
   vertical-align: middle;
@@ -201,7 +201,7 @@
   }
 }
 
-.ohm-input {
+.brick-input {
   max-width: 542px;
   width: 100%;
   margin: 4px !important;
@@ -288,7 +288,7 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    .ohm-pairs p {
+    .brick-pairs p {
       margin-bottom: 0 !important;
     }
   }

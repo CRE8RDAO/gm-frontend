@@ -103,7 +103,7 @@ function ZapStakeAction(props) {
     return state.app.marketPrice;
   });
 
-  const sOhmBalance = useAppSelector(state => Number(state.account?.balances?.sohm ?? 0.0));
+  const sOhmBalance = useAppSelector(state => Number(state.account?.balances?.sbrick ?? 0.0));
 
   const exchangeRate = ohmMarketPrice / tokens[zapToken]?.price;
 

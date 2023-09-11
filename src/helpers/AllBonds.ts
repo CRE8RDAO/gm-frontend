@@ -1,16 +1,20 @@
-import { StableBond, LPBond, NetworkID, CustomBond, BondType } from "src/lib/Bond"
-import { addresses } from "src/constants"
+import { StableBond, LPBond, NetworkID, CustomBond, BondType } from "src/lib/Bond";
+import { addresses } from "src/constants";
 
-import { ReactComponent as FraxImg } from "src/assets/tokens/FRAX.svg"
-import { ReactComponent as wFTMImg } from "src/assets/tokens/wFTM.svg"
+import { ReactComponent as FraxImg } from "src/assets/tokens/FRAX.svg";
+import { ReactComponent as wFTMImg } from "src/assets/tokens/wFTM.svg";
+import { ReactComponent as wETHImg } from "src/assets/tokens/wETH.svg";
 // import { ReactComponent as OhmEthImg } from "src/assets/tokens/OHM-WETH.svg";
 
-import { abi as FraxBondContract } from "src/abi/ftmTestnet/FRAX.json"
-import { abi as wFTMBondContract } from "src/abi/ftmTestnet/WrappedToken.json"
+import { abi as FraxBondContract } from "src/abi/ftmTestnet/FraxBondDepository.json";
+import { abi as wFTMBondContract } from "src/abi/ftmTestnet/WftmBondDepository.json";
+import { abi as wETHBondContract } from "src/abi/rinkeby/WrappedTokenBondDepository.json";
+import { abi as BrickFraxBondContract } from "src/abi/rinkeby/BrickFraxBondDepository.json";
+import { abi as ReserveBrickFraxContract } from "src/abi/rinkeby/ReserveBrickFraxContract.json";
 
-import { abi as ierc20Abi } from "src/abi/IERC20.json"
+import { abi as ierc20Abi } from "src/abi/IERC20.json";
 // import { getBondCalculator } from "src/helpers/BondCalculator";
-import { BigNumberish } from "ethers"
+import { BigNumberish } from "ethers";
 // import { getTokenPrice } from "src/helpers";
 
 // TODO(zx): Further modularize by splitting up reserveAssets into vendor token definitions
@@ -24,13 +28,13 @@ export const frax = new StableBond({
   bondContractABI: FraxBondContract,
   isBondable: {
     // [NetworkID.Mainnet]: true,
-    [NetworkID.Testnet]: true,
+    // [NetworkID.Testnet]: true,
     // [NetworkID.Fantom]: true,
     [NetworkID.FantomTestnet]: true,
   },
   isClaimable: {
     // [NetworkID.Mainnet]: true,
-    [NetworkID.Testnet]: true,
+    // [NetworkID.Testnet]: true,
     // [NetworkID.Fantom]: true,
     [NetworkID.FantomTestnet]: true,
   },
@@ -40,19 +44,70 @@ export const frax = new StableBond({
     //   reserveAddress: "0x6b175474e89094c44da98b954eedeac495271d0f",
     // },
     [NetworkID.Testnet]: {
-      bondAddress: "0x1cb859d5e17e785bb41e1bde5a1fc962bfee8a5e", // adding our bond depository on Rinkeby
-      reserveAddress: "0x088ce658db1ab9e8b0bd62d75964ac8f88f27aea", // LP token
+      bondAddress: "0x6eB912a78E025b5d4C4126db34Dcf88cc36e4B48",
+      reserveAddress: "0x0B81a995b28254D76e5148d29E8eb4c5c26D3aC0",
     },
     // [NetworkID.Fantom]: {
     //   bondAddress: "0x575409F8d77c12B05feD8B455815f0e54797381c",
     //   reserveAddress: "0x6b175474e89094c44da98b954eedeac495271d0f",
     // },
-    [NetworkID.FantomTestnet]: {
-      bondAddress: "0x38e4560a1db2dae89f78f98b308ee6f890b27712", // This is the bond depository on fantom (trying to match up with the mainnet example to get bonds working.)
-      reserveAddress: "0x9e008cc93b4d2179db48fe5a0fed6b484aff1739", // need to add fantom  frax here
-    },
+    // [NetworkID.FantomTestnet]: {
+    //   bondAddress: "0x1cB859d5e17e785BB41e1BDe5A1FC962BfEE8A5e",
+    //   reserveAddress: "0x9e008Cc93b4D2179dB48Fe5A0fed6B484aFf1739",
+    // },
   },
-})
+});
+
+export const eth = new CustomBond({
+  name: "eth",
+  displayName: "wETH",
+  lpUrl: "",
+  bondType: BondType.StableAsset,
+  bondToken: "wETH",
+  payoutToken: "BRICK",
+  bondIconSvg: wETHImg,
+  bondContractABI: wETHBondContract,
+  reserveContract: ierc20Abi, // The Standard ierc20Abi since they're normal tokens
+  isBondable: {
+    // [NetworkID.Mainnet]: true,
+    [NetworkID.Testnet]: true,
+    // [NetworkID.Fantom]: true,
+    // [NetworkID.FantomTestnet]: true,
+  },
+  isClaimable: {
+    // [NetworkID.Mainnet]: true,
+    [NetworkID.Testnet]: true,
+    // [NetworkID.Fantom]: true,
+    // [NetworkID.FantomTestnet]: true,
+  },
+  networkAddrs: {
+    // [NetworkID.Mainnet]: {
+    //   bondAddress: "0x8510c8c2B6891E04864fa196693D44E6B6ec2514",
+    //   reserveAddress: "0x853d955acef822db058eb8505911ed77f175b99e",
+    // },
+    [NetworkID.Testnet]: {
+      bondAddress: "0xc08074d133f794033D3310D605b7480184e47dbd",
+      reserveAddress: "0xDd1875ddC7c832FA1CB82DfB8B34d3abD1F67a87",
+    },
+    // [NetworkID.Fantom]: {
+    //   bondAddress: "0x575409F8d77c12B05feD8B455815f0e54797381c",
+    //   reserveAddress: "0x6b175474e89094c44da98b954eedeac495271d0f",
+    // },
+    // [NetworkID.FantomTestnet]: {
+    //   bondAddress: "0x1e0AD0F8DDFF84FDc938373E9aa66b8d994ea066",
+    //   reserveAddress: "0x0Ae825CD631d5b59D56ACc635f1599ebb3390A6d",
+    // },
+  },
+  customTreasuryBalanceFunc: async function (this: CustomBond, networkID, provider) {
+    const ethBondContract = this.getContractForBond(networkID, provider);
+    let ethPrice: BigNumberish = await ethBondContract.assetPrice();
+    ethPrice = Number(ethPrice.toString()) / Math.pow(10, 8);
+    const token = this.getContractForReserve(networkID, provider);
+    let ethAmount: BigNumberish = await token.balanceOf(addresses[networkID].TREASURY_ADDRESS);
+    ethAmount = Number(ethAmount.toString()) / Math.pow(10, 18);
+    return ethAmount * ethPrice;
+  },
+});
 
 export const ftm = new CustomBond({
   name: "ftm",
@@ -64,6 +119,55 @@ export const ftm = new CustomBond({
   bondIconSvg: wFTMImg,
   bondContractABI: wFTMBondContract,
   reserveContract: ierc20Abi, // The Standard ierc20Abi since they're normal tokens
+  isBondable: {
+    // [NetworkID.Mainnet]: true,
+    // [NetworkID.Testnet]: true,
+    // [NetworkID.Fantom]: true,
+    [NetworkID.FantomTestnet]: true,
+  },
+  isClaimable: {
+    // [NetworkID.Mainnet]: true,
+    // [NetworkID.Testnet]: true,
+    // [NetworkID.Fantom]: true,
+    [NetworkID.FantomTestnet]: true,
+  },
+  networkAddrs: {
+    // [NetworkID.Mainnet]: {
+    //   bondAddress: "0x8510c8c2B6891E04864fa196693D44E6B6ec2514",
+    //   reserveAddress: "0x853d955acef822db058eb8505911ed77f175b99e",
+    // },
+    // [NetworkID.Testnet]: {
+    //   bondAddress: "0x6fE3e4644a1CBB087D411A52C931B630cD5F899f",
+    //   reserveAddress: "0xDd1875ddC7c832FA1CB82DfB8B34d3abD1F67a87",
+    // },
+    // [NetworkID.Fantom]: {
+    //   bondAddress: "0x575409F8d77c12B05feD8B455815f0e54797381c",
+    //   reserveAddress: "0x6b175474e89094c44da98b954eedeac495271d0f",
+    // },
+    [NetworkID.FantomTestnet]: {
+      bondAddress: "0x1e0AD0F8DDFF84FDc938373E9aa66b8d994ea066",
+      reserveAddress: "0x0Ae825CD631d5b59D56ACc635f1599ebb3390A6d",
+    },
+  },
+  customTreasuryBalanceFunc: async function (this: CustomBond, networkID, provider) {
+    const ftmBondContract = this.getContractForBond(networkID, provider);
+    let ftmPrice: BigNumberish = await ftmBondContract.assetPrice();
+    ftmPrice = Number(ftmPrice.toString()) / Math.pow(10, 8);
+    const token = this.getContractForReserve(networkID, provider);
+    let ftmAmount: BigNumberish = await token.balanceOf(addresses[networkID].TREASURY_ADDRESS);
+    ftmAmount = Number(ftmAmount.toString()) / Math.pow(10, 18);
+    return ftmAmount * ftmPrice;
+  },
+});
+
+export const brick_frax = new LPBond({
+  name: "brick_frax_lp",
+  displayName: "BRICK-FRAX LP",
+  bondToken: "FRAX",
+  payoutToken: "BRICK",
+  bondIconSvg: FraxImg,
+  bondContractABI: BrickFraxBondContract,
+  reserveContract: ReserveBrickFraxContract,
   isBondable: {
     // [NetworkID.Mainnet]: true,
     [NetworkID.Testnet]: true,
@@ -78,33 +182,25 @@ export const ftm = new CustomBond({
   },
   networkAddrs: {
     // [NetworkID.Mainnet]: {
-    //   bondAddress: "0x8510c8c2B6891E04864fa196693D44E6B6ec2514",
-    //   reserveAddress: "0x853d955acef822db058eb8505911ed77f175b99e",
+    //   bondAddress: "0xc20CffF07076858a7e642E396180EC390E5A02f7",
+    //   reserveAddress: "0x2dce0dda1c2f98e0f171de8333c3c6fe1bbf4877",
     // },
     [NetworkID.Testnet]: {
-      //this is Rinkeby
-      bondAddress: "0xF651283543fB9D61A91f318b78385d187D300738",
-      reserveAddress: "0x2F7249cb599139e560f0c81c269Ab9b04799E453",
+      bondAddress: "0x7BB53Ef5088AEF2Bb073D9C01DCa3a1D484FD1d2",
+      reserveAddress: "0x11BE404d7853BDE29A3e73237c952EcDCbBA031E",
     },
     // [NetworkID.Fantom]: {
     //   bondAddress: "0x575409F8d77c12B05feD8B455815f0e54797381c",
     //   reserveAddress: "0x6b175474e89094c44da98b954eedeac495271d0f",
     // },
     [NetworkID.FantomTestnet]: {
-      bondAddress: "0x1e0ad0f8ddff84fdc938373e9aa66b8d994ea066", // This is the bond depository on fantom (trying to match up with the mainnet example to get bonds working.)
-      reserveAddress: "0x0ae825cd631d5b59d56acc635f1599ebb3390a6d", // used Mock WFTM this is in the wrong place
+      bondAddress: "0x1e0AD0F8DDFF84FDc938373E9aa66b8d994ea066",
+      reserveAddress: "0x0Ae825CD631d5b59D56ACc635f1599ebb3390A6d",
     },
   },
-  customTreasuryBalanceFunc: async function (this: CustomBond, networkID, provider) {
-    const ftmBondContract = this.getContractForBond(networkID, provider)
-    let ftmPrice: BigNumberish = await ftmBondContract.assetPrice()
-    ftmPrice = Number(ftmPrice.toString()) / Math.pow(10, 8)
-    const token = this.getContractForReserve(networkID, provider)
-    let ftmAmount: BigNumberish = await token.balanceOf(addresses[networkID].TREASURY_ADDRESS)
-    ftmAmount = Number(ftmAmount.toString()) / Math.pow(10, 18)
-    return ftmAmount * ftmPrice
-  },
-})
+  lpUrl:
+    "https://app.uniswap.org/#/add/v2/0x853d955acef822db058eb8505911ed77f175b99e/0x383518188c0c6d7730d91b2c03a03c837814a899",
+});
 
 // export const dai = new StableBond({
 //   name: "dai",
@@ -466,13 +562,13 @@ export const ftm = new CustomBond({
 // Is it a stableCoin bond? use `new StableBond`
 // Is it an LP Bond? use `new LPBond`
 // Add new bonds to this array!!
-export const allBonds = [ftm, frax]
+export const allBonds = [ftm, frax, eth, brick_frax];
 // TODO (appleseed-expiredBonds): there may be a smarter way to refactor this
-export const allExpiredBonds = []
+export const allExpiredBonds = [];
 export const allBondsMap = allBonds.reduce((prevVal, bond) => {
-  return { ...prevVal, [bond.name]: bond }
-}, {})
+  return { ...prevVal, [bond.name]: bond };
+}, {});
 
 // Debug Log
 // console.log(allBondsMap);
-export default allBonds
+export default allBonds;
